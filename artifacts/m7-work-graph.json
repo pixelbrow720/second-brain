@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "goal": "Implement and verify the project-local M7 bounded work-graph runtime without global configuration or live side effects.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read only the M7 workflow, PRD, schema, evaluation, security, ADR, and existing M5/M6 contracts. Write an exact bounded runtime contract, public API, schema/fixture needs, compatibility seams, acceptance matrix, and test plan. Do not edit implementation paths.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": [
+        "artifacts/m7-contract-audit.md"
+      ],
+      "timeout_seconds": 420,
+      "max_attempts": 1
+    },
+    {
+      "id": "security-audit",
+      "task": "Perform a read-only adversarial design audit of the M7 validator, scheduler, state transitions, context/result envelopes, cancellation, retry/reroute, write ownership, observability, M5/M6 boundaries, and local-only containment. Record fail-closed invariants and required regressions. Do not edit implementation paths.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [],
+      "write_scope": [
+        "artifacts/m7-security-audit.md"
+      ],
+      "timeout_seconds": 420,
+      "max_attempts": 1
+    },
+    {
+      "id": "implementation",
+      "task": "Implement the project-local M7 manifest/schema validator and bounded runtime from the approved audits: graph/node contracts, admission and route boundaries, lifecycle scheduler, four-worker/depth-one/write-owner guards, cancellation/retry/reroute/serial fallback, bounded context/result envelopes, integration checks, redacted observability, and focused tests. Keep all actions synthetic/local and never mutate global configuration or execute material side effects.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "contract-audit",
+        "security-audit"
+      ],
+      "write_scope": [
+        "schemas/work-graph-v1.json",
+        "schemas/schema-registry.json",
+        "fixtures/canonical/work-graph-v1.json",
+        "fixtures/m7",
+        "scripts/build_m0_contract_assets.py",
+        "src/second_brain/graph_runtime.py",
+        "src/second_brain/contract_checks.py",
+        "src/second_brain/__init__.py",
+        "tests/test_contract_schemas.py",
+        "tests/test_project_metadata.py",
+        "tests/test_work_graph_m7.py",
+        "tests/test_m7_integration.py"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "independent-review",
+      "task": "Perform a final independent read-only security and regression review of the completed M7 graph runtime and tests. Verify invalid graphs cannot start workers, graph state cannot be forged or skip dependency/ownership/cancellation gates, M5/M6 material boundaries remain intact, and telemetry/context/audit outputs remain redacted and bounded.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "implementation"
+      ],
+      "write_scope": [
+        "artifacts/m7-final-security-review.md"
+      ],
+      "timeout_seconds": 480,
+      "max_attempts": 1
+    },
+    {
+      "id": "acceptance",
+      "task": "Run deterministic M7 acceptance checks, remediate material findings, write verification evidence and documentation, update status and next-session prompt to the next ready milestone, and keep global activation disabled.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "implementation",
+        "independent-review"
+      ],
+      "write_scope": [
+        "artifacts/m7-verification.json",
+        "implementation-status.yaml",
+        "README.md",
+        "docs/09-IMPLEMENTATION-ROADMAP.md",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "docs/19-M7-BOUNDED-WORK-GRAPH-RUNTIME.md"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "acceptance"
+}

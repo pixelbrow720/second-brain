@@ -1,0 +1,33 @@
+{
+  "blob": {
+    "bytes": 42,
+    "media_type": "text/plain",
+    "relative_path": "raw/blobs/sha256/bb/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "capture_id": "cap:8b05e0e8-aa54-4c99-a20a-e64ed15791b2",
+  "captured_at": "2026-07-22T00:00:00Z",
+  "captured_by": "agent:fixture",
+  "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "origin": {
+    "final_locator": null,
+    "kind": "manual",
+    "locator": "fixture:synthetic"
+  },
+  "retention": {
+    "classification": "public",
+    "expires_at": null
+  },
+  "revision": 1,
+  "scan": {
+    "decision": "accept",
+    "format": "supported",
+    "injection": "clear",
+    "reason_codes": [],
+    "scanner_version": "fixture/1",
+    "secret": "clear"
+  },
+  "schema_version": 1,
+  "source_object_id": null,
+  "status": "accepted"
+}

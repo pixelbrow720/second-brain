@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "mem:m2-fixture:evidence:10000000-0000-4000-8000-000000000101",
+  "kind": "evidence",
+  "title": "Legacy Bubblewrap recovery evidence",
+  "revision": 3,
+  "verification_state": "verified",
+  "relations": [
+    "mem:m2-fixture:task:10000000-0000-4000-8000-000000000102"
+  ],
+  "code_refs": [
+    {
+      "path": "fixtures/m2/reference-corpus/ref-01.txt",
+      "sha256": "75bcc94dd664081c9cb97f0af55f49aeb919534f6167cd78ee81a1b3d56de8e7"
+    }
+  ],
+  "body": "Synthetic legacy evidence retained only for a read-only M2 migration inventory."
+}

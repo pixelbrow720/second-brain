@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "goal": "Implement and verify the project-local M2 Project Recovery Kernel v2 without changing ai-memory or global configuration.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read only the M2 contracts and M1 storage API; return a bounded recovery interface, acceptance matrix, and migration safety constraints. Do not read ai-memory.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": [],
+      "timeout_seconds": 480,
+      "max_attempts": 1
+    },
+    {
+      "id": "recovery-core",
+      "task": "Implement the M2 local recovery kernel against the approved interface: project-store facade, freshness, index/MOC views, recovery packs and receipts, and safe migration inventory boundary.",
+      "profile": "pixel-sol-max",
+      "depends_on": ["contract-audit"],
+      "write_scope": ["src/second_brain/"],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "recovery-tests",
+      "task": "Add deterministic M2 fixtures and tests for recall, partial freshness, index fallback, receipt rejection, MOC coverage, and read-only migration inventory without using real private source content.",
+      "profile": "pixel-sol-xhigh",
+      "depends_on": ["contract-audit"],
+      "write_scope": ["tests/", "fixtures/m2/"],
+      "timeout_seconds": 840,
+      "max_attempts": 2
+    },
+    {
+      "id": "integration",
+      "task": "Join core and tests, reconcile interfaces, run deterministic acceptance checks, and prepare M2 evidence/documentation while preserving all local-only boundaries.",
+      "profile": "pixel-terra-max",
+      "depends_on": ["recovery-core", "recovery-tests"],
+      "write_scope": ["src/second_brain/", "tests/", "fixtures/m2/", "docs/", "planning/", "implementation-status.yaml", "artifacts/m2-verification.json"],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "security-review",
+      "task": "Independently and read-only review recovery receipt authorization, freshness/index fallback, generated views, source migration containment, and cross-project isolation.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": ["integration"],
+      "write_scope": [],
+      "timeout_seconds": 600,
+      "max_attempts": 1
+    },
+    {
+      "id": "remediation",
+      "task": "Resolve material review findings, rerun targeted and full acceptance checks, and finalize the M2 local checkpoint only when every acceptance criterion has evidence.",
+      "profile": "pixel-terra-max",
+      "depends_on": ["security-review"],
+      "write_scope": ["src/second_brain/", "tests/", "fixtures/m2/", "docs/", "planning/", "implementation-status.yaml", "artifacts/m2-verification.json"],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "remediation"
+}

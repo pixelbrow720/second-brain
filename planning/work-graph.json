@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "task_id": "blueprint-v1",
+  "artifact_role": "historical-blueprint-execution-record",
+  "profile_note": "The profile field uses the installed pixel-orchestrator runtime namespace required to validate and execute this historical graph. logical_profile is the canonical target alias from docs/05-MODEL-ROUTING.md. Do not reuse this file as an implementation graph template.",
+  "goal": "Produce an implementation-ready blueprint for a global second brain and efficient Codex workflow with bounded context, automatic capability selection, explicit model routing, and minimal quality tradeoffs.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "product-contract",
+      "kind": "design",
+      "task": "Define vision, principles, PRD, personas, user journeys, requirements, non-goals, and operating lifecycle.",
+      "profile": "pixel-terra-xhigh",
+      "logical_profile": "tera-xhigh",
+      "depends_on": [],
+      "read_scope": [
+        "docs/adr"
+      ],
+      "write_scope": [
+        "docs/00-VISION-AND-PRINCIPLES.md",
+        "docs/01-PRD.md",
+        "docs/10-OPERATIONS-AND-LIFECYCLE.md"
+      ],
+      "capabilities": [],
+      "expected_artifacts": [
+        "Product vision and principles",
+        "Traceable PRD",
+        "Operational lifecycle contract"
+      ],
+      "acceptance": [
+        "Direct-by-default and quality-floor requirements are measurable",
+        "Memory and workflow user journeys are covered",
+        "Release criteria map to FR, NFR, and AC identifiers"
+      ],
+      "permission_class": "workspace-write",
+      "timeout_seconds": 600,
+      "max_attempts": 1
+    },
+    {
+      "id": "memory-contract",
+      "kind": "architecture",
+      "task": "Define system and memory architecture, authority boundaries, retrieval/context compilation, data schemas, and migration from ai-memory.",
+      "profile": "pixel-sol-max",
+      "logical_profile": "sol-max",
+      "depends_on": [],
+      "read_scope": [
+        "docs/adr"
+      ],
+      "write_scope": [
+        "docs/02-SYSTEM-ARCHITECTURE.md",
+        "docs/03-MEMORY-ARCHITECTURE.md",
+        "docs/06-DATA-SCHEMAS.md"
+      ],
+      "capabilities": [],
+      "expected_artifacts": [
+        "System architecture",
+        "Memory semantics and lifecycle",
+        "Normative persistence schemas"
+      ],
+      "acceptance": [
+        "Project recovery and global knowledge have separate authority",
+        "Freshness is per claim/reference and cannot silently drop relevant evidence",
+        "Schemas cover objects, events, transactions, retrieval, context, and recovery"
+      ],
+      "permission_class": "workspace-write",
+      "timeout_seconds": 750,
+      "max_attempts": 1
+    },
+    {
+      "id": "workflow-contract",
+      "kind": "policy",
+      "task": "Define orchestration admission, model routing, skills/plugins/MCP selection, security, privacy, observability, and evaluation gates.",
+      "profile": "pixel-gpt55-xhigh",
+      "logical_profile": "gpt55-xhigh",
+      "depends_on": [],
+      "read_scope": [
+        "docs/adr"
+      ],
+      "write_scope": [
+        "docs/04-WORKFLOW-ORCHESTRATION.md",
+        "docs/05-MODEL-ROUTING.md",
+        "docs/07-SECURITY-AND-PRIVACY.md",
+        "docs/08-EVALUATION-AND-TEST-PLAN.md"
+      ],
+      "capabilities": [],
+      "expected_artifacts": [
+        "Admission and graph contract",
+        "Seven-profile route contract",
+        "Security and privacy contract",
+        "Evaluation and rollback plan"
+      ],
+      "acceptance": [
+        "Simple requests cannot silently escalate into research or graph work",
+        "9router intent, serialization, and observation are reconciled",
+        "Security, non-inferiority, rollout, and rollback gates are measurable"
+      ],
+      "permission_class": "workspace-write",
+      "timeout_seconds": 750,
+      "max_attempts": 1
+    },
+    {
+      "id": "integration",
+      "kind": "integration",
+      "task": "Integrate all contracts, resolve terminology and policy conflicts, create ADRs, implementation roadmap, repository guidance, and new-session prompt.",
+      "profile": "pixel-terra-max",
+      "logical_profile": "tera-max",
+      "depends_on": [
+        "product-contract",
+        "memory-contract",
+        "workflow-contract"
+      ],
+      "read_scope": [
+        "docs",
+        "planning/work-graph.json"
+      ],
+      "write_scope": [
+        "README.md",
+        "AGENTS.md",
+        "docs/09-IMPLEMENTATION-ROADMAP.md",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "docs/adr",
+        "planning/work-graph.json"
+      ],
+      "capabilities": [
+        "pixel-orchestrator:orchestrate-work-graph"
+      ],
+      "expected_artifacts": [
+        "Repository entry point",
+        "Dependency-aware implementation roadmap",
+        "Exact new-session implementation prompt",
+        "Consistent accepted ADR set"
+      ],
+      "acceptance": [
+        "All expected files exist and local links resolve",
+        "Canonical terminology and exact seven profiles are consistent",
+        "Global deployment remains approval-gated and reversible"
+      ],
+      "permission_class": "workspace-write",
+      "timeout_seconds": 900,
+      "max_attempts": 1
+    },
+    {
+      "id": "final-review",
+      "kind": "review",
+      "task": "Verify completeness, cross-document consistency, implementation readiness, Codex capability boundaries, and absence of silent quality regressions.",
+      "profile": "pixel-gpt55-xhigh",
+      "logical_profile": "gpt55-xhigh",
+      "depends_on": [
+        "integration"
+      ],
+      "read_scope": [
+        "README.md",
+        "AGENTS.md",
+        "docs",
+        "planning/work-graph.json"
+      ],
+      "write_scope": [],
+      "capabilities": [],
+      "expected_artifacts": [
+        "Severity-ordered read-only review findings"
+      ],
+      "acceptance": [
+        "No unresolved contradiction can cause silent quality or authority failure",
+        "Roadmap and bootstrap prompt are sufficient to begin M0 safely"
+      ],
+      "permission_class": "local-read",
+      "timeout_seconds": 420,
+      "max_attempts": 1
+    }
+  ],
+  "final_node": "final-review"
+}

@@ -1,0 +1,42 @@
+{
+  "applied_digest": "84bcad04ca7b3221561987e6009291a20f76883327783e006accf5a6aedda784",
+  "b3_digest": "f7aec2095b73a76a0f7a99c9d4092c308839351086f16b0e1969fe047d2ea497",
+  "b3_snapshot": {
+    "b3_run_digest": "5a8988563a928a58232d1312743e06d85c9504572dc96bb72d973d571a4836d5",
+    "baseline_kind": "B3_LAST_KNOWN_GOOD",
+    "baseline_outcome_digest": "6aff93674152756085365b7292f26d19273e742fddb625ae1398723b53d7c5ba",
+    "baseline_receipt_digest": "ba9de9fccaa94b83c08cb0c8affb04bf0824147c92c8206ac9ce43ba69bdb1ab",
+    "binding_digest": "43d7a43c1576a0b636a770502895fa53f32bc693926342ece999b93b8f6b8bb2",
+    "control_state": {
+      "auto_graph_enabled": true,
+      "external_capability_discovery": false,
+      "memory_write_mode": "read_only",
+      "plugin_hook_bundle_version": "m8-graph-66c688f3b80a5f24917abb12",
+      "profile_registry_version": "m8-registry-f3a08e87d38487ed6342e8c2",
+      "router_adapter_version": "m8-b3-route-5a8988563a928a58232d1312",
+      "workflow_enabled": true
+    },
+    "evidence_scope": "local-rollback-rehearsal",
+    "snapshot_digest": "9a99af8c304ff37684c36620046f2860c12c349eb0ac1d1103b4856ca84ae3fe",
+    "snapshot_version": 1
+  },
+  "candidate_applied": true,
+  "candidate_digest": "84bcad04ca7b3221561987e6009291a20f76883327783e006accf5a6aedda784",
+  "evidence_scope": "local-rollback-rehearsal",
+  "exact_equality": true,
+  "global_target_count": 0,
+  "material_actions_started": 0,
+  "milestone": "M8",
+  "output_digest": "fe60a6d524ad1dd38a2d808de8cb140a98db065c614cdcee7d75ad3554b68f0a",
+  "post_restore_canary_b3_snapshot_digest": "9a99af8c304ff37684c36620046f2860c12c349eb0ac1d1103b4856ca84ae3fe",
+  "post_restore_canary_control_state_digest": "f7aec2095b73a76a0f7a99c9d4092c308839351086f16b0e1969fe047d2ea497",
+  "post_restore_canary_digest": "e3c5f8ec11189c1347c44e20f5c27b0bcadc278c52362527e92601ec922d92eb",
+  "post_restore_canary_state": "PASS",
+  "receipt_kind": "rollback-rehearsal",
+  "rehearsal_digest": "c73eaf7895d33ad88b83757a2ed5926160b179df9ff74275f53bee972dce036e",
+  "restored_digest": "f7aec2095b73a76a0f7a99c9d4092c308839351086f16b0e1969fe047d2ea497",
+  "schema_version": 1,
+  "state": "PASS",
+  "timestamp": "2026-07-23T00:00:00Z",
+  "writer_version": "m8-typed-receipts-3"
+}

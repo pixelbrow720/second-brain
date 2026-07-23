@@ -1,0 +1,119 @@
+{
+  "$id": "https://pixel.local/schemas/event-v2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actor": {
+      "maxLength": 160,
+      "type": "string"
+    },
+    "after_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "before_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "event_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "event_id": {
+      "pattern": "^evt:[0-9a-f-]{36}$",
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "object_created",
+        "object_updated",
+        "lifecycle_changed",
+        "relation_added",
+        "relation_removed",
+        "decision_confirmed",
+        "object_migrated",
+        "source_captured",
+        "source_compiled",
+        "promotion_proposed",
+        "promotion_accepted",
+        "promotion_rejected",
+        "transaction_committed"
+      ]
+    },
+    "from_revision": {
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "object_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "prev_event_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "sequence": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "store_id": {
+      "type": "string"
+    },
+    "to_revision": {
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "transaction_id": {
+      "pattern": "^txn:[0-9a-f-]{36}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "sequence",
+    "store_id",
+    "transaction_id",
+    "event_type",
+    "occurred_at",
+    "actor",
+    "object_id",
+    "from_revision",
+    "to_revision",
+    "before_hash",
+    "after_hash",
+    "reason",
+    "prev_event_hash",
+    "event_hash"
+  ],
+  "type": "object"
+}

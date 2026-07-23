@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "goal": "Implement and verify project-local M5 admission, permissions, and capability resolution.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read the M5 contracts and existing project APIs; record a bounded public interface and deterministic acceptance-test checklist without editing implementation files.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": ["artifacts/m5-contract-audit.md"],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "security-audit",
+      "task": "Perform an adversarial read-only review of M5 admission, permission, capability, audit, and supply-chain boundaries; record required invariants and regressions without editing implementation files.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [],
+      "write_scope": ["artifacts/m5-security-audit.md"],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "implementation",
+      "task": "Implement the approved project-local M5 contracts and deterministic unit/integration tests.",
+      "profile": "pixel-sol-max",
+      "depends_on": ["contract-audit", "security-audit"],
+      "write_scope": [
+        "src/second_brain/admission.py",
+        "src/second_brain/__init__.py",
+        "tests/test_admission_m5.py",
+        "tests/test_capabilities_m5.py",
+        "tests/test_m5_integration.py"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "independent-review",
+      "task": "Perform a final independent read-only security and regression review of M5 before acceptance.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": ["implementation"],
+      "write_scope": ["artifacts/m5-final-security-review.md"],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "acceptance",
+      "task": "Run deterministic acceptance checks, resolve material findings, and write the local M5 evidence, documentation, status, and next-session checkpoint.",
+      "profile": "pixel-terra-max",
+      "depends_on": ["implementation", "independent-review"],
+      "write_scope": [
+        "artifacts/m5-verification.json",
+        "implementation-status.yaml",
+        "README.md",
+        "docs/09-IMPLEMENTATION-ROADMAP.md",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "docs/17-M5-ADMISSION-AND-CAPABILITIES.md"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "acceptance"
+}

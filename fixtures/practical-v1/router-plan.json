@@ -1,0 +1,23 @@
+{
+  "evidence_kind": "practical-v1-router-log-plan",
+  "expectations": [
+    {
+      "correlation_id": "corr:practical-v1-0001",
+      "expected_profile": "tera-high",
+      "requested_effort": "high"
+    },
+    {
+      "correlation_id": "corr:practical-v1-0002",
+      "expected_profile": "sol-max",
+      "requested_effort": "max"
+    },
+    {
+      "correlation_id": "corr:practical-v1-0003",
+      "expected_profile": "gpt55-xhigh",
+      "requested_effort": "xhigh"
+    }
+  ],
+  "router_id": "9router-local",
+  "schema_version": 1,
+  "trust_basis": "operator-trusted-structured-outbound-log"
+}

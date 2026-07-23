@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/evaluation-case-v1.json",
+  "title": "EvaluationCaseV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "case_id",
+    "suite",
+    "partition",
+    "language",
+    "anti_research_trap",
+    "input",
+    "expected",
+    "risk",
+    "data_class",
+    "rubric_id",
+    "weight",
+    "tags"
+  ],
+  "properties": {
+    "version": {"const": 1},
+    "case_id": {
+      "type": "string",
+      "pattern": "^eval:[a-z0-9][a-z0-9._-]{2,95}$",
+      "maxLength": 101
+    },
+    "suite": {
+      "enum": ["admission", "routing", "capability", "graph", "memory", "security", "end_to_end"]
+    },
+    "partition": {"enum": ["frozen", "rotating"]},
+    "language": {"enum": ["id", "mixed", "en"]},
+    "anti_research_trap": {"type": "boolean"},
+    "input": {"$ref": "#/$defs/input"},
+    "expected": {"$ref": "#/$defs/expected"},
+    "risk": {"enum": ["low", "medium", "high"]},
+    "data_class": {"const": "PUBLIC"},
+    "rubric_id": {
+      "type": "string",
+      "pattern": "^rubric:[a-z0-9][a-z0-9._-]{2,95}$",
+      "maxLength": 103
+    },
+    "weight": {"type": "integer", "minimum": 1, "maximum": 100},
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9._/-]{0,63}$",
+        "maxLength": 64
+      }
+    }
+  },
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixture_id", "prompt", "workspace_fixture"],
+      "properties": {
+        "fixture_id": {
+          "type": "string",
+          "pattern": "^fx:[a-z0-9][a-z0-9._-]{2,95}$",
+          "maxLength": 99
+        },
+        "prompt": {"type": "string", "minLength": 1, "maxLength": 512},
+        "workspace_fixture": {
+          "type": "string",
+          "pattern": "^m8-[a-z0-9][a-z0-9._-]{1,63}$",
+          "maxLength": 67
+        }
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lane",
+        "allowed_profiles",
+        "required_capabilities",
+        "forbidden_events",
+        "required_check_ids",
+        "required_artifact_ids",
+        "safety_critical"
+      ],
+      "properties": {
+        "lane": {"enum": ["DIRECT", "ASSISTED", "GRAPH", "DEEP"]},
+        "allowed_profiles": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["tera-max", "tera-xhigh", "tera-high", "sol-max", "sol-xhigh", "luna-xhigh", "gpt55-xhigh"]
+          }
+        },
+        "required_capabilities": {
+          "type": "array",
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^cap:[a-z0-9][a-z0-9._-]{0,63}$",
+            "maxLength": 68
+          }
+        },
+        "forbidden_events": {
+          "type": "array",
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "external_research_started",
+              "mcp_activated",
+              "github_research_started",
+              "graph_started",
+              "memory_retrieval_started",
+              "network_started",
+              "capability_executed",
+              "authority_write_started",
+              "global_mutation_started"
+            ]
+          }
+        },
+        "required_check_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 24,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^check:[a-z0-9][a-z0-9._-]{2,95}$",
+            "maxLength": 102
+          }
+        },
+        "required_artifact_ids": {
+          "type": "array",
+          "maxItems": 24,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^artifact:[a-z0-9][a-z0-9._-]{2,95}$",
+            "maxLength": 105
+          }
+        },
+        "safety_critical": {"type": "boolean"}
+      }
+    }
+  }
+}

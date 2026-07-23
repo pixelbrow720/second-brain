@@ -1,0 +1,54 @@
+{
+  "artifact_index": [
+    {
+      "artifact_name": "m8-baseline-receipts.json",
+      "byte_count": 6218,
+      "output_digest": "493535e5510a2f14dca603b34e5dfdf3f5a35e741d37bd163488c8d45ee3c5c8"
+    },
+    {
+      "artifact_name": "m8-local-evaluation.json",
+      "byte_count": 57811,
+      "output_digest": "9b7ae3466a29919c284d0874816ce9f91da9911b804def13eed7415c7287db9f"
+    },
+    {
+      "artifact_name": "m8-m4-local-evaluation.json",
+      "byte_count": 9605,
+      "output_digest": "bfe187adeffb105720479c06b0bf5c7cae77335293131ca3b10021250915a1b6"
+    },
+    {
+      "artifact_name": "m8-performance-local-evaluation.json",
+      "byte_count": 1068,
+      "output_digest": "6c44dcc8b0f8c8afdf0a8373b7f457d6c1a95094d22471ab9c0a7e9ee4e227ec"
+    },
+    {
+      "artifact_name": "m8-local-canary.json",
+      "byte_count": 1277,
+      "output_digest": "f23cbbcd5add9d98cb13582c1b1aed6029c7c6ee09b2bf76bf34d40db0783390"
+    },
+    {
+      "artifact_name": "m8-rollback-rehearsal.json",
+      "byte_count": 2255,
+      "output_digest": "fe60a6d524ad1dd38a2d808de8cb140a98db065c614cdcee7d75ad3554b68f0a"
+    },
+    {
+      "artifact_name": "m8-release-report.json",
+      "byte_count": 7512,
+      "output_digest": "806569b6f132aaefe49615425bf189d23c3c90a7395827f6c7e2933a21ab9482"
+    }
+  ],
+  "evidence_scope": "synthetic-local",
+  "live_attested": false,
+  "milestone": "M8",
+  "output_digest": "5559d53307c8404e95643b7fcc8bbb0a9d785eac7bc9b4c250ef749146b7e675",
+  "reason_codes": [
+    "M9_EVIDENCE_REQUIRED"
+  ],
+  "receipt_kind": "verification",
+  "release_status": "BLOCKED",
+  "schema_version": 1,
+  "source_binding_digest": "43d7a43c1576a0b636a770502895fa53f32bc693926342ece999b93b8f6b8bb2",
+  "status": "PASS",
+  "timestamp": "2026-07-23T00:00:00Z",
+  "verification_scope": "typed-local-artifact-integrity",
+  "writer_version": "m8-typed-receipts-3"
+}

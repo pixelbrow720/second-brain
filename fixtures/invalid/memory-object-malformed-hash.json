@@ -1,0 +1,60 @@
+{
+  "actors": [
+    {
+      "actor_id": "agent:fixture",
+      "actor_type": "agent",
+      "role": "fixture"
+    }
+  ],
+  "aliases": [],
+  "authority": "ai-synthesis",
+  "body": "This fixture is synthetic and contains no user data.",
+  "confidence": 1,
+  "content_hash": "not-a-sha256",
+  "created_at": "2026-07-22T00:00:00Z",
+  "epistemic_status": "asserted",
+  "id": "kb:global:concept:5f0a25ca-0e18-4b10-a245-1aa222788470",
+  "kind": "concept",
+  "lifecycle": {
+    "changed_at": null,
+    "reason": null,
+    "status": "active"
+  },
+  "payload": {
+    "boundaries": [],
+    "definition": "A synthetic fixture for the M0 schema contract.",
+    "domain": [
+      "second-brain"
+    ],
+    "non_examples": []
+  },
+  "provenance": [
+    {
+      "actor_id": "agent:fixture",
+      "content_hash": null,
+      "kind": "agent_generation",
+      "note": "Synthetic M0 fixture",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "provenance_id": "prov:aa56a9ef-0cca-49d9-8785-cb26ac4e4821",
+      "ref": null
+    }
+  ],
+  "references": [],
+  "relations": [],
+  "revision": 1,
+  "schema_version": 2,
+  "store_id": "knowledge:global",
+  "tags": [
+    "contract/schema"
+  ],
+  "title": "Deterministic contract fixture",
+  "trust": "agent_inference",
+  "updated_at": "2026-07-22T00:00:00Z",
+  "verification": {
+    "checked_at": null,
+    "evidence_ids": [],
+    "method": null,
+    "state": "unverified",
+    "verifier": null
+  }
+}

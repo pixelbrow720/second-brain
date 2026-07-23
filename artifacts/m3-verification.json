@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "milestone": "M3",
+  "status": "passed",
+  "verified_at": "2026-07-22T14:54:37Z",
+  "requirements": [
+    "FR-07",
+    "FR-08",
+    "FR-09",
+    "FR-10",
+    "FR-15",
+    "FR-16",
+    "NFR-05",
+    "NFR-08",
+    "NFR-09",
+    "NFR-10",
+    "AC-04",
+    "AC-05",
+    "AC-07",
+    "AC-09",
+    "ADR-001",
+    "ADR-005"
+  ],
+  "commands": [
+    {
+      "command": "PYTHONPATH=src python3 -m unittest tests.test_ingest_m3 tests.test_knowledge_m3 tests.test_m3_integration -v",
+      "result": "passed",
+      "details": "28 deterministic M3 acceptance, integration, and security-regression tests passed"
+    },
+    {
+      "command": "make check",
+      "result": "passed",
+      "details": "contracts, documentation checks, lint, and the 90-test suite passed"
+    },
+    {
+      "command": "python3 scripts/check_clean_room.py",
+      "result": "passed",
+      "details": "the full 90-test check passed in a repository-contained clean-room copy"
+    }
+  ],
+  "security_review": {
+    "profile": "independent read-only reviewer",
+    "result": "passed after remediation",
+    "material_findings_open": 0,
+    "focus": [
+      "raw capture ledger, manifest, and blob integrity",
+      "descriptor-anchored no-follow file operations",
+      "capture repository and Store identity binding",
+      "YAML parser-boundary aliases",
+      "claim relation evidence and provenance preservation"
+    ]
+  },
+  "boundary_assertions": {
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "ai_memory_access": false,
+    "new_runtime_dependencies": false
+  },
+  "rollback": "Revert only M3-local code, fixtures, tests, documentation, and disposable views. Do not delete caller-created raw capture or M1 authority stores; retain them for recovery or explicit operator review."
+}

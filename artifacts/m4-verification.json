@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "milestone": "M4",
+  "status": "passed",
+  "verified_at": "2026-07-22T16:18:33Z",
+  "requirements": [
+    "FR-11",
+    "FR-12",
+    "FR-13",
+    "FR-18",
+    "FR-19",
+    "NFR-03",
+    "NFR-05",
+    "NFR-08",
+    "NFR-11",
+    "AC-05",
+    "AC-06",
+    "AC-07",
+    "ADR-001",
+    "ADR-005"
+  ],
+  "commands": [
+    {
+      "command": "PYTHONPATH=\"$(pwd)/src:$(pwd)\" python3 -m unittest tests.test_retrieval_m4 tests.test_context_m4 tests.test_m4_integration tests.test_recovery_m2 -q",
+      "result": "passed",
+      "details": "33 deterministic M4, integration, bounded-context, and M2 compatibility tests passed"
+    },
+    {
+      "command": "python3 /home/pixel/.codex/plugins/cache/pixel-workflows/pixel-orchestrator/0.1.0+codex.20260721195758/skills/orchestrate-work-graph/scripts/workflow_gate.py validate-graph artifacts/m4-work-graph.json",
+      "result": "passed",
+      "details": "the bounded M4 DEEP graph validated with no contract errors"
+    },
+    {
+      "command": "make check",
+      "result": "passed",
+      "details": "contracts, documentation checks, lint, and the full deterministic test suite passed"
+    },
+    {
+      "command": "python3 scripts/check_clean_room.py",
+      "result": "passed",
+      "details": "the full local check passed in a repository-contained clean-room copy"
+    }
+  ],
+  "security_review": {
+    "profile": "pixel-gpt55-xhigh independent read-only reviewer",
+    "result": "passed after remediation",
+    "material_findings_open": 0,
+    "focus": [
+      "explicit registry and query-only cross-store links",
+      "direct-path no-op, FTS integrity, and authoritative fallback",
+      "freshness, historical evidence, and contradiction-component atomicity",
+      "context-envelope integrity, hard budgets, citation completeness, and receipt redaction"
+    ],
+    "evidence": "artifacts/m4-final-security-review.md"
+  },
+  "boundary_assertions": {
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "ai_memory_access": false,
+    "new_runtime_dependencies": false
+  },
+  "rollback": "Revert only M4 retrieval/context code, its backward-compatible M2 freshness-bound extension, M4 tests, documentation, and disposable derived/m4-retrieval indexes. Do not delete caller-created M1 authority objects, raw captures, M2 recovery state, or global configuration."
+}

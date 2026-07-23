@@ -1,0 +1,132 @@
+{
+  "default_root_profile": "tera-max",
+  "profiles": {
+    "gpt55-xhigh": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.5",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "xhigh"
+        }
+      },
+      "display_name": "GPT-5.5 xhigh",
+      "effort_intent": "xhigh",
+      "family": "gpt55",
+      "role": "reviewer"
+    },
+    "luna-xhigh": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.6-luna",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "xhigh"
+        }
+      },
+      "display_name": "Luna xhigh",
+      "effort_intent": "xhigh",
+      "family": "luna",
+      "role": "utility"
+    },
+    "sol-max": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.6-sol",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "max"
+        }
+      },
+      "display_name": "Sol Max",
+      "effort_intent": "max",
+      "family": "sol",
+      "role": "builder"
+    },
+    "sol-xhigh": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.6-sol",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "xhigh"
+        }
+      },
+      "display_name": "Sol xhigh",
+      "effort_intent": "xhigh",
+      "family": "sol",
+      "role": "builder"
+    },
+    "tera-high": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.6-terra",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "high"
+        }
+      },
+      "display_name": "Tera high",
+      "effort_intent": "high",
+      "family": "tera",
+      "role": "generalist"
+    },
+    "tera-max": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.6-terra",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "max"
+        }
+      },
+      "display_name": "Tera Max",
+      "effort_intent": "max",
+      "family": "tera",
+      "role": "orchestrator"
+    },
+    "tera-xhigh": {
+      "adapters": {
+        "nine_router": {
+          "adapter_version": "9router/0.5.40",
+          "client_version": "codex-cli/0.144.6",
+          "mapping_evidence": "synthetic-local",
+          "normalization_rules_version": "m6-synthetic-normalization/1",
+          "raw_model_slug": "cx/gpt-5.6-terra",
+          "router_version": "9router/0.5.40",
+          "serialized_effort_field": "model_reasoning_effort",
+          "serialized_effort_value": "xhigh"
+        }
+      },
+      "display_name": "Tera xhigh",
+      "effort_intent": "xhigh",
+      "family": "tera",
+      "role": "analyst"
+    }
+  },
+  "registry_version": 2
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "milestone": "M7",
+  "status": "passed",
+  "verified_at": "2026-07-22T22:24:59Z",
+  "requirements": [
+    "FR-03",
+    "FR-06",
+    "FR-17",
+    "FR-18",
+    "FR-19",
+    "NFR-01",
+    "NFR-03",
+    "NFR-06",
+    "NFR-09",
+    "NFR-11",
+    "AC-03",
+    "AC-08",
+    "AC-09",
+    "ADR-002",
+    "ADR-003",
+    "ADR-004"
+  ],
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest tests.test_work_graph_m7 tests.test_m7_integration -q",
+      "result": "passed",
+      "details": "23 deterministic M7 validator, lifecycle, cancellation, scope, route, and integration tests passed"
+    },
+    {
+      "command": "python3 /data/Users/pixel/.codex/plugins/cache/pixel-workflows/pixel-orchestrator/0.1.0+codex.20260721195758/skills/orchestrate-work-graph/scripts/workflow_gate.py validate-graph artifacts/m7-work-graph.json",
+      "result": "passed",
+      "details": "the bounded M7 DEEP implementation graph validated with no contract errors"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -q",
+      "result": "passed",
+      "details": "the complete deterministic test suite passed after the M7 documentation update"
+    },
+    {
+      "command": "make check",
+      "result": "passed",
+      "details": "contracts, documentation checks, lint, and all 184 deterministic tests passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 scripts/check_clean_room.py",
+      "result": "passed",
+      "details": "the same project check passed from a repository-contained clean-room copy"
+    }
+  ],
+  "security_review": {
+    "profile": "pixel-gpt55-xhigh independent read-only reviewer",
+    "result": "passed after M7 hardening",
+    "material_findings_open": 0,
+    "remediations": [
+      "canonical file/directory scope containment and manifest-loader containment",
+      "exact M5 AuditTrail admission binding and nested graph-run rejection",
+      "canonical result/reference copying and transitive artifact/acceptance proof",
+      "closed availability-only retry reasons with repeated settlement validation"
+    ],
+    "residual_limit": "Injected same-process Python callbacks are cooperative synthetic runners, not a hostile-code sandbox. A live or untrusted worker requires process isolation and host-enforced cancellation before use.",
+    "evidence": "artifacts/m7-final-security-review.md"
+  },
+  "boundary_assertions": {
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "ai_memory_access": false,
+    "provider_network_call": false,
+    "live_route_attestation": false,
+    "action_executor": false,
+    "new_runtime_dependencies": false,
+    "cooperative_synthetic_callbacks_only": true,
+    "hostile_callback_sandbox": false
+  },
+  "rollback": "Revert only M7-local graph runtime code, exports, schema/fixture/registry references, focused tests, artifacts, and documentation. Preserve M0-M6 authority stores, user files, and global configuration. M7 performed no global, provider, old-vault, or ai-memory mutation."
+}

@@ -1,0 +1,232 @@
+{
+  "approval_request": "Authorize only these M9 mutations: append the marker-bounded guidance block to AGENTS.md; create skills/pixel-second-brain-workflow/SKILL.md; create second-brain-backups/m9-v1/AGENTS.md, manifest.json, and rollback.py. Preserve config.toml, all existing agents, plugins, MCP declarations, hooks, and provider settings. After apply, authorize only an initial 50-request synthetic PUBLIC read-only shadow through the listed model route, with no MCP call, capability execution, memory write, or external mutation; accept that upstream retention is unverifiable from local config. Require a new report and approval before any opt-in or expanded rollout.",
+  "backup": {
+    "backup_directory": "second-brain-backups/m9-v1",
+    "backup_tree_sha256": "506221daac246c3de4d0711647666ce67bd78115fc424a4d7e9a8df85c41e26c",
+    "must_be_absent_before_apply": true,
+    "preserved_after_rollback": true
+  },
+  "codex_home": "/data/Users/pixel/.codex",
+  "created_at": "2026-07-23T03:30:00Z",
+  "evidence_scope": "global-preapproval-metadata",
+  "global_mutation": false,
+  "m8_evidence_gates": [
+    "authorized-blinded-semantic-comparison",
+    "monotonic-graph-performance-and-context-measurement",
+    "per-case-m4-retrieval-context-evidence",
+    "authenticated-live-route-and-read-only-shadow-evidence",
+    "approved-global-before-state-and-verified-rollback"
+  ],
+  "milestone": "M9",
+  "network_and_data_impact": {
+    "configured_mcp_servers_not_invoked_by_canary": [
+      "node_repl",
+      "openaiDeveloperDocs"
+    ],
+    "configured_model_routes": [
+      {
+        "base_url": {
+          "configured": true,
+          "host": "localhost",
+          "port": 20128,
+          "scheme": "http"
+        },
+        "has_bearer_token_reference": false,
+        "has_env_key_reference": false,
+        "name": "cx",
+        "wire_api": "responses"
+      },
+      {
+        "base_url": {
+          "configured": true,
+          "host": "localhost",
+          "port": 20128,
+          "scheme": "http"
+        },
+        "has_bearer_token_reference": false,
+        "has_env_key_reference": false,
+        "name": "cx_account",
+        "wire_api": "responses"
+      }
+    ],
+    "configured_openai_route": null,
+    "later_live_canary": "synthetic PUBLIC prompts only; provider routing telemetry and timing may be observed after approval",
+    "packet_preparation": "no provider, connector, or network request; metadata and digests only",
+    "retention": "local evidence retains redacted digests, counters, and allowlisted route fields only; upstream provider retention is unverifiable from local config and must be accepted explicitly",
+    "selected_model_provider": "cx_account"
+  },
+  "packet_digest": "2e841bde59753662ebd78d858f7c5fdc4933d92247f330c9df595cc3fdb693d4",
+  "permission_impact": {
+    "apply_after_approval": "write only the listed guidance, skill, and backup paths",
+    "no_changes": [
+      "config.toml",
+      "existing custom agents",
+      "plugins",
+      "MCP declarations",
+      "hooks",
+      "provider settings"
+    ],
+    "packet_preparation": "read-only access to declared Codex config and agent metadata"
+  },
+  "profile_precondition": {
+    "actual_pair_count": 7,
+    "missing_model_effort_pairs": [],
+    "required_pair_count": 7
+  },
+  "rollback": {
+    "command_after_apply": "python3 <backup-directory>/rollback.py --backup-dir <backup-directory>",
+    "refuses_if_post_state_drifted": true,
+    "restores": [
+      "AGENTS.md",
+      "skills/pixel-second-brain-workflow/SKILL.md"
+    ]
+  },
+  "rollout_sequence": [
+    "revalidate-current-packet-and-backup",
+    "apply-additive-guidance-and-skill",
+    "restart-or-open-a-fresh-Codex-session",
+    "initial-50-request-read-only-shadow-with-synthetic-public-inputs",
+    "report-and-request-new-approval-before-opt-in-canary",
+    "opt-in-limited-expanded-default-and-soak-are-separate-promotions"
+  ],
+  "schema_version": 1,
+  "staged_bundle": {
+    "path": "dist/global/m9",
+    "sha256": {
+      "AGENTS.append.md": "0beabb96f4a54685d35b777acd74b1daa7078938bded6ad12ee8aa66e943d5e8",
+      "rollback.py": "4959bfb3c66c94e4597687f2da19d48885d397ed39b7a86414aaef47a04df3eb",
+      "skills/pixel-second-brain-workflow/SKILL.md": "03c253740ecac96d19047304f30202a3b9c60569fa912391733c5aaf2f05897d"
+    }
+  },
+  "status": "PENDING_EXACT_USER_APPROVAL",
+  "targets": [
+    {
+      "after_mode": 436,
+      "after_sha256": "7158e60b12afb3f1767089fac0289c30b9a45c7962fd7500ff34160a92a636ce",
+      "before_mode": 436,
+      "before_sha256": "b41982ff0e5f6b0ec61d9a00e6b6d8322edfed19d9ae4a55df83263cee058e7d",
+      "operation": "append-managed-guidance",
+      "path": "AGENTS.md",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "b48de5baa5219f444cac58ccb7bb5efc8cea1abaf098e6923f7e1deeede7f958",
+      "before_mode": 436,
+      "before_sha256": "b48de5baa5219f444cac58ccb7bb5efc8cea1abaf098e6923f7e1deeede7f958",
+      "operation": "preserve",
+      "path": "agents/pixel-gpt55-xhigh.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "dde7a73c5da9866ace095172984ea20c7ea6d5b9fb0db59eeb20ffed30d6d74a",
+      "before_mode": 436,
+      "before_sha256": "dde7a73c5da9866ace095172984ea20c7ea6d5b9fb0db59eeb20ffed30d6d74a",
+      "operation": "preserve",
+      "path": "agents/pixel-luna-xhigh.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "1d4c703f6bcb8df3785d81cdb397ebeee5ee98013d66b215f784db4c43b3d8d6",
+      "before_mode": 436,
+      "before_sha256": "1d4c703f6bcb8df3785d81cdb397ebeee5ee98013d66b215f784db4c43b3d8d6",
+      "operation": "preserve",
+      "path": "agents/pixel-sol-max.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "c6d2742d3062ffa2095c97fa85faa413c4592071127fddc6a5bb1399fabac123",
+      "before_mode": 436,
+      "before_sha256": "c6d2742d3062ffa2095c97fa85faa413c4592071127fddc6a5bb1399fabac123",
+      "operation": "preserve",
+      "path": "agents/pixel-sol-xhigh.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "4fc8c77ab6416cadd3f4755ca68d91c79b431787b80f72d7cc1cd9c2033ac182",
+      "before_mode": 436,
+      "before_sha256": "4fc8c77ab6416cadd3f4755ca68d91c79b431787b80f72d7cc1cd9c2033ac182",
+      "operation": "preserve",
+      "path": "agents/pixel-terra-high.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "ced96075332e272d65bfd97666ebdda87eb2ad155c2bc1c5e73d35ad33d04581",
+      "before_mode": 436,
+      "before_sha256": "ced96075332e272d65bfd97666ebdda87eb2ad155c2bc1c5e73d35ad33d04581",
+      "operation": "preserve",
+      "path": "agents/pixel-terra-max.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "dd9a98e84f58661f4765ead7eeb45651a0bbb107e3d7c844714f7999000175df",
+      "before_mode": 436,
+      "before_sha256": "dd9a98e84f58661f4765ead7eeb45651a0bbb107e3d7c844714f7999000175df",
+      "operation": "preserve",
+      "path": "agents/pixel-terra-xhigh.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "8d6c8380966396fcea630c3893406afd0f7295f1f291361a01d44c44d7a297c1",
+      "before_mode": 384,
+      "before_sha256": "8d6c8380966396fcea630c3893406afd0f7295f1f291361a01d44c44d7a297c1",
+      "operation": "preserve",
+      "path": "config.toml",
+      "role": "observe"
+    },
+    {
+      "after_mode": 436,
+      "after_sha256": "b41982ff0e5f6b0ec61d9a00e6b6d8322edfed19d9ae4a55df83263cee058e7d",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "operation": "create-before-state-copy",
+      "path": "second-brain-backups/m9-v1/AGENTS.md",
+      "role": "backup"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "97defa94355f0560b57e702a2c5f6f720897a8cf76e0b134c214dc7345688914",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "operation": "create-rollback-manifest",
+      "path": "second-brain-backups/m9-v1/manifest.json",
+      "role": "backup"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "4959bfb3c66c94e4597687f2da19d48885d397ed39b7a86414aaef47a04df3eb",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "operation": "create-standalone-rollback",
+      "path": "second-brain-backups/m9-v1/rollback.py",
+      "role": "backup"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "03c253740ecac96d19047304f30202a3b9c60569fa912391733c5aaf2f05897d",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "operation": "create-managed-skill",
+      "path": "skills/pixel-second-brain-workflow/SKILL.md",
+      "role": "mutate"
+    }
+  ],
+  "tooling_sha256": {
+    "scripts/prepare_m9_approval_packet.py": "ace795bdfd2c00aa3851a49f087b5504f6ad71e7103198dd323ef8d43e7c0b69",
+    "scripts/run_m9_rollout.py": "d2da0e234fdae18556b63fe49427f4eec6e386e90558ee7058d94adfa4fc99b5",
+    "src/second_brain/global_rollout.py": "1db5cd276acf0e9f12314b7eb9d3022f8f6dcc6b52bc4d397623b1c76b6dc89f"
+  },
+  "unresolved_risks": [
+    "upstream-provider-retention-is-not-inferable-from-local-config",
+    "live-route-telemetry-contract-must-be-observed-before-promotion",
+    "blinded-semantic-and-human-review-evidence-remain-required"
+  ],
+  "writer_version": "m9-global-rollout/1"
+}

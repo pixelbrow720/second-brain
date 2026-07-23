@@ -1,0 +1,11 @@
+[project]
+name = "pixel-second-brain"
+version = "0.0.0"
+description = "Project-local implementation scaffold for Pixel's Second Brain"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.second_brain]
+schema_registry = "schemas/schema-registry.json"
+profile_registry = "config/model-profiles.json"

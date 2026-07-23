@@ -1,0 +1,43 @@
+{
+  "adapter_version": "9router/0.5.40",
+  "files": [
+    {
+      "relative_path": "agents/gpt55-xhigh.toml",
+      "sha256": "655ab48327b1272bbbcd8aa060111121c3513124d149cc4583f67afbff8e994b"
+    },
+    {
+      "relative_path": "agents/luna-xhigh.toml",
+      "sha256": "f76ce8d03a0adcc56e48e8ca6daa1396f9e22ce197d408750f6261db7e488d89"
+    },
+    {
+      "relative_path": "agents/sol-max.toml",
+      "sha256": "c99c19903f7ac5c0d2d3a125cbaa5ff373796137e5ad60e669e4044633813f4a"
+    },
+    {
+      "relative_path": "agents/sol-xhigh.toml",
+      "sha256": "f3ba5f1306a8e5f3237382177f5e4a12a025675db0e83fde2ec3066b599f78c9"
+    },
+    {
+      "relative_path": "agents/tera-high.toml",
+      "sha256": "bc3bcfe7d1d77ad44c5b932a254c39156d96a5e11f28573381dbd85672a9aa1c"
+    },
+    {
+      "relative_path": "agents/tera-max.toml",
+      "sha256": "0b4b1d43504fab08c4de503b974219832dd4b1a41f7b44bc56ec494c7423ecb9"
+    },
+    {
+      "relative_path": "agents/tera-xhigh.toml",
+      "sha256": "fe2dbd7ec8381ba8b33afb51f6289a4c7173258df15c308cacbc1e001e2d064b"
+    },
+    {
+      "relative_path": "root.toml",
+      "sha256": "9a758c492f126d16de9443217b2064e5b629b6ba0216e28c9ae69d6adfbe81a6"
+    }
+  ],
+  "manifest_digest": "78041df5d0eac4e9b3fb05590b5d2b5c80ebdfb5eb97ef05455deedc91868939",
+  "normalization_rules_version": "m6-synthetic-normalization/1",
+  "registry_digest": "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8",
+  "registry_version": 2,
+  "staging_version": 1,
+  "target": "dist/global/m6"
+}

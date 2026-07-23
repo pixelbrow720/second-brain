@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "cases": [
+    {"case_id": "eval:memory-f01", "scenario": "canonical_recall"},
+    {"case_id": "eval:memory-f02", "scenario": "current_top3"},
+    {"case_id": "eval:memory-f03", "scenario": "partial_visible"},
+    {"case_id": "eval:memory-f04", "scenario": "historical_visible"},
+    {"case_id": "eval:memory-f05", "scenario": "contradiction_visible"},
+    {"case_id": "eval:memory-f06", "scenario": "stale_index_fallback"},
+    {"case_id": "eval:memory-f07", "scenario": "provenance_context"},
+    {"case_id": "eval:memory-r01", "scenario": "bounded_omission"},
+    {"case_id": "eval:memory-r02", "scenario": "strict_freshness"},
+    {"case_id": "eval:memory-r03", "scenario": "context_guardrail"}
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "$id": "https://pixel.local/schemas/raw-capture-manifest-v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blob": {
+      "additionalProperties": false,
+      "properties": {
+        "bytes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "media_type": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "relative_path": {
+          "pattern": "^raw/blobs/sha256/[0-9a-f]{2}/[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sha256",
+        "bytes",
+        "media_type",
+        "relative_path"
+      ],
+      "type": "object"
+    },
+    "capture_id": {
+      "pattern": "^cap:[0-9a-f-]{36}$",
+      "type": "string"
+    },
+    "captured_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "captured_by": {
+      "maxLength": 160,
+      "type": "string"
+    },
+    "content_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "origin": {
+      "additionalProperties": false,
+      "properties": {
+        "final_locator": {
+          "maxLength": 4096,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "file",
+            "url",
+            "clipboard",
+            "connector",
+            "manual"
+          ]
+        },
+        "locator": {
+          "maxLength": 4096,
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "locator"
+      ],
+      "type": "object"
+    },
+    "retention": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "enum": [
+            "public",
+            "private",
+            "sensitive",
+            "restricted"
+          ]
+        },
+        "expires_at": {
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "classification",
+        "expires_at"
+      ],
+      "type": "object"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "scan": {
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "enum": [
+            "accept",
+            "quarantine",
+            "reject"
+          ]
+        },
+        "format": {
+          "enum": [
+            "supported",
+            "unsupported",
+            "malformed"
+          ]
+        },
+        "injection": {
+          "enum": [
+            "clear",
+            "contains_instruction_like_text",
+            "malicious"
+          ]
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "scanner_version": {
+          "type": "string"
+        },
+        "secret": {
+          "enum": [
+            "clear",
+            "suspected",
+            "confirmed"
+          ]
+        }
+      },
+      "required": [
+        "scanner_version",
+        "secret",
+        "injection",
+        "format",
+        "decision",
+        "reason_codes"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "source_object_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "received",
+        "quarantined",
+        "accepted",
+        "rejected",
+        "deleted"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "capture_id",
+    "revision",
+    "status",
+    "origin",
+    "blob",
+    "captured_at",
+    "captured_by",
+    "scan",
+    "retention",
+    "source_object_id",
+    "content_hash"
+  ],
+  "type": "object"
+}

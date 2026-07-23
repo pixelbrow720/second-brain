@@ -1,0 +1,3 @@
+{"schema_version":1,"event_type":"outbound_request","router_id":"9router-local","correlation_id":"corr:practical-v1-0001","reported_profile":"tera-high","requested_effort":"high","normalized_effort":"high","outbound_effort":"high"}
+{"schema_version":1,"event_type":"outbound_request","router_id":"9router-local","correlation_id":"corr:practical-v1-0002","reported_profile":"sol-max","requested_effort":"max","normalized_effort":"max","outbound_effort":"max"}
+{"schema_version":1,"event_type":"outbound_request","router_id":"9router-local","correlation_id":"corr:practical-v1-0003","reported_profile":"gpt55-xhigh","requested_effort":"xhigh","normalized_effort":"xhigh","outbound_effort":"xhigh"}

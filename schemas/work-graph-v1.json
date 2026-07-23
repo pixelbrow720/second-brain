@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/work-graph-v1.json",
+  "title": "WorkGraphV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "task_id",
+    "lane",
+    "goal",
+    "max_concurrency",
+    "nodes",
+    "final_node"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^task:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 41
+    },
+    "lane": {
+      "enum": [
+        "GRAPH",
+        "DEEP"
+      ]
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "max_concurrency": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "final_node": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,63}$",
+      "maxLength": 64
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "task",
+        "profile",
+        "depends_on",
+        "read_scope",
+        "write_scope",
+        "capabilities",
+        "expected_artifacts",
+        "acceptance",
+        "timeout_seconds",
+        "max_attempts",
+        "permission_class",
+        "reroute_to"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "maxLength": 64
+        },
+        "role": {
+          "enum": [
+            "worker",
+            "reviewer",
+            "integrator"
+          ]
+        },
+        "task": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "profile": {
+          "enum": [
+            "tera-max",
+            "tera-xhigh",
+            "tera-high",
+            "sol-max",
+            "sol-xhigh",
+            "luna-xhigh",
+            "gpt55-xhigh"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "maxItems": 11,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,63}$",
+            "maxLength": 64
+          }
+        },
+        "read_scope": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/scope"
+          }
+        },
+        "write_scope": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/scope"
+          }
+        },
+        "capabilities": {
+          "type": "array",
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^cap:[a-z0-9][a-z0-9._-]{0,63}$",
+            "maxLength": 68
+          }
+        },
+        "expected_artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^artifact:[a-z0-9][a-z0-9._-]{0,63}$",
+            "maxLength": 73
+          }
+        },
+        "acceptance": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9._:-]{0,95}$",
+            "maxLength": 96
+          }
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 900
+        },
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "permission_class": {
+          "enum": [
+            "local-read",
+            "workspace-write"
+          ]
+        },
+        "reroute_to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            null,
+            "tera-max",
+            "tera-xhigh",
+            "tera-high",
+            "sol-max",
+            "sol-xhigh",
+            "luna-xhigh",
+            "gpt55-xhigh"
+          ]
+        }
+      }
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[a-zA-Z0-9._/-]+$"
+    }
+  }
+}

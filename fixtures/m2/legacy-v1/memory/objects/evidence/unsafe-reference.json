@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "mem:m2-fixture:evidence:10000000-0000-4000-8000-000000000104",
+  "kind": "evidence",
+  "title": "Legacy unsafe reference fixture",
+  "revision": 1,
+  "verification_state": "unverified",
+  "relations": [],
+  "references": [
+    {
+      "kind": "file",
+      "locator": "../../outside-project",
+      "freshness_policy": "exists"
+    }
+  ],
+  "body": "Synthetic unsafe locator that the read-only adapter must quarantine."
+}

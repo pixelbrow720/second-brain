@@ -1,0 +1,736 @@
+{
+  "plans": [
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:admission-f01",
+      "check_id": "check:admission-f01",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:admission-f02",
+      "check_id": "check:admission-f02",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:admission-f03",
+      "check_id": "check:admission-f03",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:admission-f04",
+      "check_id": "check:admission-f04",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:admission-f05",
+      "check_id": "check:admission-f05",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:admission-f06",
+      "check_id": "check:admission-f06",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:admission-f07",
+      "check_id": "check:admission-f07",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f01",
+      "check_id": "check:routing-f01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f02",
+      "check_id": "check:routing-f02",
+      "graph_primary_node": null,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f03",
+      "check_id": "check:routing-f03",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f04",
+      "check_id": "check:routing-f04",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f05",
+      "check_id": "check:routing-f05",
+      "graph_primary_node": null,
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f06",
+      "check_id": "check:routing-f06",
+      "graph_primary_node": null,
+      "profile_alias": "luna-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-f07",
+      "check_id": "check:routing-f07",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-f01",
+      "check_id": "check:capability-f01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-f02",
+      "check_id": "check:capability-f02",
+      "graph_primary_node": null,
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:capability-f03",
+      "check_id": "check:capability-f03",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-f04",
+      "check_id": "check:capability-f04",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-f05",
+      "check_id": "check:capability-f05",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-f06",
+      "check_id": "check:capability-f06",
+      "graph_primary_node": null,
+      "profile_alias": "luna-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-f07",
+      "check_id": "check:capability-f07",
+      "graph_primary_node": null,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f01",
+      "check_id": "check:graph-f01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f02",
+      "check_id": "check:graph-f02",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f03",
+      "check_id": "check:graph-f03",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f04",
+      "check_id": "check:graph-f04",
+      "graph_primary_node": "analyze",
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f05",
+      "check_id": "check:graph-f05",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f06",
+      "check_id": "check:graph-f06",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-f07",
+      "check_id": "check:graph-f07",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f01",
+      "check_id": "check:memory-f01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f02",
+      "check_id": "check:memory-f02",
+      "graph_primary_node": null,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f03",
+      "check_id": "check:memory-f03",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f04",
+      "check_id": "check:memory-f04",
+      "graph_primary_node": null,
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f05",
+      "check_id": "check:memory-f05",
+      "graph_primary_node": null,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f06",
+      "check_id": "check:memory-f06",
+      "graph_primary_node": null,
+      "profile_alias": "luna-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-f07",
+      "check_id": "check:memory-f07",
+      "graph_primary_node": null,
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f01",
+      "check_id": "check:security-f01",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f02",
+      "check_id": "check:security-f02",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f03",
+      "check_id": "check:security-f03",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f04",
+      "check_id": "check:security-f04",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f05",
+      "check_id": "check:security-f05",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f06",
+      "check_id": "check:security-f06",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-f07",
+      "check_id": "check:security-f07",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f01",
+      "check_id": "check:end_to_end-f01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f02",
+      "check_id": "check:end_to_end-f02",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f03",
+      "check_id": "check:end_to_end-f03",
+      "graph_primary_node": null,
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f04",
+      "check_id": "check:end_to_end-f04",
+      "graph_primary_node": "analyze",
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f05",
+      "check_id": "check:end_to_end-f05",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f06",
+      "check_id": "check:end_to_end-f06",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-f07",
+      "check_id": "check:end_to_end-f07",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:admission-r01",
+      "check_id": "check:admission-r01",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:admission-r02",
+      "check_id": "check:admission-r02",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:admission-r03",
+      "check_id": "check:admission-r03",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-r01",
+      "check_id": "check:routing-r01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-r02",
+      "check_id": "check:routing-r02",
+      "graph_primary_node": null,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:routing-r03",
+      "check_id": "check:routing-r03",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-r01",
+      "check_id": "check:capability-r01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": true,
+      "case_id": "eval:capability-r02",
+      "check_id": "check:capability-r02",
+      "graph_primary_node": null,
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {},
+      "capability_required": false,
+      "case_id": "eval:capability-r03",
+      "check_id": "check:capability-r03",
+      "graph_primary_node": null,
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-r01",
+      "check_id": "check:graph-r01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-r02",
+      "check_id": "check:graph-r02",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:graph-r03",
+      "check_id": "check:graph-r03",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-r01",
+      "check_id": "check:memory-r01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-r02",
+      "check_id": "check:memory-r02",
+      "graph_primary_node": null,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:memory-r03",
+      "check_id": "check:memory-r03",
+      "graph_primary_node": null,
+      "profile_alias": "tera-high"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-r01",
+      "check_id": "check:security-r01",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-r02",
+      "check_id": "check:security-r02",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:security-r03",
+      "check_id": "check:security-r03",
+      "graph_primary_node": "review",
+      "profile_alias": "gpt55-xhigh"
+    },
+    {
+      "admission_features": {
+        "high_risk": true
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-r01",
+      "check_id": "check:end_to_end-r01",
+      "graph_primary_node": "integrate",
+      "profile_alias": "tera-max"
+    },
+    {
+      "admission_features": {
+        "multi_artifact": true,
+        "orchestration_overhead_ms": 1,
+        "parallel_branches": 2,
+        "parallel_savings_ms": 2
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-r02",
+      "check_id": "check:end_to_end-r02",
+      "graph_primary_node": "analyze",
+      "profile_alias": "sol-max"
+    },
+    {
+      "admission_features": {
+        "workspace_bound": true
+      },
+      "capability_required": false,
+      "case_id": "eval:end_to_end-r03",
+      "check_id": "check:end_to_end-r03",
+      "graph_primary_node": null,
+      "profile_alias": "sol-xhigh"
+    }
+  ],
+  "version": 1
+}

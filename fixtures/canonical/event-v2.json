@@ -1,0 +1,18 @@
+{
+  "actor": "agent:fixture",
+  "after_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "before_hash": null,
+  "event_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "event_id": "evt:97b72ca7-23d5-4a07-ae7d-25f52f6d26ac",
+  "event_type": "object_created",
+  "from_revision": null,
+  "object_id": "kb:global:concept:5f0a25ca-0e18-4b10-a245-1aa222788470",
+  "occurred_at": "2026-07-22T00:00:00Z",
+  "prev_event_hash": null,
+  "reason": "Create synthetic M0 fixture",
+  "schema_version": 2,
+  "sequence": 1,
+  "store_id": "knowledge:global",
+  "to_revision": 1,
+  "transaction_id": "txn:c6126727-2158-4388-990a-1f551357b2fd"
+}

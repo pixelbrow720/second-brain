@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "task_id": "task:00000000-0000-4000-8000-000000000007",
+  "lane": "DEEP",
+  "goal": "Validate a bounded synthetic graph without external side effects.",
+  "max_concurrency": 2,
+  "nodes": [
+    {
+      "id": "collect",
+      "role": "worker",
+      "task": "Produce the declared synthetic proposal artifact.",
+      "profile": "sol-xhigh",
+      "depends_on": [],
+      "read_scope": [
+        "fixtures/m7/input/"
+      ],
+      "write_scope": [
+        "fixtures/m7/proposals/collect.json"
+      ],
+      "capabilities": [],
+      "expected_artifacts": [
+        "artifact:collect"
+      ],
+      "acceptance": [
+        "check:collect"
+      ],
+      "timeout_seconds": 60,
+      "max_attempts": 2,
+      "permission_class": "workspace-write",
+      "reroute_to": "sol-max"
+    },
+    {
+      "id": "analyze",
+      "role": "worker",
+      "task": "Produce a read-only synthetic analysis artifact.",
+      "profile": "tera-xhigh",
+      "depends_on": [],
+      "read_scope": [
+        "fixtures/m7/input/"
+      ],
+      "write_scope": [],
+      "capabilities": [],
+      "expected_artifacts": [
+        "artifact:analyze"
+      ],
+      "acceptance": [
+        "check:analyze"
+      ],
+      "timeout_seconds": 60,
+      "max_attempts": 1,
+      "permission_class": "local-read",
+      "reroute_to": null
+    },
+    {
+      "id": "review",
+      "role": "reviewer",
+      "task": "Independently review the two typed proposal references.",
+      "profile": "gpt55-xhigh",
+      "depends_on": [
+        "collect",
+        "analyze"
+      ],
+      "read_scope": [
+        "fixtures/m7/proposals/collect.json"
+      ],
+      "write_scope": [],
+      "capabilities": [],
+      "expected_artifacts": [
+        "artifact:review"
+      ],
+      "acceptance": [
+        "check:review"
+      ],
+      "timeout_seconds": 60,
+      "max_attempts": 1,
+      "permission_class": "local-read",
+      "reroute_to": null
+    },
+    {
+      "id": "integrate",
+      "role": "integrator",
+      "task": "Join only typed successful dependency references.",
+      "profile": "tera-max",
+      "depends_on": [
+        "collect",
+        "analyze",
+        "review"
+      ],
+      "read_scope": [
+        "fixtures/m7/proposals/collect.json"
+      ],
+      "write_scope": [],
+      "capabilities": [],
+      "expected_artifacts": [
+        "artifact:integration"
+      ],
+      "acceptance": [
+        "check:integration"
+      ],
+      "timeout_seconds": 60,
+      "max_attempts": 1,
+      "permission_class": "local-read",
+      "reroute_to": null
+    }
+  ],
+  "final_node": "integrate"
+}

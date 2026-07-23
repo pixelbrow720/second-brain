@@ -1,0 +1,47 @@
+{
+  "schema_registry_version": 1,
+  "schemas": [
+    {
+      "canonical_fixture": "fixtures/canonical/memory-object-v2.json",
+      "file": "memory-object-v2.json",
+      "name": "memory-object-v2",
+      "source": "docs/06-DATA-SCHEMAS.md section 3"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/raw-capture-manifest-v1.json",
+      "file": "raw-capture-manifest-v1.json",
+      "name": "raw-capture-manifest-v1",
+      "source": "docs/06-DATA-SCHEMAS.md section 7"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/event-v2.json",
+      "file": "event-v2.json",
+      "name": "event-v2",
+      "source": "docs/06-DATA-SCHEMAS.md section 8"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/model-profile-registry-v1.json",
+      "file": "model-profile-registry-v1.json",
+      "name": "model-profile-registry-v1",
+      "source": "docs/05-MODEL-ROUTING.md section 2"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/model-profile-registry-v2.json",
+      "file": "model-profile-registry-v2.json",
+      "name": "model-profile-registry-v2",
+      "source": "docs/09-IMPLEMENTATION-ROADMAP.md section 9"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/work-graph-v1.json",
+      "file": "work-graph-v1.json",
+      "name": "work-graph-v1",
+      "source": "docs/09-IMPLEMENTATION-ROADMAP.md section 10"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/evaluation-case-v1.json",
+      "file": "evaluation-case-v1.json",
+      "name": "evaluation-case-v1",
+      "source": "artifacts/m8-contract-audit.md evaluation-case contract"
+    }
+  ]
+}

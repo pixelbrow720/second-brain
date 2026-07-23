@@ -1,0 +1,10 @@
+{
+  "value": {
+    "boundary": 0.000001,
+    "message": "Euro \u20ac\n",
+    "small": 0.0000001,
+    "z": 100000000000000000000
+  },
+  "canonical": "{\"boundary\":0.000001,\"message\":\"Euro \u20ac\\n\",\"small\":1e-7,\"z\":100000000000000000000}",
+  "sha256": "0c34a1dd20a73b4a769c309a2a242c654f34f229ffba71a23b035e9ad5bd11b4"
+}

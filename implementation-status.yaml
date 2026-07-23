@@ -1,0 +1,373 @@
+blueprint_version: 1
+current_milestone: M8
+milestones:
+  M0:
+    status: complete
+    verified_at: 2026-07-22T09:52:08Z
+    requirements:
+      NFR-12: implemented_verified
+      AC-11: implemented_verified
+    evidence:
+      - artifacts/m0-verification.json
+      - docs/12-M0-LOCAL-SCAFFOLD.md
+  M1:
+    status: complete
+    verified_at: 2026-07-22T11:03:21Z
+    requirements:
+      FR-07: implemented_verified
+      FR-08: implemented_verified
+      FR-09: implemented_verified
+      FR-16: implemented_verified
+      FR-18: implemented_verified
+      FR-19: implemented_verified
+      NFR-08: implemented_verified
+      NFR-09: implemented_verified
+      NFR-12: implemented_verified
+      ADR-001: implemented_verified
+      ADR-005: implemented_verified
+      ADR-006: implemented_verified
+    evidence:
+      - artifacts/m1-verification.json
+      - docs/13-M1-AUTHORITATIVE-STORAGE-CORE.md
+  M2:
+    status: complete
+    verified_at: 2026-07-22T12:53:58Z
+    requirements:
+      FR-12: implemented_verified
+      FR-14: implemented_verified
+      FR-16: implemented_verified
+      FR-20: implemented_verified
+      NFR-04: implemented_verified
+      NFR-05: implemented_verified
+      NFR-08: implemented_verified
+      NFR-09: implemented_verified
+      AC-05: implemented_verified
+      AC-06: implemented_verified
+      AC-07: implemented_verified
+      AC-10: implemented_verified
+      ADR-001: implemented_verified
+      ADR-005: implemented_verified
+    evidence:
+      - artifacts/m2-verification.json
+      - docs/14-M2-PROJECT-RECOVERY-KERNEL.md
+  M3:
+    status: complete
+    verified_at: 2026-07-22T14:54:37Z
+    requirements:
+      FR-07: implemented_verified
+      FR-08: implemented_verified
+      FR-09: implemented_verified
+      FR-10: implemented_verified
+      FR-15: implemented_verified
+      FR-16: implemented_verified
+      NFR-05: implemented_verified
+      NFR-08: implemented_verified
+      NFR-09: implemented_verified
+      NFR-10: implemented_verified
+      AC-04: implemented_verified
+      AC-05: implemented_verified
+      AC-07: implemented_verified
+      AC-09: implemented_verified
+      ADR-001: implemented_verified
+      ADR-005: implemented_verified
+    evidence:
+      - artifacts/m3-verification.json
+      - docs/15-M3-GLOBAL-KNOWLEDGE-WIKI.md
+  M4:
+    status: complete
+    verified_at: 2026-07-22T16:18:33Z
+    requirements:
+      FR-11: implemented_verified
+      FR-12: implemented_verified
+      FR-13: implemented_verified
+      FR-18: implemented_verified
+      FR-19: implemented_verified
+      NFR-03: implemented_verified
+      NFR-05: implemented_verified
+      NFR-08: implemented_verified
+      NFR-11: implemented_verified
+      AC-05: implemented_verified
+      AC-06: implemented_verified
+      AC-07: implemented_verified
+      ADR-001: implemented_verified
+      ADR-005: implemented_verified
+    evidence:
+      - artifacts/m4-verification.json
+      - docs/16-M4-FEDERATED-RETRIEVAL.md
+  M5:
+    status: complete
+    verified_at: 2026-07-22T19:02:49Z
+    requirements:
+      FR-01: implemented_verified
+      FR-02: implemented_verified
+      FR-03: implemented_verified
+      FR-05: implemented_verified
+      FR-17: implemented_verified
+      FR-18: implemented_verified
+      FR-19: implemented_verified
+      NFR-02: implemented_verified
+      NFR-07: implemented_verified
+      NFR-09: implemented_verified
+      NFR-11: implemented_verified
+      AC-01: implemented_verified
+      AC-02: implemented_verified
+      AC-08: implemented_verified
+      AC-09: implemented_verified
+      ADR-002: implemented_verified
+      ADR-004: implemented_verified
+      ADR-006: implemented_verified
+    evidence:
+      - artifacts/m5-verification.json
+      - docs/17-M5-ADMISSION-AND-CAPABILITIES.md
+  M6:
+    status: complete
+    verified_at: 2026-07-22T20:19:13Z
+    requirements:
+      FR-04: implemented_verified
+      FR-17: implemented_verified
+      FR-18: implemented_verified
+      FR-19: implemented_verified
+      NFR-01: implemented_verified
+      NFR-09: implemented_verified
+      NFR-10: implemented_verified
+      NFR-11: implemented_verified
+      AC-08: implemented_verified
+      AC-11: implemented_verified
+      ADR-003: implemented_verified
+      ADR-006: implemented_verified
+    evidence:
+      - artifacts/m6-verification.json
+      - docs/18-M6-MODEL-REGISTRY-AND-ROUTE-ATTESTATION.md
+      - artifacts/m6-final-remediation-security-review.md
+  M7:
+    status: complete
+    verified_at: 2026-07-22T22:24:59Z
+    requirements:
+      FR-03: implemented_verified
+      FR-06: implemented_verified
+      FR-17: implemented_verified
+      FR-18: implemented_verified
+      FR-19: implemented_verified
+      NFR-01: implemented_verified
+      NFR-03: implemented_verified
+      NFR-06: implemented_verified
+      NFR-09: implemented_verified
+      NFR-11: implemented_verified
+      AC-03: implemented_verified
+      AC-08: implemented_verified
+      AC-09: implemented_verified
+      ADR-002: implemented_verified
+      ADR-003: implemented_verified
+      ADR-004: implemented_verified
+    evidence:
+      - artifacts/m7-verification.json
+      - docs/19-M7-BOUNDED-WORK-GRAPH-RUNTIME.md
+      - artifacts/m7-final-security-review.md
+  M8:
+    status: in_progress
+    checkpointed_at: 2026-07-23T01:53:41Z
+    local_component_status: verified_eight_typed_receipts
+    release_status: blocked_remaining_m9_evidence
+    local_evidence:
+      verification: artifacts/m8-verification.json
+      artifact_count: 8
+      m4_fixture: passed_10_of_10_synthetic_local_cases
+      performance_fixture: passed_3_of_3_controlled_synthetic_local_samples
+      source_binding: m4_and_performance_runner_dependencies_content_bound
+      cross_milestone_readiness: artifacts/m8-m9-readiness-v2.json
+      external_evidence_intake: concrete_openssh_toolkit_no_external_receipt
+    requirements:
+      FR-18: local_component_verified
+      FR-19: local_component_verified
+      NFR-01: local_component_verified
+      NFR-02: local_component_verified
+      NFR-06: local_component_verified
+      NFR-07: local_component_verified
+      NFR-09: local_component_verified
+      NFR-11: local_component_verified
+      NFR-12: local_component_verified
+      AC-01: local_component_verified
+      AC-02: local_component_verified
+      AC-03: local_component_verified
+      AC-08: local_component_verified
+      AC-09: local_component_verified
+      AC-11: local_component_verified
+    evidence:
+      - artifacts/m8-baseline-receipts.json
+      - artifacts/m8-local-evaluation.json
+      - artifacts/m8-m4-local-evaluation.json
+      - artifacts/m8-performance-local-evaluation.json
+      - artifacts/m8-local-canary.json
+      - artifacts/m8-rollback-rehearsal.json
+      - artifacts/m8-release-report.json
+      - artifacts/m8-verification.json
+      - artifacts/m9-initial-shadow-report.json
+      - artifacts/m8-m9-readiness-v2.json
+      - docs/20-M8-INTEGRATED-EVALUATION-LOCAL-CANARY.md
+      - docs/22-M8-M9-EXTERNAL-EVIDENCE-RUNBOOK.md
+      - src/second_brain/m9_external_evidence.py
+      - tests/test_m9_external_evidence.py
+    blockers:
+      - authorized_blinded_semantic_comparison
+      - provider_task_graph_performance_and_root_context
+      - production_scale_m4_retrieval_context_quality
+      - authenticated_live_route_telemetry
+      - verified_global_rollback_execution
+    remaining_gate_locality_audit:
+      status: no_safe_local_substitute_for_blocked_external_gates
+      verified_at: 2026-07-23T06:17:33Z
+      documentation: docs/20-M8-INTEGRATED-EVALUATION-LOCAL-CANARY.md
+      next_authority: user_upstream_provider_real_traffic_or_authorized_corpus
+      boundary_tests: 27_targeted_m8_m9_external_and_rollback_cases_passed
+  M9:
+    status: initial_shadow_complete_unattested
+    checkpointed_at: 2026-07-23T01:53:41Z
+    approved_packet:
+      path: artifacts/m9-approval-packet.json
+      digest: 2e841bde59753662ebd78d858f7c5fdc4933d92247f330c9df595cc3fdb693d4
+      status: applied_exact_user_approval
+      global_mutation: true
+      applied_target_count: 13
+    initial_shadow:
+      path: artifacts/m9-initial-shadow-report.json
+      digest: 18e9383c2544aa0c9a597124dbc63a0d5c371aff5e1c5154ced0c3274e3aa4ec
+      status: pass_unattested
+      requested_count: 50
+      executed_count: 50
+      passed_count: 50
+      tool_call_count: 0
+      live_attested: false
+      route_attestation: missing_telemetry
+    readiness_checkpoint:
+      path: artifacts/m8-m9-readiness-v2.json
+      digest: 3818e38bfd389eebca267faa94bec55bedee66a1dc1e43880c381db94b03af15
+      status: blocked_missing_authenticated_route_telemetry
+      local_evidence_artifact_count: 8
+      verified_shadow_count: 50
+    external_evidence_intake:
+      status: concrete_openssh_toolkit_and_route_preflight_no_external_proof
+      implementation: src/second_brain/m9_external_evidence.py
+      tools:
+        - scripts/prepare_m9_external_trust_policy.py
+        - scripts/prepare_m9_route_approval_intent.py
+        - scripts/prepare_m9_route_attestation_plan.py
+        - scripts/prepare_m9_route_approval_packet.py
+        - scripts/preflight_m9_route_approval.py
+        - scripts/prepare_m9_blinded_review_plan.py
+        - scripts/verify_m9_external_evidence.py
+      promotion_authority: denied
+    route_batch_preflight:
+      status: implemented_read_only_no_external_batch
+      implementation: src/second_brain/m9_route_preflight.py
+      script: scripts/preflight_m9_route_approval.py
+      tests: tests/test_m9_route_preflight.py
+    rollback_authority:
+      status: fresh_packet_and_bound_approval_required_execution_unexecuted
+      verified_at: 2026-07-23T05:09:43Z
+      implementation: src/second_brain/global_rollout.py
+      preparation_script: scripts/prepare_m9_rollback_approval_packet.py
+      execution_script: scripts/run_m9_rollout.py
+      tests: tests/test_global_rollout_m9.py
+      legacy_deployed_helper: historical_recovery_artifact_not_current_authorization
+    requirements:
+      FR-17: initial_shadow_applied
+      FR-18: live_shadow_transport_verified_route_unattested
+      FR-19: live_shadow_transport_verified_route_unattested
+      FR-20: global_backup_created_rollback_unexecuted
+      NFR-09: approved_global_change_readback_verified
+      NFR-10: global_canary_pending_authenticated_route
+      NFR-11: fresh_rollback_packet_tooling_verified_execution_unexecuted
+      NFR-12: exact_initial_approval_consumed
+      AC-10: global_readback_verified
+      AC-11: initial_shadow_verified_unattested
+      AC-12: explicit_initial_approval_verified
+      ADR-006: shadow_only_pending_next_approval
+    evidence:
+      - artifacts/m9-approval-packet.json
+      - artifacts/m9-initial-shadow-report.json
+      - artifacts/m8-m9-readiness-v2.json
+      - docs/21-M9-EXACT-GLOBAL-APPROVAL-AND-ROLLOUT.md
+      - docs/22-M8-M9-EXTERNAL-EVIDENCE-RUNBOOK.md
+      - tests/test_global_rollout_m9.py
+      - tests/test_live_shadow_m9.py
+      - tests/test_m9_external_evidence.py
+      - tests/test_m9_route_preflight.py
+      - scripts/prepare_m9_rollback_approval_packet.py
+    blockers:
+      - authenticated_live_route_telemetry
+      - authorized_blinded_semantic_comparison
+      - provider_task_graph_performance_and_root_context
+      - production_scale_m4_retrieval_context_quality
+      - controlled_canary_and_soak_evidence
+      - verified_global_rollback_execution
+      - new_exact_approval_before_opt_in_or_expansion
+practical_v1:
+  status: PRACTICAL_V1_APPLIED_AND_CANARY_PASS
+  verified_at: 2026-07-23T14:25:18Z
+  strict_m8_m9_status: unchanged_blocked
+  bridge:
+    implementation: src/second_brain/practical_v1.py
+    cli: scripts/practical_v1_bridge.py
+    operations:
+      - health_status
+      - targeted_project_recovery_read
+      - global_knowledge_read
+      - proposal_only_project_to_global_promotion
+    direct_default: DIRECT_NO_MEMORY
+    root_validation: lexical_symlinks_denied_exact_git_worktree_required
+    external_recovery: supported_with_redacted_external_sha256_marker
+    authority_store_commit: denied
+    transcript_ingest: denied
+    provider_network_calls: denied
+  router_evidence:
+    contract: operator_trusted_structured_outbound_log
+    fixture: fixtures/practical-v1/router-plan.json
+    log_fixture: fixtures/practical-v1/router-outbound.jsonl
+    proof_scope: trusted_router_reported_and_outbound_values_only
+    provider_attestation: false
+    strict_signed_upstream_path: retained_future_hardening
+  staged_global_bundle:
+    path: dist/global/practical-v1
+    status: installed_from_approved_staging
+    source_tree_digest: d430f0017c67ff74bede41527aa454eb377e8b29c2c35bfbecb0a4e9eed95ce2
+  approval_packet:
+    path: artifacts/practical-v1-approval-packet.json
+    digest: abe806a22ad13f1611331d3552bf6787f6b90967b045a6b8a54be9c72c36be63
+    status: applied_exact_user_approval
+    global_mutation: true
+  apply_report:
+    path: artifacts/practical-v1-apply-report.json
+    digest: 537e1850d9597e3a3ca291b15f212de0be424f27442620db0d7719925c636dc7
+    status: applied_and_canary_pass
+    target_count: 7
+    preserved_m9_target_count: 12
+  evidence:
+    - docs/adr/ADR-007-practical-v1-operator-trusted-bridge.md
+    - docs/23-PRACTICAL-V1-BRIDGE-AND-ROUTER-EVIDENCE.md
+    - artifacts/practical-v1-apply-report.json
+    - tests/test_practical_v1.py
+    - tests/test_practical_v1_rollout.py
+  residual_risks:
+    - operator_trusted_router_log_can_be_wrong_or_tampered
+    - project_id_to_exact_git_root_mapping_remains_an_operator_trust_decision
+    - upstream_provider_retention_unverifiable
+    - strict_m8_m9_external_gates_remain_blocked
+last_verified_at: 2026-07-23T14:25:18Z
+last_test_receipt: practical-v1-approved-apply-seven-target-readback-and-canary
+last_local_validation:
+  clean_room: passed_249_tests
+  full_suite: passed_249_tests
+  practical_v1_focused: passed_16_tests
+  skill_validation: passed_quick_validate
+  packet_current_state: consumed_exact_approval_abe806a22ad13f1611331d3552bf6787f6b90967b045a6b8a54be9c72c36be63
+  wrapper_source_binding: installed_readback_passed
+  practical_v1_apply_readback: passed_7_targets_preserved_12_m9_targets
+  practical_v1_canary: passed_no_network_direct_memory_free_authority_unchanged
+  external_evidence_boundary: passed_27_targeted_tests
+  m8_m9_readiness: verified_blocked_fail_closed
+  m9_applied_readback: applied_state_pass_13_targets
+global_activation: m9_shadow_only_unattested_plus_practical_v1_installed_local_canary_pass
+boundaries:
+  old_obsidian_vault: untouched
+  ai_memory: unread_unmodified
+  global_codex_configuration: approved_m9_guidance_skill_backup_plus_practical_v1_skill_bridge_backup_applied

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "mem:m2-fixture:task:10000000-0000-4000-8000-000000000102",
+  "kind": "task",
+  "title": "Legacy recovery task",
+  "revision": 2,
+  "verification_state": "partial",
+  "relations": [],
+  "references": [],
+  "body": "Synthetic legacy task used as a valid relation target."
+}

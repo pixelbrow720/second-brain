@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "mem:m2-fixture:question:10000000-0000-4000-8000-000000000103",
+  "kind": "question",
+  "title": "Legacy dangling relation fixture",
+  "revision": 1,
+  "verification_state": "unverified",
+  "relations": [
+    "mem:m2-fixture:evidence:10000000-0000-4000-8000-000000000199"
+  ],
+  "references": [],
+  "body": "Synthetic legacy object whose unresolved relation must be quarantined."
+}

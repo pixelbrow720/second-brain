@@ -1,0 +1,132 @@
+{
+  "$defs": {
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "adapters": {
+          "additionalProperties": false,
+          "properties": {
+            "nine_router": {
+              "additionalProperties": false,
+              "properties": {
+                "adapter_version": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "raw_model_slug": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "serialized_effort": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "raw_model_slug",
+                "serialized_effort",
+                "adapter_version"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "nine_router"
+          ],
+          "type": "object"
+        },
+        "display_name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "effort_intent": {
+          "enum": [
+            "high",
+            "max",
+            "xhigh"
+          ]
+        },
+        "family": {
+          "enum": [
+            "tera",
+            "sol",
+            "luna",
+            "gpt55"
+          ]
+        },
+        "role": {
+          "enum": [
+            "orchestrator",
+            "analyst",
+            "generalist",
+            "builder",
+            "utility",
+            "reviewer"
+          ]
+        }
+      },
+      "required": [
+        "display_name",
+        "family",
+        "effort_intent",
+        "role",
+        "adapters"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pixel.local/schemas/model-profile-registry-v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "default_root_profile": {
+      "const": "tera-max"
+    },
+    "profiles": {
+      "additionalProperties": false,
+      "properties": {
+        "gpt55-xhigh": {
+          "$ref": "#/$defs/profile"
+        },
+        "luna-xhigh": {
+          "$ref": "#/$defs/profile"
+        },
+        "sol-max": {
+          "$ref": "#/$defs/profile"
+        },
+        "sol-xhigh": {
+          "$ref": "#/$defs/profile"
+        },
+        "tera-high": {
+          "$ref": "#/$defs/profile"
+        },
+        "tera-max": {
+          "$ref": "#/$defs/profile"
+        },
+        "tera-xhigh": {
+          "$ref": "#/$defs/profile"
+        }
+      },
+      "required": [
+        "tera-max",
+        "tera-xhigh",
+        "tera-high",
+        "sol-max",
+        "sol-xhigh",
+        "luna-xhigh",
+        "gpt55-xhigh"
+      ],
+      "type": "object"
+    },
+    "registry_version": {
+      "const": 1
+    }
+  },
+  "required": [
+    "registry_version",
+    "default_root_profile",
+    "profiles"
+  ],
+  "title": "ModelProfileRegistryV1",
+  "type": "object"
+}

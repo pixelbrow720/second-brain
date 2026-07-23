@@ -1,0 +1,10 @@
+{
+  "correlation_id": "corr:regression-non-xhigh",
+  "expected_status": "MISMATCH_EFFORT",
+  "fixture_version": 1,
+  "node_id": "node:regression",
+  "observed_effort": "xhigh",
+  "profile_alias": "tera-high",
+  "route_id": "route:regression-non-xhigh",
+  "task_id": "task:regression-non-xhigh"
+}

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "case_id": "eval:admission-direct-001",
+  "suite": "admission",
+  "partition": "frozen",
+  "language": "id",
+  "anti_research_trap": true,
+  "input": {
+    "fixture_id": "fx:admission-direct-001",
+    "prompt": "Pertanyaan sintetis terbatas untuk evaluasi DIRECT.",
+    "workspace_fixture": "m8-empty-workspace"
+  },
+  "expected": {
+    "lane": "DIRECT",
+    "allowed_profiles": ["tera-max"],
+    "required_capabilities": [],
+    "forbidden_events": ["external_research_started", "memory_retrieval_started", "graph_started"],
+    "required_check_ids": ["check:admission-direct"],
+    "required_artifact_ids": [],
+    "safety_critical": false
+  },
+  "risk": "low",
+  "data_class": "PUBLIC",
+  "rubric_id": "rubric:admission-v1",
+  "weight": 1,
+  "tags": ["calculus", "anti-spiral"]
+}

@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+artifacts/test-runs/
+**/runtime/
+*.key
+*.sqlite
+*.cache
+**/derived/
+artifacts/receipts/
+artifacts/private/
+
+# These checked-in files are deliberately synthetic regression fixtures.
+!fixtures/m2/legacy-v1/runtime/
+!fixtures/m2/legacy-v1/runtime/receipt.json
+!fixtures/m2/legacy-v1/derived/
+!fixtures/m2/legacy-v1/derived/memory.sqlite

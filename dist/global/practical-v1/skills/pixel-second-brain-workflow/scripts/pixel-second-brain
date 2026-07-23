@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""Source-bound launcher for the project-local Practical V1 bridge."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+from pathlib import Path
+import stat
+import sys
+
+
+SOURCE_ROOT = Path("/home/pixel/Data/PROJECT/second-brain")
+EXPECTED_SOURCE_TREE_SHA256 = "d430f0017c67ff74bede41527aa454eb377e8b29c2c35bfbecb0a4e9eed95ce2"
+
+
+def source_digest(root: Path) -> tuple[str, int]:
+    resolved = root.resolve(strict=True)
+    relative_paths = [
+        Path("config/model-profiles.json"),
+        Path("scripts/practical_v1_bridge.py"),
+    ]
+    relative_paths.extend(path.relative_to(resolved) for path in sorted((resolved / "src/second_brain").glob("*.py")))
+    relative_paths.extend(path.relative_to(resolved) for path in sorted((resolved / "schemas").glob("*.json")))
+    digest = hashlib.sha256()
+    seen: set[str] = set()
+    count = 0
+    for relative in sorted(relative_paths, key=lambda item: item.as_posix()):
+        name = relative.as_posix()
+        if name in seen:
+            continue
+        seen.add(name)
+        path = resolved / relative
+        metadata = path.lstat()
+        if stat.S_ISLNK(metadata.st_mode) or not stat.S_ISREG(metadata.st_mode):
+            raise RuntimeError("source binding contains an unsafe file")
+        digest.update(name.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(hashlib.sha256(path.read_bytes()).digest())
+        digest.update(b"\0")
+        count += 1
+    return digest.hexdigest(), count
+
+
+def main() -> int:
+    try:
+        actual, count = source_digest(SOURCE_ROOT)
+    except (OSError, RuntimeError):
+        print(json.dumps({"status": "FAIL", "reason_code": "SOURCE_UNAVAILABLE"}, sort_keys=True))
+        return 1
+    if actual != EXPECTED_SOURCE_TREE_SHA256:
+        print(json.dumps({"status": "FAIL", "reason_code": "SOURCE_DRIFT"}, sort_keys=True))
+        return 1
+    if sys.argv[1:] == ["--self-check"]:
+        print(
+            json.dumps(
+                {"status": "PASS", "source_tree_sha256": actual, "source_file_count": count},
+                sort_keys=True,
+            )
+        )
+        return 0
+    script = SOURCE_ROOT.resolve(strict=True) / "scripts/practical_v1_bridge.py"
+    environment = {
+        "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": str(SOURCE_ROOT.resolve(strict=True) / "src"),
+    }
+    for name in ("LANG", "LC_ALL", "TZ"):
+        if name in os.environ:
+            environment[name] = os.environ[name]
+    os.execve(sys.executable, [sys.executable, str(script), *sys.argv[1:]], environment)
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

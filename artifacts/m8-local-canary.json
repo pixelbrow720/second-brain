@@ -1,0 +1,54 @@
+{
+  "alias_counts": [
+    {
+      "count": 8,
+      "profile_alias": "tera-max"
+    },
+    {
+      "count": 7,
+      "profile_alias": "tera-xhigh"
+    },
+    {
+      "count": 7,
+      "profile_alias": "tera-high"
+    },
+    {
+      "count": 7,
+      "profile_alias": "sol-max"
+    },
+    {
+      "count": 7,
+      "profile_alias": "sol-xhigh"
+    },
+    {
+      "count": 7,
+      "profile_alias": "luna-xhigh"
+    },
+    {
+      "count": 7,
+      "profile_alias": "gpt55-xhigh"
+    }
+  ],
+  "b3_snapshot_digest": null,
+  "canary_digest": "ed377c1de0c4604314861f2ab2ad4f6c82f1dfc3f8f6c335f4c06b606666fa3e",
+  "control_state_digest": null,
+  "global_target_count": 0,
+  "live_attested": false,
+  "live_request_count": 0,
+  "milestone": "M8",
+  "offline_route_evidence_scope": "synthetic-local",
+  "output_digest": "f23cbbcd5add9d98cb13582c1b1aed6029c7c6ee09b2bf76bf34d40db0783390",
+  "reason_codes": [],
+  "receipt_kind": "local-canary",
+  "route_check_count": 35,
+  "route_match_count": 35,
+  "schema_version": 1,
+  "shadow_check_count": 50,
+  "shadow_evidence_scope": "simulated-shadow-read-only",
+  "shadow_match_count": 50,
+  "side_effects_started": 0,
+  "state": "PASS",
+  "status": "PASS",
+  "timestamp": "2026-07-23T00:00:00Z",
+  "writer_version": "m8-typed-receipts-3"
+}

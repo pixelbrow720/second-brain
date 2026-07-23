@@ -1,0 +1,7 @@
+profile_alias = "tera-max"
+model = "cx/gpt-5.6-terra"
+model_reasoning_effort = "max"
+routing_adapter = "nine_router"
+adapter_version = "9router/0.5.40"
+registry_version = 2
+registry_digest = "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8"

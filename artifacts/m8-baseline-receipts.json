@@ -1,0 +1,105 @@
+{
+  "baseline_receipts": [
+    {
+      "baseline_kind": "B0_ROOT_TERA_MAX",
+      "binding": {
+        "binding_digest": "43d7a43c1576a0b636a770502895fa53f32bc693926342ece999b93b8f6b8bb2",
+        "component_source_digest": "a6342eb2a567b717175c93e7dfd30ea6ecfb19cde2976a1957792d728aa38638",
+        "dataset_manifest_digest": "51d7489ca9bd91df97e2bc05d42fafb5ee2d21e0e9518776f32a705d59f4a23e",
+        "execution_plan_digest": "624696094fe7eeecf1a6cebfdc46e8142ec26f15c092cbfa7ca1236b5d073ce3",
+        "fixture_executor_version": "m8-closed-component-executor/2",
+        "grader_version": "m8-local-evaluator/3",
+        "graph_manifest_digest": "66c688f3b80a5f24917abb12f3e3f9dde4358781da4a7e7cb4be1faa0e7c9021",
+        "ordered_case_id_digest": "f9ad3ebbe9ba3ba80a50a8ac77150ce63ac3efe1eeaf02fecec541b21709aa63",
+        "permission_policy_digest": "9bef68630c92af57a13566750c59f1c90ea5f30566177a7f1e1e463a05089108",
+        "profile_registry_digest": "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8",
+        "repository_snapshot_digest": "940d5d6a0ceed8e0bd76046f3379ab37110c903c646b815e92a36c4c74e629d5",
+        "seed": 20260723
+      },
+      "evidence_scope": "synthetic-local",
+      "live_attested": false,
+      "outcome_count": 70,
+      "outcome_digest": "21cfdb1d59d85fcb79f35cd027d9aa458bca101e49def8575d3243d6545d6f6d",
+      "receipt_digest": "6e1a39e24f78a130c3a81bec4bf234fee1f0b01f0a7c47f866f235d6d1737df7",
+      "receipt_version": 1
+    },
+    {
+      "baseline_kind": "B1_SERIAL_WORKFLOW",
+      "binding": {
+        "binding_digest": "43d7a43c1576a0b636a770502895fa53f32bc693926342ece999b93b8f6b8bb2",
+        "component_source_digest": "a6342eb2a567b717175c93e7dfd30ea6ecfb19cde2976a1957792d728aa38638",
+        "dataset_manifest_digest": "51d7489ca9bd91df97e2bc05d42fafb5ee2d21e0e9518776f32a705d59f4a23e",
+        "execution_plan_digest": "624696094fe7eeecf1a6cebfdc46e8142ec26f15c092cbfa7ca1236b5d073ce3",
+        "fixture_executor_version": "m8-closed-component-executor/2",
+        "grader_version": "m8-local-evaluator/3",
+        "graph_manifest_digest": "66c688f3b80a5f24917abb12f3e3f9dde4358781da4a7e7cb4be1faa0e7c9021",
+        "ordered_case_id_digest": "f9ad3ebbe9ba3ba80a50a8ac77150ce63ac3efe1eeaf02fecec541b21709aa63",
+        "permission_policy_digest": "9bef68630c92af57a13566750c59f1c90ea5f30566177a7f1e1e463a05089108",
+        "profile_registry_digest": "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8",
+        "repository_snapshot_digest": "940d5d6a0ceed8e0bd76046f3379ab37110c903c646b815e92a36c4c74e629d5",
+        "seed": 20260723
+      },
+      "evidence_scope": "synthetic-local",
+      "live_attested": false,
+      "outcome_count": 70,
+      "outcome_digest": "4090fb225732efc339dd94feea328298cce583d8a18a0d594dddff14dfc33a9d",
+      "receipt_digest": "61ea2e8b5ed43fd7a1c81a1d89bae72e2d92163d0314c1c90961c75521b9494d",
+      "receipt_version": 1
+    },
+    {
+      "baseline_kind": "B2_NO_MEMORY",
+      "binding": {
+        "binding_digest": "43d7a43c1576a0b636a770502895fa53f32bc693926342ece999b93b8f6b8bb2",
+        "component_source_digest": "a6342eb2a567b717175c93e7dfd30ea6ecfb19cde2976a1957792d728aa38638",
+        "dataset_manifest_digest": "51d7489ca9bd91df97e2bc05d42fafb5ee2d21e0e9518776f32a705d59f4a23e",
+        "execution_plan_digest": "624696094fe7eeecf1a6cebfdc46e8142ec26f15c092cbfa7ca1236b5d073ce3",
+        "fixture_executor_version": "m8-closed-component-executor/2",
+        "grader_version": "m8-local-evaluator/3",
+        "graph_manifest_digest": "66c688f3b80a5f24917abb12f3e3f9dde4358781da4a7e7cb4be1faa0e7c9021",
+        "ordered_case_id_digest": "f9ad3ebbe9ba3ba80a50a8ac77150ce63ac3efe1eeaf02fecec541b21709aa63",
+        "permission_policy_digest": "9bef68630c92af57a13566750c59f1c90ea5f30566177a7f1e1e463a05089108",
+        "profile_registry_digest": "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8",
+        "repository_snapshot_digest": "940d5d6a0ceed8e0bd76046f3379ab37110c903c646b815e92a36c4c74e629d5",
+        "seed": 20260723
+      },
+      "evidence_scope": "synthetic-local",
+      "live_attested": false,
+      "outcome_count": 70,
+      "outcome_digest": "a6a46fe5731ab9d0258d21c543a53d202429b082c334e0c233234e763d2211f0",
+      "receipt_digest": "830c91ecc48ea47bcf8defa38cadc3836e2dbfa9a7528a776c9d4ef335a6a3a5",
+      "receipt_version": 1
+    },
+    {
+      "baseline_kind": "B3_LAST_KNOWN_GOOD",
+      "binding": {
+        "binding_digest": "43d7a43c1576a0b636a770502895fa53f32bc693926342ece999b93b8f6b8bb2",
+        "component_source_digest": "a6342eb2a567b717175c93e7dfd30ea6ecfb19cde2976a1957792d728aa38638",
+        "dataset_manifest_digest": "51d7489ca9bd91df97e2bc05d42fafb5ee2d21e0e9518776f32a705d59f4a23e",
+        "execution_plan_digest": "624696094fe7eeecf1a6cebfdc46e8142ec26f15c092cbfa7ca1236b5d073ce3",
+        "fixture_executor_version": "m8-closed-component-executor/2",
+        "grader_version": "m8-local-evaluator/3",
+        "graph_manifest_digest": "66c688f3b80a5f24917abb12f3e3f9dde4358781da4a7e7cb4be1faa0e7c9021",
+        "ordered_case_id_digest": "f9ad3ebbe9ba3ba80a50a8ac77150ce63ac3efe1eeaf02fecec541b21709aa63",
+        "permission_policy_digest": "9bef68630c92af57a13566750c59f1c90ea5f30566177a7f1e1e463a05089108",
+        "profile_registry_digest": "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8",
+        "repository_snapshot_digest": "940d5d6a0ceed8e0bd76046f3379ab37110c903c646b815e92a36c4c74e629d5",
+        "seed": 20260723
+      },
+      "evidence_scope": "synthetic-local",
+      "live_attested": false,
+      "outcome_count": 70,
+      "outcome_digest": "6aff93674152756085365b7292f26d19273e742fddb625ae1398723b53d7c5ba",
+      "receipt_digest": "ba9de9fccaa94b83c08cb0c8affb04bf0824147c92c8206ac9ce43ba69bdb1ab",
+      "receipt_version": 1
+    }
+  ],
+  "evidence_scope": "synthetic-local",
+  "live_attested": false,
+  "milestone": "M8",
+  "output_digest": "493535e5510a2f14dca603b34e5dfdf3f5a35e741d37bd163488c8d45ee3c5c8",
+  "receipt_kind": "baseline-receipts",
+  "schema_version": 1,
+  "status": "LOCAL_COMPONENTS_VERIFIED",
+  "timestamp": "2026-07-23T00:00:00Z",
+  "writer_version": "m8-typed-receipts-3"
+}

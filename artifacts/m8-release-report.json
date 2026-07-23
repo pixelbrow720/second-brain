@@ -1,0 +1,241 @@
+{
+  "artifact_index": [
+    {
+      "artifact_name": "m8-baseline-receipts.json",
+      "byte_count": 6218,
+      "output_digest": "493535e5510a2f14dca603b34e5dfdf3f5a35e741d37bd163488c8d45ee3c5c8"
+    },
+    {
+      "artifact_name": "m8-local-evaluation.json",
+      "byte_count": 57811,
+      "output_digest": "9b7ae3466a29919c284d0874816ce9f91da9911b804def13eed7415c7287db9f"
+    },
+    {
+      "artifact_name": "m8-m4-local-evaluation.json",
+      "byte_count": 9605,
+      "output_digest": "bfe187adeffb105720479c06b0bf5c7cae77335293131ca3b10021250915a1b6"
+    },
+    {
+      "artifact_name": "m8-performance-local-evaluation.json",
+      "byte_count": 1068,
+      "output_digest": "6c44dcc8b0f8c8afdf0a8373b7f457d6c1a95094d22471ab9c0a7e9ee4e227ec"
+    },
+    {
+      "artifact_name": "m8-local-canary.json",
+      "byte_count": 1277,
+      "output_digest": "f23cbbcd5add9d98cb13582c1b1aed6029c7c6ee09b2bf76bf34d40db0783390"
+    },
+    {
+      "artifact_name": "m8-rollback-rehearsal.json",
+      "byte_count": 2255,
+      "output_digest": "fe60a6d524ad1dd38a2d808de8cb140a98db065c614cdcee7d75ad3554b68f0a"
+    }
+  ],
+  "boundary_assertions": {
+    "action_executor": false,
+    "ai_memory_access": false,
+    "global_activation": "disabled",
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "provider_network_call": false
+  },
+  "deferred_live_gates": [
+    {
+      "deferred_gate": "semantic-quality",
+      "missing_evidence": "authorized-blinded-semantic-comparison"
+    },
+    {
+      "deferred_gate": "graph-performance",
+      "missing_evidence": "provider-task-performance-and-root-context"
+    },
+    {
+      "deferred_gate": "memory-context",
+      "missing_evidence": "production-scale-m4-recall-and-context-quality"
+    },
+    {
+      "deferred_gate": "provider-telemetry",
+      "missing_evidence": "authenticated-live-route-observations"
+    },
+    {
+      "deferred_gate": "route-shadows",
+      "missing_evidence": "50-real-read-only-shadows"
+    },
+    {
+      "deferred_gate": "task-soak",
+      "missing_evidence": "personal-canary-and-soak"
+    },
+    {
+      "deferred_gate": "global-rollback",
+      "missing_evidence": "approved-global-before-state"
+    }
+  ],
+  "evidence_scope": "synthetic-local",
+  "live_attested": false,
+  "local_component_status": "PASS",
+  "local_gate_matrix": [
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:dataset-schema",
+      "measurement_scope": "synthetic-local",
+      "numerator": 70,
+      "state": "PASS",
+      "threshold": "strict-70-case-plan-bound-corpus",
+      "value": "70-of-70"
+    },
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:admission",
+      "measurement_scope": "synthetic-local",
+      "numerator": 70,
+      "state": "PASS",
+      "threshold": "macro-f1-gte-0.96-zero-direct-escalation",
+      "value": "macro-f1-1.0000"
+    },
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:capability",
+      "measurement_scope": "synthetic-local",
+      "numerator": 70,
+      "state": "PASS",
+      "threshold": "precision-gte-0.98-recall-gte-0.97",
+      "value": "precision-1.0000-recall-1.0000"
+    },
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:component-execution",
+      "measurement_scope": "synthetic-local",
+      "numerator": 70,
+      "state": "PASS",
+      "threshold": "all-m5-m6-m7-checks-and-boundaries-pass",
+      "value": "70-of-70"
+    },
+    {
+      "denominator": 63,
+      "failed_case_ids": [],
+      "gate_id": "gate:route-integrity",
+      "measurement_scope": "synthetic-local",
+      "numerator": 63,
+      "state": "PASS",
+      "threshold": "all-local-non-direct-routes-match-and-deny-side-effects",
+      "value": "63-of-63"
+    },
+    {
+      "denominator": 38,
+      "failed_case_ids": [],
+      "gate_id": "gate:graph-serial-fallback",
+      "measurement_scope": "synthetic-local",
+      "numerator": 38,
+      "state": "PASS",
+      "threshold": "m7-runs-and-b1-is-actual-serial-fallback",
+      "value": "38-of-38"
+    },
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:b2-no-memory",
+      "measurement_scope": "synthetic-local",
+      "numerator": 70,
+      "state": "PASS",
+      "threshold": "b2-performs-zero-memory-retrievals",
+      "value": "70-of-70"
+    },
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:security-redaction",
+      "measurement_scope": "synthetic-local",
+      "numerator": 70,
+      "state": "PASS",
+      "threshold": "zero-local-boundary-failures",
+      "value": "70-of-70"
+    },
+    {
+      "denominator": 10,
+      "failed_case_ids": [],
+      "gate_id": "gate:m4-fixture-evidence",
+      "measurement_scope": "synthetic-local",
+      "numerator": 10,
+      "state": "PASS",
+      "threshold": "all-memory-cases-have-redacted-m4-retrieval-provenance-context-evidence",
+      "value": "10-of-10"
+    },
+    {
+      "denominator": 38,
+      "failed_case_ids": [],
+      "gate_id": "gate:graph-measurement-fixture",
+      "measurement_scope": "synthetic-local",
+      "numerator": 38,
+      "state": "PASS",
+      "threshold": "controlled-monotonic-m7-schedule-and-context-proxy",
+      "value": "38-of-38"
+    },
+    {
+      "denominator": 70,
+      "failed_case_ids": [],
+      "gate_id": "gate:quality-lcb",
+      "measurement_scope": "synthetic-local",
+      "numerator": 0,
+      "state": "DEFERRED_TO_M9",
+      "threshold": "lcb-gte--1.0-and-no-safety-loss",
+      "value": "deferred-no-blinded-semantic-observations"
+    },
+    {
+      "denominator": 38,
+      "failed_case_ids": [],
+      "gate_id": "gate:graph-efficiency",
+      "measurement_scope": "synthetic-local",
+      "numerator": 0,
+      "state": "DEFERRED_TO_M9",
+      "threshold": "speedup-gte-25-context-reduction-gte-35",
+      "value": "deferred-provider-task-performance-and-root-context"
+    },
+    {
+      "denominator": 10,
+      "failed_case_ids": [],
+      "gate_id": "gate:memory-context",
+      "measurement_scope": "synthetic-local",
+      "numerator": 0,
+      "state": "DEFERRED_TO_M9",
+      "threshold": "m4-recall-provenance-and-context-quality",
+      "value": "deferred-production-scale-m4-recall-and-context-quality"
+    },
+    {
+      "denominator": 85,
+      "failed_case_ids": [],
+      "gate_id": "gate:route-canary",
+      "measurement_scope": "synthetic-local",
+      "numerator": 85,
+      "state": "PASS",
+      "threshold": "35-route-and-50-simulated-shadow-match",
+      "value": "local-synthetic-only"
+    },
+    {
+      "denominator": 1,
+      "failed_case_ids": [],
+      "gate_id": "gate:rollback-rehearsal",
+      "measurement_scope": "local-rollback-rehearsal",
+      "numerator": 1,
+      "state": "PASS",
+      "threshold": "candidate-applied-exact-b3-and-fresh-canary",
+      "value": "local-in-memory-only"
+    }
+  ],
+  "milestone": "M8",
+  "output_digest": "806569b6f132aaefe49615425bf189d23c3c90a7395827f6c7e2933a21ab9482",
+  "promotion_status": "M9_EVIDENCE_REQUIRED",
+  "receipt_kind": "release-report",
+  "release_status": "BLOCKED",
+  "rollback_limitation": "no global target was read or changed",
+  "schema_version": 1,
+  "timestamp": "2026-07-23T00:00:00Z",
+  "unresolved_risks": [
+    "synthetic-local component evidence is not semantic quality evidence",
+    "simulated shadows are not live traffic",
+    "local rollback restores only in-memory control state"
+  ],
+  "writer_version": "m8-typed-receipts-3"
+}

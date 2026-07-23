@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "milestone": "M6",
+  "status": "passed",
+  "verified_at": "2026-07-22T20:19:13Z",
+  "requirements": [
+    "FR-04",
+    "FR-17",
+    "FR-18",
+    "FR-19",
+    "NFR-01",
+    "NFR-09",
+    "NFR-10",
+    "NFR-11",
+    "AC-08",
+    "AC-11",
+    "ADR-003",
+    "ADR-006"
+  ],
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest -v tests.test_profiles tests.test_contract_schemas tests.test_project_metadata tests.test_routing_m6 tests.test_m6_integration",
+      "result": "passed",
+      "details": "33 deterministic M6/profile/schema compatibility, routing, staging, rollback, and adversarial gate tests passed"
+    },
+    {
+      "command": "python3 scripts/build_m0_contract_assets.py --check",
+      "result": "passed",
+      "details": "17 historical M0-owned assets verified without overwriting the active V2 registry"
+    },
+    {
+      "command": "python3 /data/Users/pixel/.codex/plugins/cache/pixel-workflows/pixel-orchestrator/0.1.0+codex.20260721195758/skills/orchestrate-work-graph/scripts/workflow_gate.py validate-graph artifacts/m6-work-graph.json",
+      "result": "passed",
+      "details": "the bounded M6 DEEP graph, including remediation review nodes, validated with no contract errors"
+    },
+    {
+      "command": "make check",
+      "result": "passed",
+      "details": "contracts, documentation checks, lint, and the complete deterministic test suite passed after final P1 remediation"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 scripts/check_clean_room.py",
+      "result": "passed",
+      "details": "the complete local check passed in a repository-contained clean-room copy after final P1 remediation"
+    }
+  ],
+  "security_review": {
+    "profile": "pixel-gpt55-xhigh independent read-only reviewer",
+    "result": "passed after two P1 remediations",
+    "material_findings_open": 0,
+    "initial_findings": [
+      "synthetic MATCH receipt could authorize a GRAPH/DEEP side effect",
+      "a RouteReceipt subclass could spoof live attributes at the former gate"
+    ],
+    "remediation": "M6 side_effect_allowed is now an unconditional denial boundary because M6 has no authenticated live-attestation receipt type; adversarial subclass coverage verifies the boundary.",
+    "evidence": [
+      "artifacts/m6-final-security-review.md",
+      "artifacts/m6-remediation-security-review.md",
+      "artifacts/m6-final-remediation-security-review.md"
+    ]
+  },
+  "boundary_assertions": {
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "ai_memory_access": false,
+    "provider_network_call": false,
+    "live_route_attestation": false,
+    "action_executor": false,
+    "new_runtime_dependencies": false
+  },
+  "rollback": "Revert only M6-local profile/routing code, V2 registry/schema/fixture, generated dist/global/m6 staging, tests, artifacts, and documentation. Preserve historical M0 V1 assets and all prior authority stores. No global configuration, provider state, old vault, or ai-memory data was changed."
+}

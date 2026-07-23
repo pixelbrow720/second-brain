@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "packet_digest": "abe806a22ad13f1611331d3552bf6787f6b90967b045a6b8a54be9c72c36be63",
+    "reference": "current-user-exact-approval"
+  },
+  "canary": {
+    "authority_store_mutated": false,
+    "direct_status": "DIRECT_NO_MEMORY",
+    "global_knowledge_read": "PASS",
+    "health": "PASS",
+    "network": "none",
+    "project_recovery": "PASS",
+    "proposal_status": "PENDING_REVIEW",
+    "router_evidence": "PASS_OPERATOR_TRUSTED_NOT_PROVIDER_ATTESTED",
+    "status": "CANARY_PASS"
+  },
+  "created_at": "2026-07-23T14:25:18Z",
+  "global_mutation": true,
+  "kind": "practical-v1-apply-report",
+  "limitations": [
+    "operator-trusted-router-logs-do-not-prove-remote-provider-internal-behavior",
+    "project-id-to-exact-git-root-mapping-remains-an-operator-trust-decision",
+    "DIRECT-does-not-read-memory-by-default",
+    "bridge-does-not-ingest-transcripts-or-auto-write-authority",
+    "only-project-to-global-pending-review-proposals-are-supported",
+    "source-repository-relocation-or-drift-requires-a-new-packet-and-approval",
+    "staged-rollback-helper-does-not-create-or-validate-the-required-fresh-rollback-packet",
+    "strict-M8-M9-quality-live-route-soak-and-rollback-gates-remain-open"
+  ],
+  "readback": {
+    "preserved_m9_target_count": 12,
+    "source_tree_sha256": "d430f0017c67ff74bede41527aa454eb377e8b29c2c35bfbecb0a4e9eed95ce2",
+    "status": "POST_APPLY_READBACK_PASS",
+    "target_count": 7
+  },
+  "report_digest": "537e1850d9597e3a3ca291b15f212de0be424f27442620db0d7719925c636dc7",
+  "rollback": {
+    "backup_path": "second-brain-backups/practical-v1-v1",
+    "preserved": true,
+    "requires_fresh_exact_rollback_packet_and_approval": true
+  },
+  "schema_version": 1,
+  "status": "APPLIED_AND_CANARY_PASS",
+  "strict_release_state": {
+    "M8": "in_progress",
+    "M9": "initial_shadow_complete_unattested",
+    "provider_attestation_claimed": false,
+    "strict_signed_upstream_attestation": "retained_future_hardening"
+  },
+  "targets": [
+    {
+      "after_mode": 384,
+      "after_sha256": "4d142259cbdbf6c208a103dc26038012c40cc71820168c90fd50519e0e5751ec",
+      "operation": "replace-managed-skill",
+      "path": "skills/pixel-second-brain-workflow/SKILL.md",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "95544045fca55b903821345f098e951226ee1a16f5ea0d1df2d3ed7f00537eb0",
+      "operation": "create-bridge-directory",
+      "path": "skills/pixel-second-brain-workflow/scripts",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "0d706c238f0b7b485ef1c69d4947caeac893a6acaf7751d219b688f375ab4301",
+      "operation": "create-source-bound-bridge-wrapper",
+      "path": "skills/pixel-second-brain-workflow/scripts/pixel-second-brain",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "d588ac6d091279e1c0facb9b48c1ea9bf53982159136e23250c52b7fc3f0eb3f",
+      "operation": "create-backup-tree",
+      "path": "second-brain-backups/practical-v1-v1",
+      "role": "backup"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "03c253740ecac96d19047304f30202a3b9c60569fa912391733c5aaf2f05897d",
+      "operation": "copy-current-skill-before-state",
+      "path": "second-brain-backups/practical-v1-v1/skill-before.md",
+      "role": "backup"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "bb82019bb3b5b6b7f2c0a7d2f30444673c19d9e672cac291c1d2c16d1b1c7730",
+      "operation": "create-rollback-manifest",
+      "path": "second-brain-backups/practical-v1-v1/manifest.json",
+      "role": "backup"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "9824c1dfe97a6ca4ab7db7231724ddc4951cc4e00caf1896dd4bc4f0b3bc4345",
+      "operation": "create-drift-refusing-rollback",
+      "path": "second-brain-backups/practical-v1-v1/rollback.py",
+      "role": "backup"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "approval_request": "Authorize exactly the listed Practical V1 targets: replace the existing pixel-second-brain-workflow SKILL.md, create its source-bound local bridge wrapper, and create the practical-v1-v1 backup/rollback tree. Do not change AGENTS.md, config.toml, agents, providers, plugins, MCPs, hooks, 9router, Obsidian, or ai-memory.",
+  "backup": {
+    "must_be_absent_before_apply": true,
+    "path": "second-brain-backups/practical-v1-v1",
+    "preserved_after_rollback": true,
+    "tree_sha256": "d588ac6d091279e1c0facb9b48c1ea9bf53982159136e23250c52b7fc3f0eb3f"
+  },
+  "canary_sequence": [
+    "verify staged skill and wrapper digests",
+    "verify source binding and refuse drift",
+    "confirm DIRECT returns DIRECT_NO_MEMORY before root/store access",
+    "run health against disposable explicit project and global stores",
+    "run one targeted project recovery read and one global knowledge read",
+    "enqueue one disposable pending-review proposal and prove authority bytes unchanged",
+    "verify the synthetic operator-trusted 9router fixture with no network",
+    "require a separate report and approval before any broader rollout"
+  ],
+  "codex_home": "/data/Users/pixel/.codex",
+  "created_at": "2026-07-23T08:36:43Z",
+  "global_mutation": false,
+  "limitations": [
+    "operator-trusted-router-logs-do-not-prove-remote-provider-internal-behavior",
+    "project-id-to-exact-git-root-mapping-remains-an-operator-trust-decision",
+    "DIRECT-does-not-read-memory-by-default",
+    "bridge-does-not-ingest-transcripts-or-auto-write-authority",
+    "only-project-to-global-pending-review-proposals-are-supported",
+    "source-repository-relocation-or-drift-requires-a-new-packet-and-approval",
+    "staged-rollback-helper-does-not-create-or-validate-the-required-fresh-rollback-packet",
+    "strict-M8-M9-quality-live-route-soak-and-rollback-gates-remain-open"
+  ],
+  "local_gate_state": "PRACTICAL_V1_READY_FOR_APPROVAL",
+  "packet_digest": "abe806a22ad13f1611331d3552bf6787f6b90967b045a6b8a54be9c72c36be63",
+  "permission_and_network_impact": {
+    "authority_store_commits": "none",
+    "global_write_after_approval": [
+      "skills/pixel-second-brain-workflow/SKILL.md",
+      "skills/pixel-second-brain-workflow/scripts/pixel-second-brain",
+      "second-brain-backups/practical-v1-v1"
+    ],
+    "network": "none; no provider, connector, MCP, plugin, or 9router call",
+    "preserved_global_surfaces": [
+      "AGENTS.md",
+      "config.toml",
+      "agents",
+      "providers",
+      "plugins",
+      "MCP declarations",
+      "hooks"
+    ],
+    "runtime_reads": "only explicit non-symlink runtime-relative stores and an explicit exact Git project root",
+    "runtime_writes": "only pending-review proposal metadata under the explicit runtime root"
+  },
+  "retention_impact": {
+    "bridge_stdout": "selected bounded memory results are returned to the invoking task and are not auto-persisted",
+    "proposal_outbox": "IDs, revisions, hashes, target kind, and fixed reason metadata only; no transcript or body",
+    "router_evidence": "allowlisted structured fields and correlation digests only; no prompt, response, headers, or credentials",
+    "upstream": "provider/router upstream retention remains unverifiable from local configuration"
+  },
+  "rollback": {
+    "command_after_apply": "python3 <codex-home>/second-brain-backups/practical-v1-v1/rollback.py --backup-dir <codex-home>/second-brain-backups/practical-v1-v1 --rollback-packet-digest <fresh-digest> --approval-reference <fresh-approval>",
+    "refuses_if_post_state_drifted": true,
+    "removes": [
+      "skills/pixel-second-brain-workflow/scripts/pixel-second-brain"
+    ],
+    "requires_fresh_exact_rollback_packet_and_approval": true,
+    "restores": [
+      "skills/pixel-second-brain-workflow/SKILL.md"
+    ]
+  },
+  "rollout": "PRACTICAL_V1",
+  "schema_version": 1,
+  "source_binding": {
+    "drift_behavior": "bridge refuses execution until a newly staged and approved digest is installed",
+    "source_file_count": 40,
+    "source_root": "/home/pixel/Data/PROJECT/second-brain",
+    "source_tree_sha256": "d430f0017c67ff74bede41527aa454eb377e8b29c2c35bfbecb0a4e9eed95ce2"
+  },
+  "staged_bundle": {
+    "path": "dist/global/practical-v1",
+    "sha256": {
+      "rollback.py": "9824c1dfe97a6ca4ab7db7231724ddc4951cc4e00caf1896dd4bc4f0b3bc4345",
+      "skills/pixel-second-brain-workflow/SKILL.md": "4d142259cbdbf6c208a103dc26038012c40cc71820168c90fd50519e0e5751ec",
+      "skills/pixel-second-brain-workflow/scripts/pixel-second-brain": "0d706c238f0b7b485ef1c69d4947caeac893a6acaf7751d219b688f375ab4301"
+    }
+  },
+  "status": "PENDING_EXACT_USER_APPROVAL",
+  "strict_release_state": {
+    "M8": "in_progress",
+    "M9": "initial_shadow_complete_unattested",
+    "provider_attestation_claimed": false,
+    "strict_signed_upstream_attestation": "retained_future_hardening"
+  },
+  "targets": [
+    {
+      "after_mode": 384,
+      "after_sha256": "4d142259cbdbf6c208a103dc26038012c40cc71820168c90fd50519e0e5751ec",
+      "before_mode": 384,
+      "before_sha256": "03c253740ecac96d19047304f30202a3b9c60569fa912391733c5aaf2f05897d",
+      "kind": "file",
+      "operation": "replace-managed-skill",
+      "path": "skills/pixel-second-brain-workflow/SKILL.md",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "95544045fca55b903821345f098e951226ee1a16f5ea0d1df2d3ed7f00537eb0",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "kind": "directory-tree",
+      "operation": "create-bridge-directory",
+      "path": "skills/pixel-second-brain-workflow/scripts",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "0d706c238f0b7b485ef1c69d4947caeac893a6acaf7751d219b688f375ab4301",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "kind": "file",
+      "operation": "create-source-bound-bridge-wrapper",
+      "path": "skills/pixel-second-brain-workflow/scripts/pixel-second-brain",
+      "role": "mutate"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "d588ac6d091279e1c0facb9b48c1ea9bf53982159136e23250c52b7fc3f0eb3f",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "kind": "directory-tree",
+      "operation": "create-backup-tree",
+      "path": "second-brain-backups/practical-v1-v1",
+      "role": "backup"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "03c253740ecac96d19047304f30202a3b9c60569fa912391733c5aaf2f05897d",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "kind": "file",
+      "operation": "copy-current-skill-before-state",
+      "path": "second-brain-backups/practical-v1-v1/skill-before.md",
+      "role": "backup"
+    },
+    {
+      "after_mode": 384,
+      "after_sha256": "bb82019bb3b5b6b7f2c0a7d2f30444673c19d9e672cac291c1d2c16d1b1c7730",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "kind": "file",
+      "operation": "create-rollback-manifest",
+      "path": "second-brain-backups/practical-v1-v1/manifest.json",
+      "role": "backup"
+    },
+    {
+      "after_mode": 448,
+      "after_sha256": "9824c1dfe97a6ca4ab7db7231724ddc4951cc4e00caf1896dd4bc4f0b3bc4345",
+      "before_mode": null,
+      "before_sha256": "absent",
+      "kind": "file",
+      "operation": "create-drift-refusing-rollback",
+      "path": "second-brain-backups/practical-v1-v1/rollback.py",
+      "role": "backup"
+    }
+  ],
+  "writer_version": "practical-v1-approval/1"
+}

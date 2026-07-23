@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "goal": "Implement and verify project-local M4 federated retrieval and bounded context.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read M4 contracts and existing M1-M3 APIs; return a bounded public interface and acceptance-test checklist without editing implementation files.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": ["artifacts/m4-contract-audit.md"],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "security-audit",
+      "task": "Perform an adversarial read-only review of the proposed M4 trust, scope, index, provenance, and context boundaries; return concrete test cases without edits.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [],
+      "write_scope": ["artifacts/m4-security-audit.md"],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "implementation",
+      "task": "Implement the approved project-local retrieval and bounded-context contracts with deterministic tests.",
+      "profile": "pixel-sol-max",
+      "depends_on": ["contract-audit", "security-audit"],
+      "write_scope": [
+        "src/second_brain/retrieval.py",
+        "tests/test_retrieval_m4.py",
+        "tests/test_context_m4.py"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "integration",
+      "task": "Add cross-store integration coverage and reconcile the implementation with the M1-M3 public boundaries.",
+      "profile": "pixel-terra-max",
+      "depends_on": ["implementation"],
+      "write_scope": ["tests/test_m4_integration.py"],
+      "timeout_seconds": 600,
+      "max_attempts": 2
+    },
+    {
+      "id": "independent-review",
+      "task": "Read-only security and regression review of the implemented M4 paths before acceptance.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": ["implementation", "integration"],
+      "write_scope": ["artifacts/m4-final-security-review.md"],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "acceptance",
+      "task": "Run deterministic acceptance checks, resolve material findings, and write the local M4 evidence/status/documentation checkpoint.",
+      "profile": "pixel-terra-max",
+      "depends_on": ["integration", "independent-review"],
+      "write_scope": [
+        "artifacts/m4-verification.json",
+        "implementation-status.yaml",
+        "README.md",
+        "docs/09-IMPLEMENTATION-ROADMAP.md",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "docs/16-M4-FEDERATED-RETRIEVAL.md"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "acceptance"
+}

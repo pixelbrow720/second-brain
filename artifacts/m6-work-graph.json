@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "goal": "Implement and verify project-local M6 model registry and 9router route attestation without global configuration mutation.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read only the M6 routing, schema, evaluation, and ADR contracts plus current M0 profile scaffold. Record an exact bounded public contract, required fixtures, acceptance tests, discovered-version evidence, and compatibility constraints. Do not edit implementation paths.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": [
+        "artifacts/m6-contract-audit.md"
+      ],
+      "timeout_seconds": 360,
+      "max_attempts": 1
+    },
+    {
+      "id": "security-audit",
+      "task": "Perform an adversarial read-only design review for project-local M6 registry, route serialization, telemetry reconciliation, receipt redaction, canary, side-effect gate, and rollback boundaries. Record fail-closed invariants and regressions. Do not edit implementation paths.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [],
+      "write_scope": [
+        "artifacts/m6-security-audit.md"
+      ],
+      "timeout_seconds": 360,
+      "max_attempts": 1
+    },
+    {
+      "id": "implementation",
+      "task": "Implement the M6 project-local registry, deterministic generated TOML staging fixtures, route intent/serialization/observation/reconciliation, redacted receipts, canary, side-effect gate, and local rollback contract with focused tests. Use only read-only discovered version/model metadata; never touch global configuration.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "contract-audit",
+        "security-audit"
+      ],
+      "write_scope": [
+        "config/model-profiles.json",
+        "schemas/model-profile-registry-v2.json",
+        "schemas/schema-registry.json",
+        "fixtures/canonical/model-profile-registry-v2.json",
+        "fixtures/m6",
+        "scripts/build_m0_contract_assets.py",
+        "src/second_brain/profiles.py",
+        "src/second_brain/contract_checks.py",
+        "src/second_brain/routing.py",
+        "src/second_brain/__init__.py",
+        "tests/test_contract_schemas.py",
+        "tests/test_profiles.py",
+        "tests/test_project_metadata.py",
+        "tests/test_routing_m6.py",
+        "tests/test_m6_integration.py",
+        "dist/global/m6"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "independent-review",
+      "task": "Perform a final independent read-only security and regression review of the completed M6 code, registry, staging artifacts, and focused tests. Verify no route mismatch or missing/ambiguous telemetry can authorize a graph/deep side effect and that no global configuration is touched.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "implementation"
+      ],
+      "write_scope": [
+        "artifacts/m6-final-security-review.md"
+      ],
+      "timeout_seconds": 420,
+      "max_attempts": 1
+    },
+    {
+      "id": "remediation-review",
+      "task": "Independently verify the P1 remediation: synthetic or non-live M6 route receipts, including MATCH, must never authorize GRAPH or DEEP side effects. Recheck the focused regression and confirm no fail-open path was introduced.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "implementation",
+        "independent-review"
+      ],
+      "write_scope": [
+        "artifacts/m6-remediation-security-review.md"
+      ],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "gate-bypass-remediation",
+      "task": "Remediate the independently reproduced RouteReceipt-subclass bypass. M6 has no trusted live receipt contract, so its side-effect predicate must be denial-only for every current receipt, including forged subclasses. Add an adversarial regression without weakening reconciliation diagnostics.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "remediation-review"
+      ],
+      "write_scope": [
+        "src/second_brain/routing.py",
+        "tests/test_routing_m6.py"
+      ],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "final-remediation-review",
+      "task": "Independently verify that the remediated M6 side-effect predicate has no synthetic/non-live or subclass bypass, and that the new adversarial regression passes.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "gate-bypass-remediation"
+      ],
+      "write_scope": [
+        "artifacts/m6-final-remediation-security-review.md"
+      ],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "acceptance",
+      "task": "Run deterministic M6 acceptance checks, resolve material findings, write local verification evidence and documentation, update status and next-session checkpoint, and keep global activation disabled.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "implementation",
+        "independent-review",
+        "remediation-review",
+        "final-remediation-review"
+      ],
+      "write_scope": [
+        "artifacts/m6-verification.json",
+        "implementation-status.yaml",
+        "README.md",
+        "docs/09-IMPLEMENTATION-ROADMAP.md",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "docs/18-M6-MODEL-REGISTRY-AND-ROUTE-ATTESTATION.md"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "acceptance"
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "goal": "Implement and verify the project-local M1 authoritative storage core without global mutation.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read the M1 contracts and current M0 scaffold; return a bounded implementation interface and adversarial test matrix. Read-only.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": [],
+      "timeout_seconds": 300,
+      "max_attempts": 1
+    },
+    {
+      "id": "storage-core",
+      "task": "Implement safe parsers, canonical hashing, path guards, storage transactions, recovery, lint, and redacted policy boundary according to the approved M1 interface.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "contract-audit"
+      ],
+      "write_scope": [
+        "src/second_brain/"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "storage-tests",
+      "task": "Add deterministic M1 contract, failure-injection, concurrency, parser, and path-containment fixtures/tests against the approved storage interface.",
+      "profile": "pixel-sol-xhigh",
+      "depends_on": [
+        "contract-audit"
+      ],
+      "write_scope": [
+        "tests/",
+        "fixtures/m1/"
+      ],
+      "timeout_seconds": 720,
+      "max_attempts": 2
+    },
+    {
+      "id": "integration",
+      "task": "Run deterministic integration and acceptance checks, reconcile test/core interfaces, and prepare M1 evidence and documentation without changing global configuration.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "storage-core",
+        "storage-tests"
+      ],
+      "write_scope": [
+        "docs/",
+        "implementation-status.yaml",
+        "artifacts/m1-verification.json"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "security-review",
+      "task": "Independently review parser, filesystem, transaction, recovery, and policy boundaries. Read-only and adversarial.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "integration"
+      ],
+      "write_scope": [],
+      "timeout_seconds": 600,
+      "max_attempts": 1
+    },
+    {
+      "id": "remediation",
+      "task": "Resolve material review findings, rerun targeted and full acceptance checks, and finalize the local M1 checkpoint.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "security-review"
+      ],
+      "write_scope": [
+        "src/second_brain/",
+        "tests/",
+        "fixtures/m1/",
+        "docs/",
+        "implementation-status.yaml",
+        "artifacts/m1-verification.json"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "remediation"
+}

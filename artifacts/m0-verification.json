@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "milestone": "M0",
+  "status": "passed",
+  "verified_at": "2026-07-22T09:52:08Z",
+  "requirements": [
+    "NFR-12",
+    "AC-11"
+  ],
+  "commands": [
+    {
+      "command": "python3 scripts/build_m0_contract_assets.py --check",
+      "result": "passed"
+    },
+    {
+      "command": "make check",
+      "result": "passed",
+      "details": "23 deterministic unit tests passed"
+    },
+    {
+      "command": "python3 scripts/check_clean_room.py",
+      "result": "passed",
+      "details": "make check passed in a temporary copy under artifacts/test-runs"
+    }
+  ],
+  "boundary_assertions": {
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "ai_memory_access": false,
+    "new_runtime_dependencies": false
+  },
+  "rollback": "Remove the M0 project-local scaffold files; no existing global or source data was changed."
+}

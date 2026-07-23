@@ -1,0 +1,9 @@
+{
+  "statement-1": {
+    "inference": false,
+    "support_ids": [
+      "kb:global:claim:00000000-0000-4000-8000-000000000003",
+      "kb:global:source:00000000-0000-4000-8000-000000000001"
+    ]
+  }
+}

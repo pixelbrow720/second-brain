@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "milestone": "M1",
+  "status": "passed",
+  "verified_at": "2026-07-22T11:03:21Z",
+  "requirements": [
+    "FR-07",
+    "FR-08",
+    "FR-09",
+    "FR-16",
+    "FR-18",
+    "FR-19",
+    "NFR-08",
+    "NFR-09",
+    "NFR-12",
+    "ADR-001",
+    "ADR-005",
+    "ADR-006"
+  ],
+  "commands": [
+    {
+      "command": "PYTHONPATH=\"$PWD/src\" python3 -m unittest -v",
+      "result": "passed",
+      "details": "47 deterministic unit tests passed"
+    },
+    {
+      "command": "make check",
+      "result": "passed",
+      "details": "contracts, documentation checks, lint, and the 47-test suite passed"
+    },
+    {
+      "command": "python3 scripts/check_clean_room.py",
+      "result": "passed",
+      "details": "make check passed in a repository-contained temporary copy"
+    }
+  ],
+  "security_review": {
+    "profile": "GPT-5.5 xhigh",
+    "result": "passed",
+    "material_findings_open": 0,
+    "focus": [
+      "parser and filesystem containment",
+      "journal and idempotency binding",
+      "atomic recovery and degraded reads",
+      "lifecycle and user-decision authority"
+    ]
+  },
+  "boundary_assertions": {
+    "global_mutation": false,
+    "old_obsidian_vault_access": false,
+    "ai_memory_access": false,
+    "new_runtime_dependencies": false
+  },
+  "rollback": "Revert only the M1 implementation paths. Do not delete caller-created authority stores; preserve them for recovery or explicit operator review."
+}

@@ -1,0 +1,542 @@
+{
+  "$defs": {
+    "actor": {
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "type": "string"
+        },
+        "actor_type": {
+          "enum": [
+            "user",
+            "agent",
+            "tool",
+            "migration",
+            "system"
+          ]
+        },
+        "role": {
+          "maxLength": 80,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "actor_id",
+        "actor_type",
+        "role"
+      ],
+      "type": "object"
+    },
+    "captured": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "maxLength": 255,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expires_at": {
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "git_blob": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "git_commit": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observed_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "observed_at"
+      ],
+      "type": "object"
+    },
+    "lifecycle": {
+      "additionalProperties": false,
+      "properties": {
+        "changed_at": {
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "maxLength": 1000,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "superseded",
+            "archived",
+            "deleted"
+          ]
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "user_confirmation",
+            "source_capture",
+            "repository_snapshot",
+            "test_receipt",
+            "object_revision",
+            "agent_generation",
+            "external_observation",
+            "migration"
+          ]
+        },
+        "note": {
+          "maxLength": 1000,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observed_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "provenance_id": {
+          "pattern": "^prov:[0-9a-f-]{36}$",
+          "type": "string"
+        },
+        "ref": {
+          "maxLength": 1024,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "provenance_id",
+        "kind",
+        "observed_at",
+        "actor_id"
+      ],
+      "type": "object"
+    },
+    "reference": {
+      "additionalProperties": false,
+      "properties": {
+        "captured": {
+          "$ref": "#/$defs/captured"
+        },
+        "freshness_policy": {
+          "enum": [
+            "exact_hash",
+            "git_blob",
+            "exists",
+            "ttl",
+            "manual",
+            "immutable"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "code",
+            "file",
+            "artifact",
+            "source",
+            "url",
+            "event"
+          ]
+        },
+        "locator": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        },
+        "optional": {
+          "default": false,
+          "type": "boolean"
+        },
+        "ref_id": {
+          "pattern": "^ref:[0-9a-f-]{36}$",
+          "type": "string"
+        },
+        "required_for": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 128,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "selector": {
+          "maxLength": 500,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "ref_id",
+        "kind",
+        "locator",
+        "freshness_policy",
+        "captured",
+        "required_for"
+      ],
+      "type": "object"
+    },
+    "relation": {
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "note": {
+          "maxLength": 1000,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance_ids": {
+          "items": {
+            "pattern": "^prov:[0-9a-f-]{36}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "relation_id": {
+          "pattern": "^rel:[0-9a-f-]{36}$",
+          "type": "string"
+        },
+        "scope": {
+          "maxLength": 500,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "target_revision": {
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "type": {
+          "enum": [
+            "cites",
+            "derived_from",
+            "about",
+            "mentions",
+            "supports",
+            "contradicts",
+            "refines",
+            "supersedes",
+            "part_of",
+            "depends_on",
+            "implements",
+            "verifies",
+            "invalidates",
+            "related_to"
+          ]
+        }
+      },
+      "required": [
+        "relation_id",
+        "type",
+        "target",
+        "created_at",
+        "provenance_ids"
+      ],
+      "type": "object"
+    },
+    "verification": {
+      "additionalProperties": false,
+      "properties": {
+        "checked_at": {
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 256,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "method": {
+          "maxLength": 500,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "enum": [
+            "unverified",
+            "verified",
+            "partial",
+            "stale",
+            "failed",
+            "not_applicable"
+          ]
+        },
+        "verifier": {
+          "maxLength": 160,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "method",
+        "checked_at",
+        "verifier",
+        "evidence_ids"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://pixel.local/schemas/memory-object-v2.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actors": {
+      "items": {
+        "$ref": "#/$defs/actor"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array"
+    },
+    "aliases": {
+      "items": {
+        "maxLength": 240,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "authority": {
+      "enum": [
+        "user-decision",
+        "observed-fact",
+        "source-report",
+        "ai-synthesis",
+        "ai-recommendation"
+      ]
+    },
+    "body": {
+      "maxLength": 262144,
+      "type": "string"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "content_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "epistemic_status": {
+      "enum": [
+        "asserted",
+        "corroborated",
+        "disputed",
+        "refuted",
+        "unknown",
+        "not_applicable"
+      ]
+    },
+    "id": {
+      "pattern": "^(?:kb:global:(?:source|entity|concept|claim|synthesis)|mem:[a-z0-9][a-z0-9._-]{0,63}:(?:project|decision|component|task|bug|experiment|evidence|question)):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "source",
+        "entity",
+        "concept",
+        "claim",
+        "synthesis",
+        "project",
+        "decision",
+        "component",
+        "task",
+        "bug",
+        "experiment",
+        "evidence",
+        "question"
+      ]
+    },
+    "lifecycle": {
+      "$ref": "#/$defs/lifecycle"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/provenance"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array"
+    },
+    "references": {
+      "items": {
+        "$ref": "#/$defs/reference"
+      },
+      "maxItems": 256,
+      "type": "array"
+    },
+    "relations": {
+      "items": {
+        "$ref": "#/$defs/relation"
+      },
+      "maxItems": 512,
+      "type": "array"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "store_id": {
+      "pattern": "^(?:knowledge:global|project:[a-z0-9][a-z0-9._-]{0,63})$",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "pattern": "^[a-z0-9][a-z0-9._/-]{0,79}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "maxLength": 240,
+      "minLength": 1,
+      "type": "string"
+    },
+    "trust": {
+      "enum": [
+        "user_asserted",
+        "test_verified",
+        "repo_observed",
+        "multi_source_correlated",
+        "single_source",
+        "agent_inference",
+        "external_unverified"
+      ]
+    },
+    "updated_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "verification": {
+      "$ref": "#/$defs/verification"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "store_id",
+    "kind",
+    "revision",
+    "title",
+    "aliases",
+    "lifecycle",
+    "authority",
+    "trust",
+    "epistemic_status",
+    "confidence",
+    "actors",
+    "provenance",
+    "created_at",
+    "updated_at",
+    "relations",
+    "references",
+    "verification",
+    "tags",
+    "payload",
+    "body",
+    "content_hash"
+  ],
+  "title": "MemoryObjectV2",
+  "type": "object"
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "goal": "Implement and verify M8 Integrated Evaluation and Local Canary with synthetic project-local evidence only.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-audit",
+      "task": "Read only the M8 roadmap, PRD, evaluation, workflow, routing, security, operations, M5-M7 contracts, and relevant ADRs. Write an exact local-only evaluation/canary contract, acceptance matrix, public API/schema/data plan, evidence taxonomy, and deterministic test plan. Do not edit implementation paths.",
+      "profile": "pixel-terra-xhigh",
+      "depends_on": [],
+      "write_scope": [
+        "artifacts/m8-contract-audit.md"
+      ],
+      "timeout_seconds": 480,
+      "max_attempts": 1
+    },
+    {
+      "id": "security-audit",
+      "task": "Perform a read-only adversarial design audit of M8 datasets, graders, baselines, metrics, reports, local canary, rollback rehearsal, M5/M6/M7 boundaries, redaction, and local-only containment. Record fail-closed invariants and required regressions. Do not edit implementation paths.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [],
+      "write_scope": [
+        "artifacts/m8-security-audit.md"
+      ],
+      "timeout_seconds": 480,
+      "max_attempts": 1
+    },
+    {
+      "id": "implementation",
+      "task": "Implement the project-local M8 evaluation runtime and fixtures from the audits: strict synthetic JSONL case contract, deterministic grading and baseline comparison, bounded redacted metric/report receipts, offline and simulated shadow-read-only canary, local rollback rehearsal, release-report generation, focused integration tests, and schema/contract wiring. Do not invoke providers, execute actions, make durable authority changes, or mutate global configuration.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "contract-audit",
+        "security-audit"
+      ],
+      "write_scope": [
+        "schemas/evaluation-case-v1.json",
+        "schemas/schema-registry.json",
+        "fixtures/canonical/evaluation-case-v1.json",
+        "fixtures/m8",
+        "src/second_brain/evaluation.py",
+        "src/second_brain/contract_checks.py",
+        "src/second_brain/__init__.py",
+        "scripts/run_m8_evaluation.py",
+        "tests/test_contract_schemas.py",
+        "tests/test_project_metadata.py",
+        "tests/test_evaluation_m8.py",
+        "tests/test_m8_integration.py"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "independent-review",
+      "task": "Perform a final independent read-only security and regression review of completed M8 code, fixtures, generated local evidence, and tests. Verify baseline fairness, redaction, synthetic/live labeling, graph/direct boundaries, canary and rollback containment, and that no local artifact can authorize global or material action.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "implementation"
+      ],
+      "write_scope": [
+        "artifacts/m8-final-security-review.md"
+      ],
+      "timeout_seconds": 480,
+      "max_attempts": 1
+    },
+    {
+      "id": "acceptance",
+      "task": "Run deterministic M8 acceptance checks, generate project-local baseline/evaluation/canary/rollback/release receipts, remediate material findings, write verification evidence and documentation, update status and next-session prompt to M9, and keep global activation disabled.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "implementation",
+        "independent-review"
+      ],
+      "write_scope": [
+        "artifacts/m8-baseline-receipts.json",
+        "artifacts/m8-local-evaluation.json",
+        "artifacts/m8-local-canary.json",
+        "artifacts/m8-rollback-rehearsal.json",
+        "artifacts/m8-release-report.json",
+        "artifacts/m8-verification.json",
+        "implementation-status.yaml",
+        "README.md",
+        "docs/09-IMPLEMENTATION-ROADMAP.md",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "docs/20-M8-INTEGRATED-EVALUATION-AND-LOCAL-CANARY.md"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "acceptance"
+}

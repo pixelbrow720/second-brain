@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "goal": "Implement and verify the project-local M3 Global Knowledge Wiki and ingest pipeline without global activation or private-source access.",
+  "lane": "DEEP",
+  "nodes": [
+    {
+      "id": "contract-freeze",
+      "task": "Freeze the bounded M3 interface, acceptance matrix, path ownership, and local-only security boundary.",
+      "profile": "pixel-terra-max",
+      "depends_on": [],
+      "write_scope": [
+        "planning/m3-knowledge-interface.md",
+        "planning/m3-work-graph.json"
+      ],
+      "timeout_seconds": 480,
+      "max_attempts": 1
+    },
+    {
+      "id": "capture-pipeline",
+      "task": "Implement deterministic explicit raw capture, content-addressed blobs, manifests, quarantine/review, and adversarial capture tests against the frozen M3 interface. Do not access real private sources or network.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "contract-freeze"
+      ],
+      "write_scope": [
+        "src/second_brain/ingest.py",
+        "tests/test_ingest_m3.py",
+        "fixtures/m3/capture/"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "semantic-wiki",
+      "task": "Implement proposal validation and atomic semantic compilation over the public Store API, deterministic derived wiki views, semantic lint, explicit promotion outbox, and focused tests against the frozen M3 interface.",
+      "profile": "pixel-sol-max",
+      "depends_on": [
+        "contract-freeze"
+      ],
+      "write_scope": [
+        "src/second_brain/knowledge.py",
+        "tests/test_knowledge_m3.py",
+        "fixtures/m3/knowledge/"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "integration",
+      "task": "Join capture and semantic branches, resolve public API seams, add acceptance tests, public exports, M3 documentation, and a reproducible verification artifact while keeping all work project-local.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "capture-pipeline",
+        "semantic-wiki"
+      ],
+      "write_scope": [
+        "src/second_brain/__init__.py",
+        "tests/test_m3_integration.py",
+        "docs/15-M3-GLOBAL-KNOWLEDGE-WIKI.md",
+        "artifacts/m3-verification.json",
+        "implementation-status.yaml",
+        "docs/11-NEW-SESSION-PROMPT.md",
+        "planning/m3-work-graph.json"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    },
+    {
+      "id": "security-review",
+      "task": "Independently and read-only review M3 capture policy, raw-byte immutability, manifest/path containment, compiler authority and CAS behavior, derived-state separation, and promotion isolation.",
+      "profile": "pixel-gpt55-xhigh",
+      "depends_on": [
+        "integration"
+      ],
+      "write_scope": [],
+      "timeout_seconds": 600,
+      "max_attempts": 1
+    },
+    {
+      "id": "remediation",
+      "task": "Resolve material review findings, run focused and full deterministic verification including clean-room checks, then finalize the local M3 checkpoint only when every acceptance condition has evidence.",
+      "profile": "pixel-terra-max",
+      "depends_on": [
+        "security-review"
+      ],
+      "write_scope": [
+        "src/second_brain/",
+        "tests/",
+        "fixtures/m3/",
+        "docs/",
+        "artifacts/m3-verification.json",
+        "implementation-status.yaml",
+        "planning/m3-work-graph.json"
+      ],
+      "timeout_seconds": 900,
+      "max_attempts": 2
+    }
+  ],
+  "final_node": "remediation"
+}
