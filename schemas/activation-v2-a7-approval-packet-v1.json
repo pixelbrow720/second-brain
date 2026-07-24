@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-a7-approval-packet-v1.json",
+  "title": "ActivationV2A7ApprovalPacketV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "packet_id",
+    "snapshot_bundle_id",
+    "snapshot_bundle_digest",
+    "synthetic_project_id",
+    "implementation_digest",
+    "expires_at",
+    "policy_digest",
+    "targets",
+    "backup_required",
+    "canary_required",
+    "readback_required",
+    "rollback_required",
+    "canary_sequence",
+    "permission_impact",
+    "rollback_trigger_codes",
+    "network_permitted",
+    "global_target_access",
+    "global_mutation_authorized",
+    "requires_current_user_approval",
+    "approval_state",
+    "fixture_only",
+    "created_at",
+    "packet_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "packet_id": {"$ref": "#/$defs/packet_id"},
+    "snapshot_bundle_id": {"$ref": "#/$defs/bundle_id"},
+    "snapshot_bundle_digest": {"$ref": "#/$defs/hash"},
+    "synthetic_project_id": {"$ref": "#/$defs/project_id"},
+    "implementation_digest": {"$ref": "#/$defs/hash"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "policy_digest": {"$ref": "#/$defs/hash"},
+    "targets": {"$ref": "#/$defs/packet_targets"},
+    "backup_required": {"const": true},
+    "canary_required": {"const": true},
+    "readback_required": {"const": true},
+    "rollback_required": {"const": true},
+    "canary_sequence": {"const": ["backup", "canary", "readback", "rollback"]},
+    "permission_impact": {"const": "NONE_SYNTHETIC"},
+    "rollback_trigger_codes": {"const": ["BOUNDARY_VIOLATION", "CAS_CONFLICT", "READBACK_MISMATCH", "SOURCE_DRIFT"]},
+    "network_permitted": {"const": false},
+    "global_target_access": {"const": false},
+    "global_mutation_authorized": {"const": false},
+    "requires_current_user_approval": {"const": true},
+    "approval_state": {"const": "SYNTHETIC_DRAFT_NOT_APPROVED"},
+    "fixture_only": {"const": true},
+    "created_at": {"type": "string", "format": "date-time"},
+    "packet_digest": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "project_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$", "maxLength": 64},
+    "packet_id": {
+      "type": "string",
+      "pattern": "^a7-packet:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 46
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^a7-target-bundle:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 53
+    },
+    "target_id": {
+      "type": "string",
+      "pattern": "^a7-target:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 46
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_id",
+        "synthetic_project_id",
+        "target_role",
+        "current_revision",
+        "before_digest",
+        "candidate_after_digest",
+        "snapshot_digest"
+      ],
+      "properties": {
+        "target_id": {"$ref": "#/$defs/target_id"},
+        "synthetic_project_id": {"$ref": "#/$defs/project_id"},
+        "target_role": {"enum": ["project_opt_in_config", "project_activation_manifest"]},
+        "current_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+        "before_digest": {"$ref": "#/$defs/hash"},
+        "candidate_after_digest": {"$ref": "#/$defs/hash"},
+        "snapshot_digest": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "packet_targets": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/target"},
+      "allOf": [
+        {
+          "contains": {"type": "object", "required": ["target_role"], "properties": {"target_role": {"const": "project_opt_in_config"}}},
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {"type": "object", "required": ["target_role"], "properties": {"target_role": {"const": "project_activation_manifest"}}},
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    }
+  }
+}

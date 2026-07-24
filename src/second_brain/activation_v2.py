@@ -36,6 +36,16 @@ A0_CANONICAL_FIXTURES = {
     "activation-v2-graph-snapshot-v1": "fixtures/canonical/activation-v2-graph-snapshot-v1.json",
 }
 
+A7_SCHEMA_NAMES = frozenset(
+    (
+        "activation-v2-a7-target-bundle-v1",
+        "activation-v2-a7-approval-packet-v1",
+        "activation-v2-a7-rollout-state-v1",
+        "activation-v2-a7-rollout-receipt-v1",
+        "activation-v2-a7-pending-operation-v1",
+    )
+)
+
 _PROJECT_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,63}$")
 _PROJECT_OBJECT = re.compile(
     r"^mem:([a-z0-9][a-z0-9._-]{0,63}):(project|decision|component|task|bug|"
@@ -75,6 +85,20 @@ _TRANSCRIPT_PATTERNS = (
 _ABSOLUTE_PATH_PATTERN = re.compile(r"(?:^/|^[A-Za-z]:[\\/]|\bfile://)")
 _ACYCLIC_RELATIONS = frozenset(("part_of", "supersedes"))
 _CROSS_STORE_RELATIONS = frozenset(("about", "derived_from", "implements", "supports", "related_to"))
+_A7_TARGET_ROLES = frozenset(("project_opt_in_config", "project_activation_manifest"))
+_A7_RECEIPT_STATUS = {
+    "backup": "BACKUP_CREATED_SYNTHETIC",
+    "canary": "CANARY_APPLIED_SYNTHETIC",
+    "readback": "READBACK_MATCH_SYNTHETIC",
+    "rollback": "ROLLED_BACK_SYNTHETIC",
+}
+_A7_CANARY_SEQUENCE = ("backup", "canary", "readback", "rollback")
+_A7_ROLLBACK_TRIGGERS = (
+    "BOUNDARY_VIOLATION",
+    "CAS_CONFLICT",
+    "READBACK_MISMATCH",
+    "SOURCE_DRIFT",
+)
 
 
 def activation_v2_logical_digest(document: Mapping[str, Any], digest_field: str) -> str:
@@ -103,6 +127,57 @@ def validate_activation_v2_document(name: str, document: dict[str, Any]) -> None
         _validate_route_intent(document)
     else:
         _validate_graph_snapshot(document)
+
+
+def validate_activation_v2_a7_document(name: str, document: dict[str, Any]) -> None:
+    """Validate the closed, two-target A7 synthetic rollout boundary.
+
+    A7 is intentionally restricted to the exact pair of synthetic opt-in
+    target roles. A later real rollout must use a new versioned contract rather
+    than silently omitting a target or widening this fixture surface.
+    """
+
+    if name not in A7_SCHEMA_NAMES:
+        raise SemanticValidationError("unknown Activation V2 A7 contract")
+    if type(document) is not dict:
+        raise SemanticValidationError("Activation V2 A7 record must be an object")
+    _reject_unsafe_content(document)
+    if name == "activation-v2-a7-target-bundle-v1":
+        captured_at = _require_timestamp(document["captured_at"], "A7 target bundle timestamp")
+        expires_at = _require_timestamp(document["expires_at"], "A7 target bundle expiry")
+        if parse_rfc3339_utc(expires_at) <= parse_rfc3339_utc(captured_at):
+            raise SemanticValidationError("A7 target bundle expiry is invalid")
+        project_id = _require_project_id(document["synthetic_project_id"], "A7 target bundle project")
+        _require_hash(document["implementation_digest"], "A7 target bundle implementation digest")
+        _validate_a7_packet_targets(document["targets"], "A7 target bundle", project_id)
+        _require_equal(
+            document["bundle_digest"],
+            activation_v2_logical_digest(document, "bundle_digest"),
+            "A7 target bundle digest",
+        )
+    elif name == "activation-v2-a7-approval-packet-v1":
+        created_at = _require_timestamp(document["created_at"], "A7 packet timestamp")
+        expires_at = _require_timestamp(document["expires_at"], "A7 packet expiry")
+        if parse_rfc3339_utc(created_at) > parse_rfc3339_utc(expires_at):
+            raise SemanticValidationError("A7 packet expiry is invalid")
+        project_id = _require_project_id(document["synthetic_project_id"], "A7 packet project")
+        _require_hash(document["implementation_digest"], "A7 packet implementation digest")
+        _validate_a7_packet_targets(document["targets"], "A7 packet", project_id)
+        if tuple(document["canary_sequence"]) != _A7_CANARY_SEQUENCE:
+            raise SemanticValidationError("A7 packet canary sequence is invalid")
+        if tuple(document["rollback_trigger_codes"]) != _A7_ROLLBACK_TRIGGERS:
+            raise SemanticValidationError("A7 packet rollback triggers are invalid")
+        _require_equal(
+            document["packet_digest"],
+            activation_v2_logical_digest(document, "packet_digest"),
+            "A7 packet digest",
+        )
+    elif name == "activation-v2-a7-rollout-state-v1":
+        _validate_a7_state_document(document, "A7 rollout state")
+    elif name == "activation-v2-a7-rollout-receipt-v1":
+        _validate_a7_receipt_document(document, "A7 receipt")
+    else:
+        _validate_a7_pending_operation(document)
 
 
 def validate_activation_v2_safe_content(value: Any) -> None:
@@ -274,6 +349,149 @@ def _validate_graph_snapshot(document: Mapping[str, Any]) -> None:
             raise SemanticValidationError(f"graph {relation} relation contains a cycle")
     expected = activation_v2_logical_digest(document, "snapshot_digest")
     _require_equal(document["snapshot_digest"], expected, "graph snapshot digest")
+
+
+def _validate_a7_packet_targets(values: object, label: str, project_id: str) -> None:
+    if not isinstance(values, Sequence) or isinstance(values, (str, bytes, bytearray)):
+        raise SemanticValidationError(f"{label} targets are invalid")
+    if len(values) != len(_A7_TARGET_ROLES):
+        raise SemanticValidationError(f"{label} target count is invalid")
+    target_ids: list[str] = []
+    target_roles: set[str] = set()
+    for target in values:
+        if not isinstance(target, Mapping):
+            raise SemanticValidationError(f"{label} target is invalid")
+        target_id = target["target_id"]
+        target_role = target["target_role"]
+        if not isinstance(target_id, str) or not isinstance(target_role, str):
+            raise SemanticValidationError(f"{label} target is invalid")
+        target_ids.append(target_id)
+        target_roles.add(target_role)
+        if target.get("synthetic_project_id") != project_id:
+            raise SemanticValidationError(f"{label} target crosses its project boundary")
+        if type(target["current_revision"]) is not int or target["current_revision"] < 0:
+            raise SemanticValidationError(f"{label} target revision is invalid")
+        _require_hash(target["before_digest"], f"{label} target before digest")
+        _require_hash(target["candidate_after_digest"], f"{label} target candidate digest")
+        if target["before_digest"] == target["candidate_after_digest"]:
+            raise SemanticValidationError(f"{label} target candidate is unchanged")
+        expected_snapshot = activation_v2_logical_digest(
+            {
+                "target_id": target_id,
+                "synthetic_project_id": target["synthetic_project_id"],
+                "target_role": target_role,
+                "current_revision": target["current_revision"],
+                "before_digest": target["before_digest"],
+                "candidate_after_digest": target["candidate_after_digest"],
+            },
+            "snapshot_digest",
+        )
+        _require_equal(target["snapshot_digest"], expected_snapshot, f"{label} target snapshot digest")
+    if len(set(target_ids)) != len(target_ids) or tuple(target_ids) != tuple(sorted(target_ids)):
+        raise SemanticValidationError(f"{label} target identities are invalid")
+    if target_roles != _A7_TARGET_ROLES:
+        raise SemanticValidationError(f"{label} target roles are incomplete")
+
+
+def _validate_a7_target_states(values: object, label: str, project_id: str) -> None:
+    if not isinstance(values, Sequence) or isinstance(values, (str, bytes, bytearray)):
+        raise SemanticValidationError(f"{label} target states are invalid")
+    if len(values) != len(_A7_TARGET_ROLES):
+        raise SemanticValidationError(f"{label} target state count is invalid")
+    target_ids: list[str] = []
+    for target in values:
+        if not isinstance(target, Mapping):
+            raise SemanticValidationError(f"{label} target state is invalid")
+        target_id = target["target_id"]
+        if not isinstance(target_id, str):
+            raise SemanticValidationError(f"{label} target state is invalid")
+        target_ids.append(target_id)
+        if target.get("synthetic_project_id") != project_id:
+            raise SemanticValidationError(f"{label} target state crosses its project boundary")
+        _require_hash(target["content_digest"], f"{label} target content digest")
+        if type(target["target_revision"]) is not int or target["target_revision"] < 0:
+            raise SemanticValidationError(f"{label} target revision is invalid")
+    if len(set(target_ids)) != len(target_ids) or tuple(target_ids) != tuple(sorted(target_ids)):
+        raise SemanticValidationError(f"{label} target state identities are invalid")
+
+
+def _validate_a7_state_document(document: Mapping[str, Any], label: str) -> None:
+    project_id = _require_project_id(document["synthetic_project_id"], f"{label} project")
+    _require_hash(document["packet_digest"], f"{label} packet digest")
+    if type(document["state_revision"]) is not int or document["state_revision"] < 0:
+        raise SemanticValidationError(f"{label} revision is invalid")
+    _validate_a7_target_states(document["targets"], label, project_id)
+    _require_equal(
+        document["state_digest"],
+        activation_v2_logical_digest(document, "state_digest"),
+        f"{label} digest",
+    )
+
+
+def _validate_a7_receipt_document(document: Mapping[str, Any], label: str) -> None:
+    _require_timestamp(document["created_at"], f"{label} timestamp")
+    project_id = _require_project_id(document["synthetic_project_id"], f"{label} project")
+    _require_hash(document["packet_digest"], f"{label} packet digest")
+    _require_hash(document["backup_digest"], f"{label} backup digest")
+    _validate_a7_target_states(document["target_states"], label, project_id)
+    operation = document["operation"]
+    if document["status"] != _A7_RECEIPT_STATUS.get(operation):
+        raise SemanticValidationError(f"{label} operation is invalid")
+    expected_revision = document["expected_state_revision"]
+    previous_revision = document["previous_state_revision"]
+    state_revision = document["state_revision"]
+    if any(type(value) is not int or value < 0 for value in (expected_revision, previous_revision, state_revision)):
+        raise SemanticValidationError(f"{label} revision is invalid")
+    if operation in {"backup", "readback"} and not (
+        expected_revision == previous_revision == state_revision
+    ):
+        raise SemanticValidationError(f"{label} revision chain is invalid")
+    if operation in {"canary", "rollback"} and not (
+        expected_revision == previous_revision and state_revision == previous_revision + 1
+    ):
+        raise SemanticValidationError(f"{label} revision chain is invalid")
+    _require_equal(
+        document["receipt_digest"],
+        activation_v2_logical_digest(document, "receipt_digest"),
+        f"{label} digest",
+    )
+
+
+def _validate_a7_pending_operation(document: Mapping[str, Any]) -> None:
+    if document["operation"] not in {"canary", "rollback"}:
+        raise SemanticValidationError("A7 pending operation is invalid")
+    project_id = _require_project_id(document["synthetic_project_id"], "A7 pending operation project")
+    _require_hash(document["packet_digest"], "A7 pending operation packet digest")
+    previous = document["previous_state"]
+    next_state = document["next_state"]
+    receipt = document["receipt"]
+    if not isinstance(previous, Mapping) or not isinstance(next_state, Mapping) or not isinstance(receipt, Mapping):
+        raise SemanticValidationError("A7 pending operation is invalid")
+    _validate_a7_state_document(previous, "A7 pending previous state")
+    _validate_a7_state_document(next_state, "A7 pending next state")
+    _validate_a7_receipt_document(receipt, "A7 pending receipt")
+    if (
+        previous["packet_id"] != document["packet_id"]
+        or next_state["packet_id"] != document["packet_id"]
+        or receipt["packet_id"] != document["packet_id"]
+        or previous["packet_digest"] != document["packet_digest"]
+        or next_state["packet_digest"] != document["packet_digest"]
+        or receipt["packet_digest"] != document["packet_digest"]
+        or previous["synthetic_project_id"] != project_id
+        or next_state["synthetic_project_id"] != project_id
+        or receipt["synthetic_project_id"] != project_id
+        or receipt["operation"] != document["operation"]
+        or next_state["state_revision"] != previous["state_revision"] + 1
+        or receipt["previous_state_revision"] != previous["state_revision"]
+        or receipt["state_revision"] != next_state["state_revision"]
+        or receipt["target_states"] != next_state["targets"]
+    ):
+        raise SemanticValidationError("A7 pending operation binding is invalid")
+    _require_equal(
+        document["journal_digest"],
+        activation_v2_logical_digest(document, "journal_digest"),
+        "A7 pending operation digest",
+    )
 
 
 def _validate_graph_node(node: Mapping[str, Any], project_id: str) -> None:

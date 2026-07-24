@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-a7-rollout-receipt-v1.json",
+  "title": "ActivationV2A7RolloutReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "operation",
+    "status",
+    "packet_id",
+    "packet_digest",
+    "synthetic_project_id",
+    "backup_id",
+    "backup_digest",
+    "expected_state_revision",
+    "previous_state_revision",
+    "state_revision",
+    "target_states",
+    "fixture_only",
+    "network_calls",
+    "global_target_access",
+    "global_mutation",
+    "authority_write",
+    "created_at",
+    "receipt_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {"$ref": "#/$defs/receipt_id"},
+    "operation": {"enum": ["backup", "canary", "readback", "rollback"]},
+    "status": {"enum": ["BACKUP_CREATED_SYNTHETIC", "CANARY_APPLIED_SYNTHETIC", "READBACK_MATCH_SYNTHETIC", "ROLLED_BACK_SYNTHETIC"]},
+    "packet_id": {"$ref": "#/$defs/packet_id"},
+    "packet_digest": {"$ref": "#/$defs/hash"},
+    "synthetic_project_id": {"$ref": "#/$defs/project_id"},
+    "backup_id": {"$ref": "#/$defs/backup_id"},
+    "backup_digest": {"$ref": "#/$defs/hash"},
+    "expected_state_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+    "previous_state_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+    "state_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+    "target_states": {"$ref": "#/$defs/target_states"},
+    "fixture_only": {"const": true},
+    "network_calls": {"const": 0},
+    "global_target_access": {"const": false},
+    "global_mutation": {"const": false},
+    "authority_write": {"const": false},
+    "created_at": {"type": "string", "format": "date-time"},
+    "receipt_digest": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "project_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$", "maxLength": 64},
+    "packet_id": {
+      "type": "string",
+      "pattern": "^a7-packet:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 46
+    },
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^a7-rollout-receipt:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 55
+    },
+    "backup_id": {
+      "type": "string",
+      "pattern": "^a7-backup:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 46
+    },
+    "target_id": {
+      "type": "string",
+      "pattern": "^a7-target:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 46
+    },
+    "target_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_id", "synthetic_project_id", "content_digest", "target_revision"],
+      "properties": {
+        "target_id": {"$ref": "#/$defs/target_id"},
+        "synthetic_project_id": {"$ref": "#/$defs/project_id"},
+        "content_digest": {"$ref": "#/$defs/hash"},
+        "target_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647}
+      }
+    },
+    "target_states": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/target_state"}
+    }
+  }
+}

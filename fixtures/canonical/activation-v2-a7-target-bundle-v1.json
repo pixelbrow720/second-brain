@@ -1,0 +1,31 @@
+{
+  "bundle_digest": "82a1e204b1f20250abcde99992a2c880e88a81fa2c9478bdf7b406bda6ed5eb2",
+  "bundle_id": "a7-target-bundle:10000000-0000-4000-8000-000000000700",
+  "captured_at": "2026-07-24T09:00:00Z",
+  "data_class": "PUBLIC_SYNTHETIC",
+  "expires_at": "2026-07-24T10:00:00Z",
+  "implementation_digest": "870cb91d5559fd2ca612dfe4323802b58d144ec2effff26abe7c7aba1c76e547",
+  "schema_version": 1,
+  "synthetic_project_id": "v2-fixture",
+  "target_scope": "synthetic_project_opt_in",
+  "targets": [
+    {
+      "before_digest": "1ecc5c1a3329d4bc7b79570d869ed34b1ed2828be5f2de393a74a2c305e726b0",
+      "candidate_after_digest": "1153ab362016645ea4581e933835f994375d7322f6e994ee462b741e41518a76",
+      "current_revision": 7,
+      "snapshot_digest": "13b4eb10da4f3d8fff963b874d8ab106ff02bd8c0b06fdaf670708c2de3793c9",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000701",
+      "target_role": "project_activation_manifest"
+    },
+    {
+      "before_digest": "e3efc5e854084244be1e1d3e8986c1cd47a4f5401833571d532e0e8e106f18c1",
+      "candidate_after_digest": "3a542c09504da27bd3c99fa1988c43f6b0d3e09cc0165a44486eecd4d3667d7c",
+      "current_revision": 11,
+      "snapshot_digest": "84e23643515fdca90526b45b18935babd39c8cdad9b166fb404e20ea5dbb4f58",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000702",
+      "target_role": "project_opt_in_config"
+    }
+  ]
+}

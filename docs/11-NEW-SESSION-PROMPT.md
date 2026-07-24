@@ -11,7 +11,7 @@ implementation-design contract, not approval to create stores, install hooks,
 capture memory automatically, change a root model, or mutate global Codex
 configuration.
 
-Activation V2 A0 through A6 are complete as local synthetic evidence. A0's five
+Activation V2 A0 through A7 are complete as local synthetic evidence. A0's five
 schema contracts, public synthetic fixtures, threat model, and fail-closed
 tests are in `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. A1's
 fixture-only disposable runtime, path/symlink, safe-content, backup/restore,
@@ -27,7 +27,12 @@ derived focus-graph fixture and no-authority output evidence are in
 initializes `runtime/`, creates user memory, installs a hook, changes routing,
 starts a graph server, or authorizes a global mutation. A6's text-free
 structured routing shadow and no-session/no-provider evidence are in
-`docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`.
+`docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`. A7's exact two-role/project,
+policy/expiry/source-bound supplied-snapshot draft packet, persisted synthetic
+backup/canary/readback/rollback rehearsal, journal recovery, and fail-closed
+CAS/receipt evidence are in
+`docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`. It is not a real
+approval packet, target read, or global opt-in.
 
 ```text
 Lanjutkan proyek Second Brain dan custom Codex workflow di:
@@ -71,7 +76,13 @@ atau data proyek nyata. Detail ada di
 `docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`. A6 hanya evaluator shadow
 intent terstruktur sintetis; tidak menerima prompt, tidak membuat session,
 provider call, default route, atau launcher. Detail ada di
-`docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`.
+`docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`. A7 hanya menyiapkan packet draft
+dan rehearsal backup -> canary -> readback -> rollback dari snapshot
+`PUBLIC_SYNTHETIC` yang dipasok; setiap transisi mengikat exact dua role,
+project, policy runtime, expiry, source digest, dan CAS/journal recovery.
+Tidak boleh menganggapnya packet approval nyata, membaca target global, atau
+menjalankan opt-in/default global. Detail ada di
+`docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`.
 
 Practical V1 sekarang sudah terpasang global dengan state
 `PRACTICAL_V1_APPLIED_AND_CANARY_PASS`. Bridge di

@@ -9,15 +9,18 @@ content barrier. It cannot initialize a user memory store or a global target.
 from __future__ import annotations
 
 import base64
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
+import fcntl
 import json
 import os
 from pathlib import Path
 import re
 import stat
 import subprocess
-from typing import Any, Mapping
+import threading
+from typing import Any, Iterator, Mapping
 import uuid
 
 from .activation_v2 import validate_activation_v2_safe_content
@@ -47,6 +50,8 @@ _HASH = re.compile(r"^[0-9a-f]{64}$")
 _MAX_RUNTIME_FILE_BYTES = 1_048_576
 _MAX_BACKUP_FILES = 256
 _MAX_BACKUP_TOTAL_BYTES = 4 * _MAX_RUNTIME_FILE_BYTES
+_RUNTIME_LOCK_GUARD = threading.Lock()
+_RUNTIME_LOCKS: dict[str, threading.RLock] = {}
 
 
 class ActivationV2RuntimeError(SemanticValidationError):
@@ -412,6 +417,50 @@ def disposable_json_exists(runtime: DisposableRuntime, relative_path: str | Path
         return False
     _require_private_file(path, "runtime document")
     return True
+
+
+def remove_disposable_json(runtime: DisposableRuntime, relative_path: str | Path) -> None:
+    """Remove one exact validated synthetic JSON document from a disposable root."""
+
+    handle = _require_runtime(runtime)
+    relative = _validate_runtime_data_path(relative_path, allow_backup=False)
+    path = _contained_runtime_path(handle.root, relative)
+    try:
+        _require_private_file(path, "runtime document")
+        path.unlink()
+    except OSError as error:
+        raise ActivationV2RuntimeError("runtime document removal failed") from error
+
+
+@contextmanager
+def exclusive_disposable_runtime_lock(runtime: DisposableRuntime) -> Iterator[DisposableRuntime]:
+    """Serialize synthetic state transitions using the immutable manifest inode."""
+
+    handle = _require_runtime(runtime)
+    manifest_path = _contained_runtime_path(handle.root, "manifest.json")
+    with _runtime_lock_for(handle.root):
+        descriptor: int | None = None
+        try:
+            _require_private_file(manifest_path, "runtime manifest")
+            descriptor = os.open(manifest_path, os.O_RDONLY)
+            fcntl.flock(descriptor, fcntl.LOCK_EX)
+            yield handle
+        except OSError as error:
+            raise ActivationV2RuntimeError("disposable runtime lock is unavailable") from error
+        finally:
+            if descriptor is not None:
+                try:
+                    fcntl.flock(descriptor, fcntl.LOCK_UN)
+                finally:
+                    os.close(descriptor)
+
+
+def _runtime_lock_for(root: Path) -> threading.RLock:
+    """Return the process-local half of the disposable runtime lock."""
+
+    key = os.fspath(root)
+    with _RUNTIME_LOCK_GUARD:
+        return _RUNTIME_LOCKS.setdefault(key, threading.RLock())
 
 
 def create_runtime_backup(runtime: DisposableRuntime, *, created_at: str | None = None) -> RuntimeBackup:

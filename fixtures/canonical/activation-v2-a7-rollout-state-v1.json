@@ -1,0 +1,22 @@
+{
+  "packet_digest": "bd78b868bba0f73f5dd64042a3ca9371b92350930016d23af310b47c828fc915",
+  "packet_id": "a7-packet:10000000-0000-4000-8000-000000000710",
+  "schema_version": 1,
+  "state_digest": "ce2026a7bf762d7d50666e2db9b5e417572a49f5f068277cf54d11963f8f19bd",
+  "state_revision": 2,
+  "synthetic_project_id": "v2-fixture",
+  "targets": [
+    {
+      "content_digest": "1ecc5c1a3329d4bc7b79570d869ed34b1ed2828be5f2de393a74a2c305e726b0",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000701",
+      "target_revision": 9
+    },
+    {
+      "content_digest": "e3efc5e854084244be1e1d3e8986c1cd47a4f5401833571d532e0e8e106f18c1",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000702",
+      "target_revision": 13
+    }
+  ]
+}

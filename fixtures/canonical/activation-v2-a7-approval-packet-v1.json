@@ -1,0 +1,55 @@
+{
+  "approval_state": "SYNTHETIC_DRAFT_NOT_APPROVED",
+  "backup_required": true,
+  "canary_required": true,
+  "canary_sequence": [
+    "backup",
+    "canary",
+    "readback",
+    "rollback"
+  ],
+  "created_at": "2026-07-24T09:00:00Z",
+  "expires_at": "2026-07-24T10:00:00Z",
+  "fixture_only": true,
+  "global_mutation_authorized": false,
+  "global_target_access": false,
+  "implementation_digest": "870cb91d5559fd2ca612dfe4323802b58d144ec2effff26abe7c7aba1c76e547",
+  "network_permitted": false,
+  "packet_digest": "bd78b868bba0f73f5dd64042a3ca9371b92350930016d23af310b47c828fc915",
+  "packet_id": "a7-packet:10000000-0000-4000-8000-000000000710",
+  "permission_impact": "NONE_SYNTHETIC",
+  "policy_digest": "d74c1b3481773b5fccfb52811708fa2a159bf5b90ae4c2cea6c2abff840e6203",
+  "readback_required": true,
+  "requires_current_user_approval": true,
+  "rollback_required": true,
+  "rollback_trigger_codes": [
+    "BOUNDARY_VIOLATION",
+    "CAS_CONFLICT",
+    "READBACK_MISMATCH",
+    "SOURCE_DRIFT"
+  ],
+  "schema_version": 1,
+  "snapshot_bundle_digest": "82a1e204b1f20250abcde99992a2c880e88a81fa2c9478bdf7b406bda6ed5eb2",
+  "snapshot_bundle_id": "a7-target-bundle:10000000-0000-4000-8000-000000000700",
+  "synthetic_project_id": "v2-fixture",
+  "targets": [
+    {
+      "before_digest": "1ecc5c1a3329d4bc7b79570d869ed34b1ed2828be5f2de393a74a2c305e726b0",
+      "candidate_after_digest": "1153ab362016645ea4581e933835f994375d7322f6e994ee462b741e41518a76",
+      "current_revision": 7,
+      "snapshot_digest": "13b4eb10da4f3d8fff963b874d8ab106ff02bd8c0b06fdaf670708c2de3793c9",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000701",
+      "target_role": "project_activation_manifest"
+    },
+    {
+      "before_digest": "e3efc5e854084244be1e1d3e8986c1cd47a4f5401833571d532e0e8e106f18c1",
+      "candidate_after_digest": "3a542c09504da27bd3c99fa1988c43f6b0d3e09cc0165a44486eecd4d3667d7c",
+      "current_revision": 11,
+      "snapshot_digest": "84e23643515fdca90526b45b18935babd39c8cdad9b166fb404e20ea5dbb4f58",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000702",
+      "target_role": "project_opt_in_config"
+    }
+  ]
+}

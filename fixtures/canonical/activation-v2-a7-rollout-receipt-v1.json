@@ -1,0 +1,35 @@
+{
+  "authority_write": false,
+  "backup_digest": "ccb48ea1b12fbee51a3a7b4b22d6ed7aa4de1a62d35a08e3a0b4c065649b5545",
+  "backup_id": "a7-backup:10000000-0000-4000-8000-000000000720",
+  "created_at": "2026-07-24T09:00:00Z",
+  "expected_state_revision": 1,
+  "fixture_only": true,
+  "global_mutation": false,
+  "global_target_access": false,
+  "network_calls": 0,
+  "operation": "rollback",
+  "packet_digest": "bd78b868bba0f73f5dd64042a3ca9371b92350930016d23af310b47c828fc915",
+  "packet_id": "a7-packet:10000000-0000-4000-8000-000000000710",
+  "previous_state_revision": 1,
+  "receipt_digest": "cc556d0be2e67278dac4de8cc4e9bed503defa8fc49180e51921372c899f7102",
+  "receipt_id": "a7-rollout-receipt:10000000-0000-4000-8000-000000000724",
+  "schema_version": 1,
+  "state_revision": 2,
+  "status": "ROLLED_BACK_SYNTHETIC",
+  "synthetic_project_id": "v2-fixture",
+  "target_states": [
+    {
+      "content_digest": "1ecc5c1a3329d4bc7b79570d869ed34b1ed2828be5f2de393a74a2c305e726b0",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000701",
+      "target_revision": 9
+    },
+    {
+      "content_digest": "e3efc5e854084244be1e1d3e8986c1cd47a4f5401833571d532e0e8e106f18c1",
+      "synthetic_project_id": "v2-fixture",
+      "target_id": "a7-target:10000000-0000-4000-8000-000000000702",
+      "target_revision": 13
+    }
+  ]
+}

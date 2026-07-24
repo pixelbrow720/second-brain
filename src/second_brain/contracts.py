@@ -9,7 +9,13 @@ from pathlib import Path
 import re
 from typing import Any
 
-from .activation_v2 import A0_SCHEMA_NAMES, validate_activation_v2_document
+from .activation_v2 import (
+    A0_SCHEMA_NAMES,
+    A7_SCHEMA_NAMES,
+    validate_activation_v2_a7_document,
+    validate_activation_v2_document,
+    validate_activation_v2_safe_content,
+)
 from .errors import SemanticValidationError, WorkspacePathError
 from .jsonio import canonical_json_bytes, load_strict_json
 from .schema_validation import parse_rfc3339_utc, validate_json_schema
@@ -84,11 +90,17 @@ def _contained_asset_path(directory: str, relative_path: str) -> Path:
 def validate_named_document(name: str, document: Any) -> None:
     """Validate one frozen M0 document and its currently-known semantics."""
 
+    # A7 input can later be persisted in a disposable runtime. Reject unsafe
+    # strings before schema validators can format a malformed supplied value.
+    if name in A7_SCHEMA_NAMES:
+        validate_activation_v2_safe_content(document)
     validate_json_schema(document, load_schema(name))
     if name == "memory-object-v2":
         validate_memory_object_semantics(document)
     elif name in A0_SCHEMA_NAMES:
         validate_activation_v2_document(name, document)
+    elif name in A7_SCHEMA_NAMES:
+        validate_activation_v2_a7_document(name, document)
 
 
 def validate_memory_object_semantics(document: dict[str, Any]) -> None:

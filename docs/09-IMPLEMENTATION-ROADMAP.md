@@ -16,11 +16,12 @@
   bridge, operator-trusted router-log contract, source-bound skill/wrapper, and
   rollback helper were installed from an exact approved packet, read back, and
   passed a no-network disposable canary. This does not complete M8 or strict M9.
-- Activation V2 A0 checkpoint: local design fixtures, threat model, and
-  fail-closed contract tests are complete. See
-  `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. This adds no runtime,
-  hook, automatic capture, route, store, or global target and does not alter
-  M8/M9 status or promotion gates.
+- Activation V2 A0 through A7 checkpoints are complete as local synthetic
+  evidence only. A7 adds fixture-only packet/backup/canary/readback/rollback
+  preparation in `docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`.
+  None of these checkpoints creates a persistent runtime, hook, automatic
+  capture, route, store, or global target, and none alters M8/M9 status or
+  promotion gates.
 
 ## 1. Delivery Strategy
 
@@ -911,6 +912,38 @@ A7 may build and test packet/backup/canary/readback/rollback preparation only
 against supplied public synthetic target snapshots. It must not inspect or
 mutate `~/.codex` or another real global target. User policy choices and a fresh
 exact approval packet remain mandatory before any real opt-in/default action.
+
+## 12H. Activation V2 Extension - A7 Synthetic Rollout Preparation
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not a
+per-project opt-in, real approval packet, or global activation.
+
+- Scope: opaque public synthetic target snapshots; exact two-role/project,
+  policy, expiry, and source-digest packet binding; CAS-protected disposable
+  state; and a persisted backup -> canary -> readback -> rollback rehearsal
+  chain with journal recovery.
+- Evidence: `tests/test_activation_v2_a7.py`,
+  `fixtures/activation-v2/a7-rollout-evaluation-v1.json`, the five A7 schemas,
+  and `docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`. Duplicate or
+  missing roles, mixed projects, raw/unsafe input, packet/bundle/policy/source
+  drift, stale expiry, stale CAS, cross-runtime backup reuse, concurrent
+  callers, interrupted writes, and incorrect predecessor receipts fail closed.
+- Authority: targets are opaque fixture IDs/revisions/digests only. Every
+  packet and receipt denies network access, global target access, global
+  mutation, and authority write. Outputs are confined to ignored disposable
+  test roots; no real target is discovered.
+- Rollback: deterministic synthetic rollback restores the exact backup digest
+  state only after a persisted synthetic readback receipt and keeps revisions
+  monotonic. No external state exists to restore.
+
+### Next Gate
+
+A8 may implement only a fixture-only reviewed-promotion and restore evaluator.
+It still cannot inspect or mutate any real target. A real A7/A8 transaction is
+blocked on explicit policy inputs, a current exact real target snapshot and
+packet, and current user approval that names that packet digest.
 
 ## 13. Requirement Traceability
 
