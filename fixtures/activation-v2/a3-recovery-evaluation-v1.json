@@ -1,0 +1,84 @@
+{
+  "fixture_version": 1,
+  "data_class": "PUBLIC_SYNTHETIC",
+  "corpus": {
+    "corpus_digest": "efe0ee4645405980635f6ec8d6adbc0d1110bcd9eea7703635324df456f7e912",
+    "corpus_version": 1,
+    "data_class": "PUBLIC_SYNTHETIC",
+    "project_id": "v2-fixture",
+    "records": [
+      {
+        "freshness": "fresh",
+        "kind": "decision",
+        "labels": ["activation", "boundary"],
+        "lifecycle": "active",
+        "project_id": "v2-fixture",
+        "record_digest": "613c70bade1ae41eda367e30e30eaa5a41def60c44b1a28e419b5dded53377a3",
+        "record_id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000301",
+        "revision": 1,
+        "scope": "project",
+        "title": "Keep V2 artifacts fixture-only.",
+        "verification": "verified"
+      },
+      {
+        "freshness": "partial",
+        "kind": "task",
+        "labels": ["activation", "policy"],
+        "lifecycle": "active",
+        "project_id": "v2-fixture",
+        "record_digest": "35480e14c1568223c9ea8bd2c441513f2222fdfab5b944b8b961d1e03114c40a",
+        "record_id": "mem:v2-fixture:task:10000000-0000-4000-8000-000000000302",
+        "revision": 1,
+        "scope": "project",
+        "title": "Resolve policy choices before activation.",
+        "verification": "unverified"
+      },
+      {
+        "freshness": "fresh",
+        "kind": "evidence",
+        "labels": ["activation", "contract"],
+        "lifecycle": "active",
+        "project_id": "v2-fixture",
+        "record_digest": "60295bafb3f41ed9bfb1df5f5ba24ada1b3812ac42efe7ad1d7eb72a5ecb5094",
+        "record_id": "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000303",
+        "revision": 1,
+        "scope": "project",
+        "title": "A0 contract suite passed.",
+        "verification": "verified"
+      },
+      {
+        "freshness": "not_applicable",
+        "kind": "concept",
+        "labels": ["activation", "boundary"],
+        "lifecycle": "active",
+        "project_id": null,
+        "record_digest": "f04f7f323d9ee040c5d7187ed4889e4a55c710a9d8ec27120a4ae3a16542373d",
+        "record_id": "kb:global:concept:10000000-0000-4000-8000-000000000304",
+        "revision": 1,
+        "scope": "global",
+        "title": "Global promotion needs review.",
+        "verification": "verified"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "bounded-assisted-recovery",
+      "request": {
+        "include_global": true,
+        "max_results": 2,
+        "project_id": "v2-fixture",
+        "query_labels": ["activation"],
+        "request_id": "recovery-request:10000000-0000-4000-8000-000000000305"
+      },
+      "expected_included": [
+        "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000301",
+        "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000303"
+      ],
+      "expected_omitted": [
+        "mem:v2-fixture:task:10000000-0000-4000-8000-000000000302",
+        "kb:global:concept:10000000-0000-4000-8000-000000000304"
+      ]
+    }
+  ]
+}

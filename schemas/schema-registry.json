@@ -90,6 +90,24 @@
       "file": "activation-v2-lifecycle-receipt-v1.json",
       "name": "activation-v2-lifecycle-receipt-v1",
       "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md section 7.2"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/activation-v2-recovery-proposal-v1.json",
+      "file": "activation-v2-recovery-proposal-v1.json",
+      "name": "activation-v2-recovery-proposal-v1",
+      "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md section 8"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/activation-v2-closure-proposal-v1.json",
+      "file": "activation-v2-closure-proposal-v1.json",
+      "name": "activation-v2-closure-proposal-v1",
+      "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md sections 7 and 12"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/activation-v2-proposal-review-receipt-v1.json",
+      "file": "activation-v2-proposal-review-receipt-v1.json",
+      "name": "activation-v2-proposal-review-receipt-v1",
+      "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md sections 7 and 13"
     }
   ]
 }

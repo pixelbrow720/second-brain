@@ -796,9 +796,39 @@ no installer and creates metadata-only receipts in disposable test roots.
 
 ### Next Gate
 
-A3 may add only synthetic assisted recovery and closure proposals. Project and
-global authority writes remain prohibited pending the later phase contracts and
-unresolved policy inputs.
+A3 used only explicit synthetic assisted recovery and closure proposals. Project
+and global authority writes remain prohibited; real policy inputs remain
+unresolved.
+
+## 12D. Activation V2 Extension - A3 Synthetic Recovery and Closure Proposals
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not a
+project/global authority transaction, persistent memory capture, or a global
+activation.
+
+- Scope: a fixed public synthetic corpus bound to one exact project ID;
+  label-only `ASSISTED` retrieval with inclusion, omission, freshness, and
+  latency evidence; plus pending-review TaskClosure and review receipts.
+- Evidence: `tests/test_activation_v2_a3.py`,
+  `fixtures/activation-v2/a3-recovery-evaluation-v1.json`, and
+  `docs/28-ACTIVATION-V2-A3-SYNTHETIC-RECOVERY-AND-PROPOSALS.md`. Relevant
+  ordering, omission visibility, explicit global selection, latency rejection,
+  raw-input rejection, cross-project selector rejection, proposal review, and
+  tamper readback all fail closed where required.
+- Authority: recovery, closure, and review records are safe-JSON synthetic
+  proposals below ignored disposable test roots. Each explicitly denies project
+  and global authority writes; no real task or user memory is captured.
+- Rollback: disposable test roots are removed after each test. A3 creates no
+  authority object, lifecycle installation, provider request, or global target.
+
+### Next Gate
+
+A4 may implement only synthetic/disposable `PROJECT_AUTO` transaction
+machinery. A real opt-in remains blocked on explicit retention, capture default,
+storage/key-management, graph UI, router-entry, and promotion-review policy
+decisions, plus later phase evidence and any required exact approval packet.
 
 ## 13. Requirement Traceability
 

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-proposal-review-receipt-v1.json",
+  "title": "ActivationV2ProposalReviewReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "review_id", "proposal_id", "project_id", "reviewed_at",
+    "decision", "reviewer_kind", "authority_write", "global_write", "receipt_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "review_id": {"type": "string", "pattern": "^proposal-review:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 53},
+    "proposal_id": {"type": "string", "pattern": "^closure-proposal:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 53},
+    "project_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$", "maxLength": 64},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "decision": {"enum": ["approved_for_later_transaction", "rejected"]},
+    "reviewer_kind": {"const": "synthetic_fixture"},
+    "authority_write": {"const": false},
+    "global_write": {"const": false},
+    "receipt_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+  }
+}

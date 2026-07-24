@@ -1,0 +1,12 @@
+{
+  "authority_write": false,
+  "decision": "approved_for_later_transaction",
+  "global_write": false,
+  "project_id": "v2-fixture",
+  "proposal_id": "closure-proposal:10000000-0000-4000-8000-000000000307",
+  "receipt_digest": "e3860c4a85ced48bf8364f651483635b606993dd3b76941d223258a845f40a36",
+  "review_id": "proposal-review:10000000-0000-4000-8000-000000000308",
+  "reviewed_at": "2026-07-24T03:00:02Z",
+  "reviewer_kind": "synthetic_fixture",
+  "schema_version": 1
+}

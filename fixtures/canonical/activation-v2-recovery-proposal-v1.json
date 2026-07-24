@@ -1,0 +1,53 @@
+{
+  "authority_write": false,
+  "corpus_digest": "efe0ee4645405980635f6ec8d6adbc0d1110bcd9eea7703635324df456f7e912",
+  "created_at": "2026-07-24T03:00:00Z",
+  "global_write": false,
+  "included": [
+    {
+      "freshness": "fresh",
+      "record_id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000301",
+      "revision": 1,
+      "scope": "project",
+      "score": 135,
+      "title": "Keep V2 artifacts fixture-only.",
+      "verification": "verified"
+    },
+    {
+      "freshness": "fresh",
+      "record_id": "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000303",
+      "revision": 1,
+      "scope": "project",
+      "score": 135,
+      "title": "A0 contract suite passed.",
+      "verification": "verified"
+    }
+  ],
+  "latency_ms": 1,
+  "project_id": "v2-fixture",
+  "proposal_digest": "acdf89fd11234ada3dd4e562b59d67c56ba4dfe25a35f6ef0b1670873bd15cbf",
+  "proposal_id": "recovery-proposal:10000000-0000-4000-8000-000000000306",
+  "proposal_mode": "assisted_read_proposal",
+  "relevant_but_omitted": [
+    {
+      "freshness": "partial",
+      "record_id": "mem:v2-fixture:task:10000000-0000-4000-8000-000000000302",
+      "revision": 1,
+      "scope": "project",
+      "score": 119,
+      "title": "Resolve policy choices before activation.",
+      "verification": "unverified"
+    },
+    {
+      "freshness": "not_applicable",
+      "record_id": "kb:global:concept:10000000-0000-4000-8000-000000000304",
+      "revision": 1,
+      "scope": "global",
+      "score": 110,
+      "title": "Global promotion needs review.",
+      "verification": "verified"
+    }
+  ],
+  "request_id": "recovery-request:10000000-0000-4000-8000-000000000305",
+  "schema_version": 1
+}

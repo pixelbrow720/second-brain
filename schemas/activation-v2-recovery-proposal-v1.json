@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-recovery-proposal-v1.json",
+  "title": "ActivationV2RecoveryProposalV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "proposal_id", "request_id", "project_id", "created_at",
+    "corpus_digest", "included", "relevant_but_omitted", "latency_ms",
+    "proposal_mode", "authority_write", "global_write", "proposal_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "proposal_id": {"type": "string", "pattern": "^recovery-proposal:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 54},
+    "request_id": {"type": "string", "pattern": "^recovery-request:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 54},
+    "project_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$", "maxLength": 64},
+    "created_at": {"type": "string", "format": "date-time"},
+    "corpus_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "included": {"type": "array", "maxItems": 12, "uniqueItems": true, "items": {"$ref": "#/$defs/selector"}},
+    "relevant_but_omitted": {"type": "array", "maxItems": 64, "uniqueItems": true, "items": {"$ref": "#/$defs/selector"}},
+    "latency_ms": {"type": "integer", "minimum": 0, "maximum": 1000},
+    "proposal_mode": {"const": "assisted_read_proposal"},
+    "authority_write": {"const": false},
+    "global_write": {"const": false},
+    "proposal_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+  },
+  "$defs": {
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_id", "revision", "scope", "title", "freshness", "verification", "score"],
+      "properties": {
+        "record_id": {"type": "string", "pattern": "^(?:kb:global:(?:source|entity|concept|claim|synthesis)|mem:[a-z0-9][a-z0-9._-]{0,63}:(?:project|decision|component|task|bug|experiment|evidence|question)):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 128},
+        "revision": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+        "scope": {"enum": ["project", "global"]},
+        "title": {"type": "string", "minLength": 1, "maxLength": 140},
+        "freshness": {"enum": ["fresh", "partial", "stale", "unverifiable", "not_applicable"]},
+        "verification": {"enum": ["unverified", "verified", "partial", "stale", "failed", "not_applicable"]},
+        "score": {"type": "integer", "minimum": 1, "maximum": 1000}
+      }
+    }
+  }
+}

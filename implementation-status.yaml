@@ -302,8 +302,8 @@ milestones:
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
 activation_v2:
-  status: A2_COMPLETE_SYNTHETIC_LOCAL_ONLY
-  current_phase: A3_not_started
+  status: A3_COMPLETE_SYNTHETIC_LOCAL_ONLY
+  current_phase: A4_not_started
   strict_m8_m9_status: unchanged_blocked
   A0:
     status: complete_local_only
@@ -396,6 +396,36 @@ activation_v2:
       prompt_or_transcript_capture: false
       tool_output_capture: false
       authority_store_write: false
+      session_router_enabled: false
+      global_mutation: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+  A3:
+    status: complete_synthetic_local_only
+    verified_at: 2026-07-24T07:50:05Z
+    scope: explicit_public_synthetic_assisted_recovery_and_closure_proposals_in_disposable_runtime
+    requirements:
+      A3-AC-01: fixed_project_corpus_relevance_omission_freshness_and_explicit_global_selection_verified
+      A3-AC-02: bounded_latency_fails_closed_without_clipping_or_receipt_write
+      A3-AC-03: task_closure_and_review_remain_pending_non_authoritative_proposals
+      A3-AC-04: raw_input_cross_project_selector_and_tampered_proposal_fail_closed
+    evidence:
+      - docs/28-ACTIVATION-V2-A3-SYNTHETIC-RECOVERY-AND-PROPOSALS.md
+      - fixtures/activation-v2/a3-recovery-evaluation-v1.json
+      - schemas/activation-v2-recovery-proposal-v1.json
+      - schemas/activation-v2-closure-proposal-v1.json
+      - schemas/activation-v2-proposal-review-receipt-v1.json
+      - src/second_brain/activation_v2_memory.py
+      - tests/test_activation_v2_a3.py
+    validation:
+      focused_a0_to_a3_tests_contracts_and_docs: passed
+      make_check: passed
+      clean_room: passed
+    boundaries:
+      real_authority_store_opened: false
+      real_task_or_user_memory_captured: false
+      lifecycle_hook_installed: false
+      provider_network_call: false
       session_router_enabled: false
       global_mutation: false
       old_obsidian_vault_access: false

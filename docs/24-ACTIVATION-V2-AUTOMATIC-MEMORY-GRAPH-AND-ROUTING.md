@@ -1,6 +1,6 @@
 # Activation V2: Automatic Memory, Typed Graph, and Front-Door Routing
 
-Status: design and implementation contract with A0/A1 synthetic-local evidence.
+Status: design and implementation contract with A0-A3 synthetic-local evidence.
 This document does not approve or apply a global Codex change, create a durable
 user store, ingest a transcript, or change a model-provider setting. Each later
 global mutation needs its own current exact approval packet, backup, canary,
@@ -493,6 +493,11 @@ A1 adds only the separately documented [disposable synthetic runtime](26-ACTIVAT
 test artifacts and it cannot initialize the future private `runtime/` path or
 any user/global target.
 
+A2 records only synthetic observe-only metadata receipts, and A3 adds only
+[synthetic assisted recovery and closure proposals](28-ACTIVATION-V2-A3-SYNTHETIC-RECOVERY-AND-PROPOSALS.md).
+Neither phase installs a hook, opens an authority store, commits a project or
+global object, or changes a session route.
+
 ## 13. Evaluation and acceptance criteria
 
 ### 13.1 Memory
@@ -628,3 +633,4 @@ proposal-only promotion, direct-path memory avoidance, and no provider claim.
 | A0 | Five fixture schemas, public synthetic threat corpus, and fail-closed contract tests. | Runtime initialization, hooks, capture, routing, and global change. |
 | A1 | Fixture-only policy/manifest schemas and a private disposable runtime with path, symlink, backup, restore, content-boundary, and Git-ignore tests. | `runtime/` initialization, persistent user memory, policy defaults, hooks, launcher/session creation, provider calls, and global mutation. |
 | A2 | Exact synthetic observe-only event fixtures and metadata-only, digest-bound lifecycle receipts. | Hook installation, prompt/transcript/tool-output capture, authority writes, session routing, and global mutation. |
+| A3 | Explicit synthetic assisted-recovery corpus, proposal-only closure flow, omission/freshness evidence, and latency/cross-project fail-closed tests. | Authority-store writes, real task capture, global promotion acceptance, hook installation, provider calls, and global mutation. |
