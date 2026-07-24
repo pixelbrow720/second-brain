@@ -11,7 +11,7 @@ implementation-design contract, not approval to create stores, install hooks,
 capture memory automatically, change a root model, or mutate global Codex
 configuration.
 
-Activation V2 A0 through A5 are complete as local synthetic evidence. A0's five
+Activation V2 A0 through A6 are complete as local synthetic evidence. A0's five
 schema contracts, public synthetic fixtures, threat model, and fail-closed
 tests are in `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. A1's
 fixture-only disposable runtime, path/symlink, safe-content, backup/restore,
@@ -25,7 +25,9 @@ proposal-only closure flow, and cross-project/latency tests are in
 derived focus-graph fixture and no-authority output evidence are in
 `docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`. None of these checkpoints
 initializes `runtime/`, creates user memory, installs a hook, changes routing,
-starts a graph server, or authorizes a global mutation.
+starts a graph server, or authorizes a global mutation. A6's text-free
+structured routing shadow and no-session/no-provider evidence are in
+`docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`.
 
 ```text
 Lanjutkan proyek Second Brain dan custom Codex workflow di:
@@ -66,7 +68,10 @@ hook, auto-capture nyata, route/session launcher, atau mutasi global. A5 hanya
 graph focus JSON derived yang deterministic dari fixture publik dengan batas
 hop/node/edge dan provenance/revision; tidak ada UI server, graph authority,
 atau data proyek nyata. Detail ada di
-`docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`.
+`docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`. A6 hanya evaluator shadow
+intent terstruktur sintetis; tidak menerima prompt, tidak membuat session,
+provider call, default route, atau launcher. Detail ada di
+`docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`.
 
 Practical V1 sekarang sudah terpasang global dengan state
 `PRACTICAL_V1_APPLIED_AND_CANARY_PASS`. Bridge di

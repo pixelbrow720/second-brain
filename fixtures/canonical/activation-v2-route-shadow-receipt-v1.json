@@ -1,0 +1,29 @@
+{
+  "authority_write": false,
+  "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000601",
+  "classifier_version": "activation-v2-a6/1",
+  "created_at": "2026-07-24T06:00:00Z",
+  "default_changed": false,
+  "effort_intent": "high",
+  "expected_profile_alias": "tera-high",
+  "fallback_used": false,
+  "fixture_only": true,
+  "global_write": false,
+  "input_digest": "29ff3dfae447b5166c0ffa7e1189a9b1504043eb242596fdf24d746992b49dce",
+  "latency_within_budget": true,
+  "match_status": "MATCH",
+  "model_classifier_calls": 0,
+  "prompt_persisted": false,
+  "provider_network_calls": 0,
+  "reason_codes": [
+    "RULE_MATCH"
+  ],
+  "receipt_digest": "f4c53e10baf76a48f40cfbb737a4b5d93fa01bbfecad38244539a32cb9f164ce",
+  "receipt_id": "route-shadow-receipt:62cb99c3-77f3-5055-8029-4015e22e5604",
+  "registry_digest": "f3a08e87d38487ed6342e8c25ee29da1abb15b6cc88dcb2965ba61ccde65d8e8",
+  "registry_version": 2,
+  "schema_version": 1,
+  "selected_profile_alias": "tera-high",
+  "selection_reason": "rule_read_explanation",
+  "session_created": false
+}

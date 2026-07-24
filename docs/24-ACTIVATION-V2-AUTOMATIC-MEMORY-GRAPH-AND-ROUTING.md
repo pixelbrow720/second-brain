@@ -1,6 +1,6 @@
 # Activation V2: Automatic Memory, Typed Graph, and Front-Door Routing
 
-Status: design and implementation contract with A0-A5 synthetic-local evidence.
+Status: design and implementation contract with A0-A6 synthetic-local evidence.
 This document does not approve or apply a global Codex change, create a durable
 user store, ingest a transcript, or change a model-provider setting. Each later
 global mutation needs its own current exact approval packet, backup, canary,
@@ -640,3 +640,4 @@ proposal-only promotion, direct-path memory avoidance, and no provider claim.
 | A3 | Explicit synthetic assisted-recovery corpus, proposal-only closure flow, omission/freshness evidence, and latency/cross-project fail-closed tests. | Authority-store writes, real task capture, global promotion acceptance, hook installation, provider calls, and global mutation. |
 | A4 | Fixture-only PROJECT_AUTO state machine with CAS, dedupe, synthetic rollback, and content-free closure status. | Real project transactions, automatic capture, global-promotion acceptance, hooks, provider calls, and global mutation. |
 | A5 | Deterministic, bounded two-hop focus graph fixture with retained revision/provenance metadata and no-authority derived JSON output. | Graph server/UI installation, authority edits, real graph data, hooks, provider calls, and global mutation. |
+| A6 | Rule-first structured-intent routing corpus with redacted shadow receipts and mismatch/fallback evidence. | Launcher/session creation, provider calls, default changes, router installation, prompt persistence, and global mutation. |

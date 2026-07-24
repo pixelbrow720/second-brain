@@ -884,6 +884,34 @@ install a launcher. The real graph UI, router entry point, retention,
 capture-default, storage/key-management, and promotion-review choices remain
 explicit user policy inputs.
 
+## 12G. Activation V2 Extension - A6 Synthetic Route Shadow
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not a
+front-door launcher, provider route, session integration, or global activation.
+
+- Scope: a text-free, rule-first structured-intent corpus; redacted selection
+  receipts; a passing local shadow report; and exact expected-profile,
+  fallback, mismatch, cost, and latency evidence.
+- Evidence: `tests/test_activation_v2_a6.py`,
+  `docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md`, and the three A6 route-shadow
+  schemas. The fixed corpus covers safe explicit choice, risk/cross-project
+  override, Luna hard gates, uncertainty fallback, and all selected route
+  aliases in its intended scope.
+- Authority: every receipt/report records zero model classifier/provider calls,
+  no session creation, no default change, no prompt persistence, and no project
+  or global authority write. All output is ignored disposable test data.
+- Rollback: route-shadow records are disposable evidence only; no launcher,
+  route default, provider, or global configuration exists to restore.
+
+### Next Gate
+
+A7 may build and test packet/backup/canary/readback/rollback preparation only
+against supplied public synthetic target snapshots. It must not inspect or
+mutate `~/.codex` or another real global target. User policy choices and a fresh
+exact approval packet remain mandatory before any real opt-in/default action.
+
 ## 13. Requirement Traceability
 
 | Contract area | Primary milestones | Primary test gates |

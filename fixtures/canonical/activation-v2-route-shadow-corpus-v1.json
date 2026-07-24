@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "corpus_id": "route-shadow-corpus:10000000-0000-4000-8000-000000000600",
+  "data_class": "PUBLIC_SYNTHETIC",
+  "evaluated_at": "2026-07-24T06:00:00Z",
+  "latency_budget_ms": 1000,
+  "intents": [
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000601",
+      "task_shape": "read_explanation",
+      "admission_lane": "DIRECT",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": null,
+      "explicit_override_allowed": false,
+      "luna_hard_gate": {
+        "output_schema_finite": false,
+        "scope_bounded": false,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": false,
+        "no_external_or_destructive_action": false,
+        "no_scope_expansion": false,
+        "deterministically_verifiable": false
+      },
+      "expected_profile_alias": "tera-high"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000602",
+      "task_shape": "scoped_implementation",
+      "admission_lane": "ASSISTED",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": null,
+      "explicit_override_allowed": false,
+      "luna_hard_gate": {
+        "output_schema_finite": false,
+        "scope_bounded": false,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": false,
+        "no_external_or_destructive_action": false,
+        "no_scope_expansion": false,
+        "deterministically_verifiable": false
+      },
+      "expected_profile_alias": "sol-xhigh"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000603",
+      "task_shape": "difficult_debugging",
+      "admission_lane": "GRAPH",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": null,
+      "explicit_override_allowed": false,
+      "luna_hard_gate": {
+        "output_schema_finite": false,
+        "scope_bounded": false,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": false,
+        "no_external_or_destructive_action": false,
+        "no_scope_expansion": false,
+        "deterministically_verifiable": false
+      },
+      "expected_profile_alias": "sol-max"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000604",
+      "task_shape": "finite_utility",
+      "admission_lane": "ASSISTED",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": null,
+      "explicit_override_allowed": false,
+      "luna_hard_gate": {
+        "output_schema_finite": true,
+        "scope_bounded": true,
+        "non_sensitive": true,
+        "no_architecture_or_security_judgment": true,
+        "no_external_or_destructive_action": true,
+        "no_scope_expansion": true,
+        "deterministically_verifiable": true
+      },
+      "expected_profile_alias": "luna-xhigh"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000605",
+      "task_shape": "unknown",
+      "admission_lane": "DIRECT",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": null,
+      "explicit_override_allowed": false,
+      "luna_hard_gate": {
+        "output_schema_finite": false,
+        "scope_bounded": false,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": false,
+        "no_external_or_destructive_action": false,
+        "no_scope_expansion": false,
+        "deterministically_verifiable": false
+      },
+      "expected_profile_alias": "tera-max"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000606",
+      "task_shape": "ambiguous_plan",
+      "admission_lane": "DEEP",
+      "high_risk": true,
+      "ambiguous": true,
+      "cross_project": true,
+      "multi_step": true,
+      "explicit_profile_alias": null,
+      "explicit_override_allowed": false,
+      "luna_hard_gate": {
+        "output_schema_finite": false,
+        "scope_bounded": false,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": false,
+        "no_external_or_destructive_action": false,
+        "no_scope_expansion": false,
+        "deterministically_verifiable": false
+      },
+      "expected_profile_alias": "tera-max"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000607",
+      "task_shape": "read_explanation",
+      "admission_lane": "DIRECT",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": "sol-xhigh",
+      "explicit_override_allowed": true,
+      "luna_hard_gate": {
+        "output_schema_finite": false,
+        "scope_bounded": false,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": false,
+        "no_external_or_destructive_action": false,
+        "no_scope_expansion": false,
+        "deterministically_verifiable": false
+      },
+      "expected_profile_alias": "sol-xhigh"
+    },
+    {
+      "case_id": "route-shadow-case:10000000-0000-4000-8000-000000000608",
+      "task_shape": "finite_utility",
+      "admission_lane": "ASSISTED",
+      "high_risk": false,
+      "ambiguous": false,
+      "cross_project": false,
+      "multi_step": false,
+      "explicit_profile_alias": "luna-xhigh",
+      "explicit_override_allowed": true,
+      "luna_hard_gate": {
+        "output_schema_finite": true,
+        "scope_bounded": true,
+        "non_sensitive": false,
+        "no_architecture_or_security_judgment": true,
+        "no_external_or_destructive_action": true,
+        "no_scope_expansion": true,
+        "deterministically_verifiable": true
+      },
+      "expected_profile_alias": "tera-max"
+    }
+  ],
+  "corpus_digest": "07e42b76e0de6b6503cf0748b7e358d145e6e05a2795014d79bbab65fd4ccb58"
+}

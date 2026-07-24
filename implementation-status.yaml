@@ -302,8 +302,8 @@ milestones:
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
 activation_v2:
-  status: A5_COMPLETE_SYNTHETIC_LOCAL_ONLY
-  current_phase: A6_not_started
+  status: A6_COMPLETE_SYNTHETIC_LOCAL_ONLY
+  current_phase: A7_not_started
   strict_m8_m9_status: unchanged_blocked
   A0:
     status: complete_local_only
@@ -488,6 +488,40 @@ activation_v2:
       lifecycle_hook_installed: false
       provider_network_call: false
       session_router_enabled: false
+      global_mutation: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+  A6:
+    status: complete_synthetic_local_only
+    verified_at: 2026-07-24T08:34:42Z
+    scope: fixture_only_structured_intent_rule_first_front_door_route_shadow_with_no_session_or_provider_action
+    requirements:
+      A6-AC-01: public_structured_route_corpus_expected_profiles_and_luna_hard_gate_verified
+      A6-AC-02: fallback_and_profile_mismatch_are_visible_and_passing_report_fails_closed_on_mismatch
+      A6-AC-03: classifier_latency_and_zero_model_provider_session_default_actions_verified
+      A6-AC-04: raw_input_non_shadow_policy_and_rehashed_boundary_flags_fail_closed
+    evidence:
+      - docs/31-ACTIVATION-V2-A6-ROUTE-SHADOW.md
+      - schemas/activation-v2-route-shadow-corpus-v1.json
+      - schemas/activation-v2-route-shadow-receipt-v1.json
+      - schemas/activation-v2-route-shadow-report-v1.json
+      - fixtures/canonical/activation-v2-route-shadow-corpus-v1.json
+      - fixtures/canonical/activation-v2-route-shadow-receipt-v1.json
+      - fixtures/canonical/activation-v2-route-shadow-report-v1.json
+      - src/second_brain/activation_v2_router_shadow.py
+      - tests/test_activation_v2_a6.py
+    validation:
+      focused_a0_to_a6_tests: passed_51_tests
+      contracts_docs_lint: passed
+      make_check: passed
+      clean_room: passed
+    boundaries:
+      launcher_installed: false
+      session_created: false
+      provider_network_call: false
+      route_default_changed: false
+      prompt_or_transcript_persisted: false
+      authority_store_opened: false
       global_mutation: false
       old_obsidian_vault_access: false
       ai_memory_access: false

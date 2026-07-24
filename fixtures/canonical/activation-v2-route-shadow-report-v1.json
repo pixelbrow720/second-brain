@@ -1,0 +1,55 @@
+{
+  "authority_write": false,
+  "case_count": 8,
+  "corpus_digest": "07e42b76e0de6b6503cf0748b7e358d145e6e05a2795014d79bbab65fd4ccb58",
+  "corpus_id": "route-shadow-corpus:10000000-0000-4000-8000-000000000600",
+  "created_at": "2026-07-24T06:00:00Z",
+  "defaults_changed": 0,
+  "fallback_count": 3,
+  "fixture_only": true,
+  "global_write": false,
+  "latency_budget_ms": 1000,
+  "matched_count": 8,
+  "max_observed_latency_ms": 1,
+  "model_classifier_calls": 0,
+  "provider_network_calls": 0,
+  "receipt_bindings": [
+    {
+      "receipt_digest": "f4c53e10baf76a48f40cfbb737a4b5d93fa01bbfecad38244539a32cb9f164ce",
+      "receipt_id": "route-shadow-receipt:62cb99c3-77f3-5055-8029-4015e22e5604"
+    },
+    {
+      "receipt_digest": "6ac0ccebe03f16ea5eaa440a83377341445c8d174402d6aa03b356f509f6c466",
+      "receipt_id": "route-shadow-receipt:fdb9f486-ac47-51dd-bc93-cf102dd809dd"
+    },
+    {
+      "receipt_digest": "bfdf47ecac274acf05f06f1fe06086b60ffada7de9299f143ee532486c300013",
+      "receipt_id": "route-shadow-receipt:d8eff29c-674d-57fb-bd67-2233a45b8beb"
+    },
+    {
+      "receipt_digest": "1771fef581e7f89f3d8dba4f96f2ef80ce94a1c38cc98b557bd60782e9ca520b",
+      "receipt_id": "route-shadow-receipt:af9ed580-4786-5aa4-b0ac-e6c170ad8586"
+    },
+    {
+      "receipt_digest": "42a861e24cd095ee33ebd6c127407bf952d23d857de8fdd1d362a140f09547c9",
+      "receipt_id": "route-shadow-receipt:491906a1-e7ec-5f05-b4c3-3eee672e31ce"
+    },
+    {
+      "receipt_digest": "962b856ccee6019bfa8e654f459190a8eab4f66bd255f6328d85d9f1e3270b2e",
+      "receipt_id": "route-shadow-receipt:658db942-86ad-51dc-810d-990f2bc62f22"
+    },
+    {
+      "receipt_digest": "af698db255abd82774e48efcea1f6ce754de7a02b60eec6bd75cf5286e27c0cc",
+      "receipt_id": "route-shadow-receipt:cdd63443-3f3a-5448-be05-6204932938db"
+    },
+    {
+      "receipt_digest": "18c34cd6c2497673b04b4f0616678728a0d918f46316d3035a3ad90eb5967e5d",
+      "receipt_id": "route-shadow-receipt:7695e7fa-d18d-5128-9708-4df54620d310"
+    }
+  ],
+  "report_digest": "0ec61aae5ee83ccd4b4d9b3b8cb1ca0a46d47e1b138fd9f2f96310a1772e096c",
+  "report_id": "route-shadow-report:10000000-0000-4000-8000-000000000620",
+  "schema_version": 1,
+  "sessions_created": 0,
+  "status": "PASS"
+}
