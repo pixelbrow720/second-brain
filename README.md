@@ -36,6 +36,10 @@ provider internals. Strict M8/M9 signed upstream attestation remains open. See
 is the detailed design for a later opt-in automatic-memory, typed graph, and
 front-door routing expansion. It is a design contract only; it does not enable
 stores, hooks, automatic writes, root-model switching, or any new global target.
+Its A0-A8 checkpoints are fixture-only local evidence; the latest reviewed
+promotion and restore evaluator is documented in
+[the A8 checkpoint](docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md).
+It does not create a global object, inspect a real target, or consume approval.
 
 This repository defines an implementation-ready design for a personal second
 brain and an efficient global Codex workflow. The target behavior is simple:

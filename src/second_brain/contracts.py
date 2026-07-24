@@ -90,9 +90,13 @@ def _contained_asset_path(directory: str, relative_path: str) -> Path:
 def validate_named_document(name: str, document: Any) -> None:
     """Validate one frozen M0 document and its currently-known semantics."""
 
-    # A7 input can later be persisted in a disposable runtime. Reject unsafe
-    # strings before schema validators can format a malformed supplied value.
-    if name in A7_SCHEMA_NAMES:
+    # A8 imports A3 proposal types, which themselves validate contracts.  Keep
+    # this extension lazy so the existing proposal contract remains acyclic.
+    from .activation_v2_promotion import A8_SCHEMA_NAMES, validate_activation_v2_a8_document
+
+    # Synthetic runtime inputs reject unsafe strings before schema validators
+    # can format a malformed supplied value.
+    if name in A7_SCHEMA_NAMES or name in A8_SCHEMA_NAMES:
         validate_activation_v2_safe_content(document)
     validate_json_schema(document, load_schema(name))
     if name == "memory-object-v2":
@@ -101,6 +105,8 @@ def validate_named_document(name: str, document: Any) -> None:
         validate_activation_v2_document(name, document)
     elif name in A7_SCHEMA_NAMES:
         validate_activation_v2_a7_document(name, document)
+    elif name in A8_SCHEMA_NAMES:
+        validate_activation_v2_a8_document(name, document)
 
 
 def validate_memory_object_semantics(document: dict[str, Any]) -> None:

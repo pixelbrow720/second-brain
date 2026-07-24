@@ -1,0 +1,51 @@
+{
+  "a7_packet_digest": "bd78b868bba0f73f5dd64042a3ca9371b92350930016d23af310b47c828fc915",
+  "a7_packet_id": "a7-packet:10000000-0000-4000-8000-000000000710",
+  "approval_state": "SYNTHETIC_DRAFT_NOT_APPROVED",
+  "backup_required": true,
+  "canary_sequence": [
+    "backup",
+    "promotion_canary",
+    "readback",
+    "restore"
+  ],
+  "candidates": [
+    {
+      "before_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidate_after_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "candidate_digest": "c4477f0e0a8bcda1d7b9bf34a74708ac1a2ae94d16bba2260a04cf37efd3266c",
+      "candidate_id": "a8-candidate:10000000-0000-4000-8000-000000000801",
+      "current_revision": 4,
+      "global_object_id": "kb:global:claim:10000000-0000-4000-8000-000000000803",
+      "source_project_id": "v2-fixture"
+    }
+  ],
+  "corpus_digest": "7f3816ff0227937389595a226ce1b91e9ce4b705af46ae869a2e06ea3c3e54d7",
+  "corpus_id": "a8-promotion-corpus:10000000-0000-4000-8000-000000000800",
+  "created_at": "2026-07-24T09:00:00Z",
+  "expires_at": "2026-07-24T09:30:00Z",
+  "fixture_only": true,
+  "global_mutation_authorized": false,
+  "global_target_access": false,
+  "implementation_digest": "3cbc0b3252a84f16acd2887b4d25312c5f1799c4ed07ca6a4c4a3f17c39b303d",
+  "network_permitted": false,
+  "packet_digest": "915bf31649b0214e5f12cd87ffd067610fdd038783d2cc07d97f37e1a59e77b0",
+  "packet_id": "a8-packet:10000000-0000-4000-8000-000000000810",
+  "permission_impact": "NONE_SYNTHETIC",
+  "policy_digest": "d74c1b3481773b5fccfb52811708fa2a159bf5b90ae4c2cea6c2abff840e6203",
+  "promotion_canary_required": true,
+  "readback_required": true,
+  "requires_current_user_approval": true,
+  "restore_required": true,
+  "review_mode": "PER_ITEM",
+  "rollback_trigger_codes": [
+    "BOUNDARY_VIOLATION",
+    "CAS_CONFLICT",
+    "CROSS_PROJECT_LEAKAGE",
+    "READBACK_MISMATCH",
+    "REVIEW_MISMATCH",
+    "SOURCE_DRIFT"
+  ],
+  "schema_version": 1,
+  "synthetic_project_id": "v2-fixture"
+}

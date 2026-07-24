@@ -11,7 +11,7 @@ implementation-design contract, not approval to create stores, install hooks,
 capture memory automatically, change a root model, or mutate global Codex
 configuration.
 
-Activation V2 A0 through A7 are complete as local synthetic evidence. A0's five
+Activation V2 A0 through A8 are complete as local synthetic evidence. A0's five
 schema contracts, public synthetic fixtures, threat model, and fail-closed
 tests are in `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. A1's
 fixture-only disposable runtime, path/symlink, safe-content, backup/restore,
@@ -32,7 +32,11 @@ policy/expiry/source-bound supplied-snapshot draft packet, persisted synthetic
 backup/canary/readback/rollback rehearsal, journal recovery, and fail-closed
 CAS/receipt evidence are in
 `docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`. It is not a real
-approval packet, target read, or global opt-in.
+approval packet, target read, or global opt-in. A8's closed reviewed-promotion
+corpus, exact A3/A7 provenance binding, synthetic backup/promotion-canary/
+readback/restore sequence, and journal/CAS evidence are in
+`docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md`. It is not a global
+promotion, a real target read, or approval consumption.
 
 ```text
 Lanjutkan proyek Second Brain dan custom Codex workflow di:
@@ -83,6 +87,14 @@ project, policy runtime, expiry, source digest, dan CAS/journal recovery.
 Tidak boleh menganggapnya packet approval nyata, membaca target global, atau
 menjalankan opt-in/default global. Detail ada di
 `docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`.
+
+A8 hanya evaluator reviewed-promotion dan restore sintetis di
+`docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md`. Corpusnya mengikat
+metadata proposal/review A3, packet draft A7, project, policy, expiry, dan
+source digest; output hanya state/receipt digest-only di runtime test yang
+diabaikan Git. Tidak ada global object, target global, approval consumption,
+network/provider call, hook, atau persistent user memory. Seluruh fase lokal
+A0-A8 selesai; jangan menyimpulkan bahwa opt-in atau promosi nyata siap.
 
 Practical V1 sekarang sudah terpasang global dengan state
 `PRACTICAL_V1_APPLIED_AND_CANARY_PASS`. Bridge di

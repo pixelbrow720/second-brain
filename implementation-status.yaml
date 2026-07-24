@@ -302,8 +302,8 @@ milestones:
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
 activation_v2:
-  status: A7_COMPLETE_SYNTHETIC_LOCAL_ONLY
-  current_phase: A8_not_started
+  status: A8_COMPLETE_SYNTHETIC_LOCAL_ONLY
+  current_phase: real_a7_a8_transaction_blocked_pending_policy_snapshot_and_approval
   strict_m8_m9_status: unchanged_blocked
   A0:
     status: complete_local_only
@@ -561,6 +561,53 @@ activation_v2:
       lifecycle_hook_installed: false
       old_obsidian_vault_access: false
       ai_memory_access: false
+  A8:
+    status: complete_synthetic_local_only
+    verified_at: 2026-07-24T10:08:10Z
+    scope: fixture_only_reviewed_promotion_and_restore_evaluator_in_disposable_runtime
+    requirements:
+      A8-AC-01: exact_a3_review_a7_packet_project_policy_expiry_and_source_digest_provenance_verified
+      A8-AC-02: rejected_cross_project_raw_future_stale_and_source_drift_inputs_fail_closed
+      A8-AC-03: serialized_backup_promotion_canary_readback_restore_receipts_are_exact_persisted_and_monotonic
+      A8-AC-04: pending_operation_recovery_cas_and_boundary_tampering_fail_closed
+      A8-AC-05: no_real_global_target_read_or_write_approval_consumption_network_call_or_persistent_user_memory
+    evidence:
+      - docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md
+      - fixtures/activation-v2/a8-promotion-evaluation-v1.json
+      - schemas/activation-v2-a8-promotion-corpus-v1.json
+      - schemas/activation-v2-a8-promotion-packet-v1.json
+      - schemas/activation-v2-a8-promotion-state-v1.json
+      - schemas/activation-v2-a8-promotion-receipt-v1.json
+      - schemas/activation-v2-a8-pending-operation-v1.json
+      - src/second_brain/activation_v2_promotion.py
+      - tests/test_activation_v2_a8.py
+    validation:
+      focused_a0_to_a8_tests: passed_70_tests
+      a8_focused_tests: passed_8_tests
+      contract_docs_lint: passed
+      make_check: passed
+      clean_room: passed
+    boundaries:
+      synthetic_test_runtime_only: true
+      real_global_target_inspected: false
+      real_global_object_written: false
+      user_approval_consumed: false
+      global_configuration_mutated: false
+      provider_network_call: false
+      persistent_user_memory_written: false
+      lifecycle_hook_installed: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+  real_activation_blocked_on:
+    - retention_policy
+    - capture_default_policy
+    - storage_and_key_management_policy
+    - graph_ui_choice
+    - router_entry_point
+    - promotion_review_policy
+    - current_exact_real_target_snapshot
+    - current_exact_packet_with_backup_canary_readback_and_rollback
+    - explicit_user_approval_naming_current_packet_digest
 practical_v1:
   status: PRACTICAL_V1_APPLIED_AND_CANARY_PASS
   verified_at: 2026-07-23T14:25:18Z
@@ -612,11 +659,11 @@ practical_v1:
     - project_id_to_exact_git_root_mapping_remains_an_operator_trust_decision
     - upstream_provider_retention_unverifiable
     - strict_m8_m9_external_gates_remain_blocked
-last_verified_at: 2026-07-24T09:32:34Z
-last_test_receipt: activation-v2-a7-synthetic-rollout-preparation
+last_verified_at: 2026-07-24T10:08:10Z
+last_test_receipt: activation-v2-a8-synthetic-reviewed-promotion
 last_local_validation:
-  clean_room: passed_309_tests
-  full_suite: passed_309_tests
+  clean_room: passed_317_tests
+  full_suite: passed_317_tests
   practical_v1_focused: passed_16_tests
   skill_validation: passed_quick_validate
   packet_current_state: consumed_exact_approval_abe806a22ad13f1611331d3552bf6787f6b90967b045a6b8a54be9c72c36be63
@@ -629,6 +676,10 @@ last_local_validation:
   activation_v2_a0_focused: passed_12_tests
   activation_v2_a0_make_check: passed
   activation_v2_a0_clean_room: passed
+  activation_v2_a8_focused: passed_8_tests
+  activation_v2_a0_to_a8_focused: passed_70_tests
+  activation_v2_a8_make_check: passed
+  activation_v2_a8_clean_room: passed
 global_activation: m9_shadow_only_unattested_plus_practical_v1_installed_local_canary_pass
 boundaries:
   old_obsidian_vault: untouched

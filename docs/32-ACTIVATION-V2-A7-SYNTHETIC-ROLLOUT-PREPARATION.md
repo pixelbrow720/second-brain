@@ -91,8 +91,9 @@ installer, global configuration reader, deployment command, or approval token.
 No `~/.codex` path, global AGENTS/skill/plugin/MCP/hook/provider endpoint,
 Obsidian vault, or `ai-memory` path is discovered or accessed.
 
-A8 may evaluate a synthetic reviewed-promotion and restore workflow only. A
-real A7 opt-in or A8 promotion remains blocked until the user chooses retention,
-capture mode, storage/key management, graph UI, router entry point, and
-promotion-review policy; supplies a current exact target snapshot; and approves
-the resulting real packet explicitly.
+A8 later completed its synthetic reviewed-promotion and restore evaluator in
+`docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md`. A real A7 opt-in or
+A8 promotion remains blocked until the user chooses retention, capture mode,
+storage/key management, graph UI, router entry point, and promotion-review
+policy; supplies a current exact target snapshot; and approves the resulting
+real packet explicitly.

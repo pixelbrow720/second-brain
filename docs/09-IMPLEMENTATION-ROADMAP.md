@@ -16,9 +16,9 @@
   bridge, operator-trusted router-log contract, source-bound skill/wrapper, and
   rollback helper were installed from an exact approved packet, read back, and
   passed a no-network disposable canary. This does not complete M8 or strict M9.
-- Activation V2 A0 through A7 checkpoints are complete as local synthetic
-  evidence only. A7 adds fixture-only packet/backup/canary/readback/rollback
-  preparation in `docs/32-ACTIVATION-V2-A7-SYNTHETIC-ROLLOUT-PREPARATION.md`.
+- Activation V2 A0 through A8 checkpoints are complete as local synthetic
+  evidence only. A8 adds a fixture-only reviewed-promotion and restore
+  evaluator in `docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md`.
   None of these checkpoints creates a persistent runtime, hook, automatic
   capture, route, store, or global target, and none alters M8/M9 status or
   promotion gates.
@@ -938,12 +938,43 @@ per-project opt-in, real approval packet, or global activation.
   state only after a persisted synthetic readback receipt and keeps revisions
   monotonic. No external state exists to restore.
 
+### Historical Next Gate
+
+The separate A8 request was received after A7. Its fixture-only evidence is
+recorded immediately below; it did not inspect or mutate a real target.
+
+## 12I. Activation V2 Extension - A8 Synthetic Reviewed Promotion and Restore
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not a
+global promotion, a real approval packet, or an M8/M9 milestone transition.
+
+- Scope: one closed `PUBLIC_SYNTHETIC` corpus carrying safe A3 proposal/review
+  provenance, exact A7 packet binding, source/expiry/policy checks, a
+  non-authorizing A8 packet, and a disposable backup -> promotion-canary ->
+  readback -> restore state machine with journal recovery.
+- Evidence: `tests/test_activation_v2_a8.py`,
+  `fixtures/activation-v2/a8-promotion-evaluation-v1.json`, five A8 schemas,
+  and `docs/33-ACTIVATION-V2-A8-SYNTHETIC-REVIEWED-PROMOTION.md`. Rejected
+  review, cross-project source, raw input, future/stale input, A7/A8 source
+  drift, policy mismatch, stale CAS, foreign runtime backup, wrong predecessor,
+  concurrent callers, crash windows, and rehashed boundary flags fail closed.
+- Authority: all candidates are opaque IDs/revisions/digests in an ignored test
+  runtime. Every receipt denies network access, real global-target access,
+  global mutation, authority write, and persistent user-memory capture. No
+  real target is discovered or read.
+- Restore: only the exact persisted backup and readback receipts can restore
+  synthetic pre-promotion digests; synthetic revisions remain monotonic. No
+  external state exists to restore.
+
 ### Next Gate
 
-A8 may implement only a fixture-only reviewed-promotion and restore evaluator.
-It still cannot inspect or mutate any real target. A real A7/A8 transaction is
-blocked on explicit policy inputs, a current exact real target snapshot and
-packet, and current user approval that names that packet digest.
+There is no further local activation phase. A real A7 opt-in or A8 global
+promotion remains blocked on explicit policy decisions, a fresh exact read-only
+snapshot of every real target, a current packet listing all mutations and
+permissions, and explicit user approval that names that packet digest. M8/M9
+remain separately blocked on their original strict evidence.
 
 ## 13. Requirement Traceability
 

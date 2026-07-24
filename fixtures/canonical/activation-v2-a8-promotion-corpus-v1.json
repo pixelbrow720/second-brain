@@ -1,0 +1,59 @@
+{
+  "a7_packet_digest": "bd78b868bba0f73f5dd64042a3ca9371b92350930016d23af310b47c828fc915",
+  "a7_packet_id": "a7-packet:10000000-0000-4000-8000-000000000710",
+  "candidates": [
+    {
+      "before_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidate_after_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "candidate_digest": "c4477f0e0a8bcda1d7b9bf34a74708ac1a2ae94d16bba2260a04cf37efd3266c",
+      "candidate_id": "a8-candidate:10000000-0000-4000-8000-000000000801",
+      "closure_proposal": {
+        "authority_write": false,
+        "candidate_counts": {
+          "decisions": 1,
+          "evidence": 1,
+          "global_candidates": 1,
+          "open_tasks": 1,
+          "questions": 1
+        },
+        "capture_mode": "ASSISTED",
+        "closure_digest": "61d1d257e1a5ae61c52f43b820f5ca69561b9303da2c669a6930a6535daad3b7",
+        "closure_id": "closure:10000000-0000-4000-8000-000000000001",
+        "created_at": "2026-07-24T03:00:01Z",
+        "global_outbox_state": "pending_review",
+        "global_write": false,
+        "project_id": "v2-fixture",
+        "project_write_state": "pending_review",
+        "proposal_digest": "72fc02e1a40de95b24726f594f7b3aad8e018c9c47795ad7e873b31311b1106f",
+        "proposal_id": "closure-proposal:10000000-0000-4000-8000-000000000307",
+        "schema_version": 1
+      },
+      "global_object_id": "kb:global:claim:10000000-0000-4000-8000-000000000803",
+      "global_object_revision": 4,
+      "review_receipt": {
+        "authority_write": false,
+        "decision": "approved_for_later_transaction",
+        "global_write": false,
+        "project_id": "v2-fixture",
+        "proposal_id": "closure-proposal:10000000-0000-4000-8000-000000000307",
+        "receipt_digest": "e3860c4a85ced48bf8364f651483635b606993dd3b76941d223258a845f40a36",
+        "review_id": "proposal-review:10000000-0000-4000-8000-000000000308",
+        "reviewed_at": "2026-07-24T03:00:02Z",
+        "reviewer_kind": "synthetic_fixture",
+        "schema_version": 1
+      },
+      "source_object_ids": [
+        "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000002"
+      ],
+      "source_project_id": "v2-fixture"
+    }
+  ],
+  "captured_at": "2026-07-24T09:00:00Z",
+  "corpus_digest": "7f3816ff0227937389595a226ce1b91e9ce4b705af46ae869a2e06ea3c3e54d7",
+  "corpus_id": "a8-promotion-corpus:10000000-0000-4000-8000-000000000800",
+  "data_class": "PUBLIC_SYNTHETIC",
+  "expires_at": "2026-07-24T09:30:00Z",
+  "implementation_digest": "3cbc0b3252a84f16acd2887b4d25312c5f1799c4ed07ca6a4c4a3f17c39b303d",
+  "schema_version": 1,
+  "synthetic_project_id": "v2-fixture"
+}

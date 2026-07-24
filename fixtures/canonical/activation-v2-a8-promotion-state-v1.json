@@ -1,0 +1,22 @@
+{
+  "a7_packet_digest": "bd78b868bba0f73f5dd64042a3ca9371b92350930016d23af310b47c828fc915",
+  "candidates": [
+    {
+      "candidate_id": "a8-candidate:10000000-0000-4000-8000-000000000801",
+      "content_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "global_object_id": "kb:global:claim:10000000-0000-4000-8000-000000000803",
+      "object_revision": 6,
+      "promotion_state": "restored",
+      "source_project_id": "v2-fixture"
+    }
+  ],
+  "corpus_digest": "7f3816ff0227937389595a226ce1b91e9ce4b705af46ae869a2e06ea3c3e54d7",
+  "packet_digest": "915bf31649b0214e5f12cd87ffd067610fdd038783d2cc07d97f37e1a59e77b0",
+  "packet_id": "a8-packet:10000000-0000-4000-8000-000000000810",
+  "phase": "restored",
+  "runtime_id": "runtime:10000000-0000-4000-8000-000000000820",
+  "schema_version": 1,
+  "state_digest": "747525719d69899ae4b10909dd0028d5864b4c07d55954240cf466811090dd69",
+  "state_revision": 2,
+  "synthetic_project_id": "v2-fixture"
+}

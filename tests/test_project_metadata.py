@@ -15,10 +15,21 @@ class ProjectMetadataTests(unittest.TestCase):
     def test_schema_registry_is_machine_readable_json(self) -> None:
         root = repository_root()
         registry = load_strict_json(root / "schemas/schema-registry.json")
-        self.assertEqual(len(registry["schemas"]), 7)
+        names = [entry["name"] for entry in registry["schemas"]]
+        self.assertEqual(len(names), len(set(names)))
+        self.assertGreaterEqual(len(names), 7)
         self.assertIn(
             "evaluation-case-v1",
-            [entry["name"] for entry in registry["schemas"]],
+            names,
+        )
+        self.assertTrue(
+            {
+                "activation-v2-a8-promotion-corpus-v1",
+                "activation-v2-a8-promotion-packet-v1",
+                "activation-v2-a8-promotion-state-v1",
+                "activation-v2-a8-promotion-receipt-v1",
+                "activation-v2-a8-pending-operation-v1",
+            }.issubset(names)
         )
 
 
