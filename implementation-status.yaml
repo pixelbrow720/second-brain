@@ -302,8 +302,8 @@ milestones:
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
 activation_v2:
-  status: A4_COMPLETE_SYNTHETIC_LOCAL_ONLY
-  current_phase: A5_not_started
+  status: A5_COMPLETE_SYNTHETIC_LOCAL_ONLY
+  current_phase: A6_not_started
   strict_m8_m9_status: unchanged_blocked
   A0:
     status: complete_local_only
@@ -453,6 +453,38 @@ activation_v2:
       real_project_authority_transaction: false
       automatic_capture_enabled: false
       global_promotion_accepted: false
+      lifecycle_hook_installed: false
+      provider_network_call: false
+      session_router_enabled: false
+      global_mutation: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+  A5:
+    status: complete_synthetic_local_only
+    verified_at: 2026-07-24T08:18:22Z
+    scope: deterministic_bounded_fixture_only_focus_graph_with_derived_json_and_no_authority_ui
+    requirements:
+      A5-AC-01: canonical_focus_view_preserves_node_state_revision_and_cross_store_provenance
+      A5-AC-02: deterministic_two_hop_bounded_rebuild_and_latency_limit_verified
+      A5-AC-03: unsafe_rehashed_cycle_selector_policy_and_project_boundary_inputs_fail_closed
+      A5-AC-04: generated_snapshot_only_with_no_ui_server_authority_or_global_write
+    evidence:
+      - docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md
+      - schemas/activation-v2-focus-graph-view-v1.json
+      - fixtures/canonical/activation-v2-focus-graph-view-v1.json
+      - fixtures/activation-v2/a5-focus-graph-evaluation-v1.json
+      - src/second_brain/activation_v2_graph.py
+      - tests/test_activation_v2_a5.py
+    validation:
+      focused_a0_to_a5_tests: passed_45_tests
+      contracts_docs_lint: passed
+      make_check: passed
+      clean_room: passed
+    boundaries:
+      real_graph_ui_enabled: false
+      ui_server_started: false
+      authority_store_opened: false
+      persistent_user_memory_written: false
       lifecycle_hook_installed: false
       provider_network_call: false
       session_router_enabled: false

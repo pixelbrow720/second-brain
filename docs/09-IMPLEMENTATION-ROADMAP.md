@@ -854,6 +854,36 @@ A5 may create derived graph and view artifacts from public synthetic inputs
 only. A real graph UI or opt-in still needs explicit user policy decisions and
 later local acceptance evidence.
 
+## 12F. Activation V2 Extension - A5 Derived Focus Graph
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not a
+graph-server installation, an authority-store operation, a real graph UI, or a
+global activation.
+
+- Scope: a deterministic, one/two-hop focus graph compiler over the A0 public
+  synthetic graph snapshot; bounded derived JSON persistence; node lifecycle/
+  freshness/revision metadata; and revision-bound cross-store provenance.
+- Evidence: `tests/test_activation_v2_a5.py`,
+  `fixtures/activation-v2/a5-focus-graph-evaluation-v1.json`, and
+  `docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`. Canonical rebuilds,
+  policy/selector bounds, unsafe/rehashed labels, cycles, `related_to`,
+  project tampering, and latency overrun are fail-closed.
+- Authority: every output remains `fixture_only`, `derived_only`, and denies
+  UI-server startup, project authority writes, and global writes. Only ignored
+  disposable test paths are used.
+- Rollback: the generated view is rebuildable and disposable. No UI server,
+  authority object, global target, or user data exists to restore.
+
+### Next Gate
+
+A6 may evaluate a synthetic, rule-first front-door routing shadow only. It must
+not create an alternate Codex session, call a provider, change a default, or
+install a launcher. The real graph UI, router entry point, retention,
+capture-default, storage/key-management, and promotion-review choices remain
+explicit user policy inputs.
+
 ## 13. Requirement Traceability
 
 | Contract area | Primary milestones | Primary test gates |

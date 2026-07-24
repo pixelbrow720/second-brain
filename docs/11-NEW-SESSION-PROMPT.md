@@ -11,7 +11,7 @@ implementation-design contract, not approval to create stores, install hooks,
 capture memory automatically, change a root model, or mutate global Codex
 configuration.
 
-Activation V2 A0 through A4 are complete as local synthetic evidence. A0's five
+Activation V2 A0 through A5 are complete as local synthetic evidence. A0's five
 schema contracts, public synthetic fixtures, threat model, and fail-closed
 tests are in `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. A1's
 fixture-only disposable runtime, path/symlink, safe-content, backup/restore,
@@ -21,9 +21,11 @@ A2's exact lifecycle metadata allowlists and metadata-only receipts are in
 proposal-only closure flow, and cross-project/latency tests are in
 `docs/28-ACTIVATION-V2-A3-SYNTHETIC-RECOVERY-AND-PROPOSALS.md`. A4's fixture
 `PROJECT_AUTO` CAS/dedupe/rollback simulation is in
-`docs/29-ACTIVATION-V2-A4-SYNTHETIC-PROJECT-AUTO.md`. None of these checkpoints
+`docs/29-ACTIVATION-V2-A4-SYNTHETIC-PROJECT-AUTO.md`. A5's deterministic
+derived focus-graph fixture and no-authority output evidence are in
+`docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`. None of these checkpoints
 initializes `runtime/`, creates user memory, installs a hook, changes routing,
-or authorizes a global mutation.
+starts a graph server, or authorizes a global mutation.
 
 ```text
 Lanjutkan proyek Second Brain dan custom Codex workflow di:
@@ -60,7 +62,11 @@ latency, dan cross-project failure evidence di
 memperlakukan default fixture sebagai kebijakan user. A4 hanya simulasi
 `PROJECT_AUTO` fixture dengan CAS/dedupe/rollback di
 `docs/29-ACTIVATION-V2-A4-SYNTHETIC-PROJECT-AUTO.md`; jangan membuat `runtime/`,
-hook, auto-capture nyata, route/session launcher, atau mutasi global.
+hook, auto-capture nyata, route/session launcher, atau mutasi global. A5 hanya
+graph focus JSON derived yang deterministic dari fixture publik dengan batas
+hop/node/edge dan provenance/revision; tidak ada UI server, graph authority,
+atau data proyek nyata. Detail ada di
+`docs/30-ACTIVATION-V2-A5-DERIVED-FOCUS-GRAPH.md`.
 
 Practical V1 sekarang sudah terpasang global dengan state
 `PRACTICAL_V1_APPLIED_AND_CANARY_PASS`. Bridge di

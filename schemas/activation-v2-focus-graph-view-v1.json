@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-focus-graph-view-v1.json",
+  "title": "ActivationV2FocusGraphViewV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "view_id",
+    "request_id",
+    "source_snapshot_id",
+    "source_snapshot_digest",
+    "project_id",
+    "focus_node_id",
+    "max_hops",
+    "max_nodes",
+    "max_edges",
+    "nodes",
+    "edges",
+    "derived_only",
+    "fixture_only",
+    "ui_mode",
+    "ui_server_started",
+    "authority_write",
+    "global_write",
+    "created_at",
+    "view_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "view_id": {
+      "type": "string",
+      "pattern": "^focus-graph-view:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 53
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^focus-graph-request:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 56
+    },
+    "source_snapshot_id": {
+      "type": "string",
+      "pattern": "^graph-snapshot:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 51
+    },
+    "source_snapshot_digest": {"$ref": "#/$defs/hash"},
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$",
+      "maxLength": 64
+    },
+    "focus_node_id": {"$ref": "#/$defs/object_id"},
+    "max_hops": {"type": "integer", "minimum": 1, "maximum": 2},
+    "max_nodes": {"type": "integer", "minimum": 1, "maximum": 16},
+    "max_edges": {"type": "integer", "minimum": 0, "maximum": 32},
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {"$ref": "#/$defs/node"}
+    },
+    "edges": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {"$ref": "#/$defs/edge"}
+    },
+    "derived_only": {"const": true},
+    "fixture_only": {"const": true},
+    "ui_mode": {"const": "generated_snapshot"},
+    "ui_server_started": {"const": false},
+    "authority_write": {"const": false},
+    "global_write": {"const": false},
+    "created_at": {"type": "string", "format": "date-time"},
+    "view_digest": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "project_object_id": {
+      "type": "string",
+      "pattern": "^mem:[a-z0-9][a-z0-9._-]{0,63}:(?:project|decision|component|task|bug|experiment|evidence|question):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 128
+    },
+    "global_object_id": {
+      "type": "string",
+      "pattern": "^kb:global:(?:source|entity|concept|claim|synthesis):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 128
+    },
+    "object_id": {
+      "anyOf": [
+        {"$ref": "#/$defs/project_object_id"},
+        {"$ref": "#/$defs/global_object_id"}
+      ]
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_id", "revision", "store_id", "kind", "lifecycle", "freshness", "label"],
+      "properties": {
+        "node_id": {"$ref": "#/$defs/object_id"},
+        "revision": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+        "store_id": {
+          "type": "string",
+          "pattern": "^(?:knowledge:global|project:[a-z0-9][a-z0-9._-]{0,63})$",
+          "maxLength": 80
+        },
+        "kind": {
+          "enum": ["source", "entity", "concept", "claim", "synthesis", "project", "decision", "component", "task", "bug", "experiment", "evidence", "question"]
+        },
+        "lifecycle": {"enum": ["active", "superseded", "archived", "deleted"]},
+        "freshness": {"enum": ["fresh", "partial", "stale", "unverifiable", "not_applicable"]},
+        "label": {"type": "string", "minLength": 1, "maxLength": 140, "pattern": "^[^\\r\\n]+$"}
+      }
+    },
+    "cross_store_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direction", "project_object_id", "project_object_revision", "repository_snapshot_digest"],
+      "properties": {
+        "direction": {"const": "project_to_global"},
+        "project_object_id": {"$ref": "#/$defs/project_object_id"},
+        "project_object_revision": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+        "repository_snapshot_digest": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "edge_id",
+        "relation",
+        "source_id",
+        "target_id",
+        "source_revision",
+        "target_revision",
+        "cross_store",
+        "provenance_ids",
+        "cross_store_provenance"
+      ],
+      "properties": {
+        "edge_id": {
+          "type": "string",
+          "pattern": "^edge:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "maxLength": 41
+        },
+        "relation": {
+          "enum": ["depends_on", "implements", "verifies", "supports", "contradicts", "derived_from", "about", "part_of", "supersedes", "refines", "related_to"]
+        },
+        "source_id": {"$ref": "#/$defs/object_id"},
+        "target_id": {"$ref": "#/$defs/object_id"},
+        "source_revision": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+        "target_revision": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+        "cross_store": {"type": "boolean"},
+        "provenance_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^prov:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "maxLength": 41
+          }
+        },
+        "cross_store_provenance": {
+          "anyOf": [
+            {"$ref": "#/$defs/cross_store_provenance"},
+            {"type": "null"}
+          ]
+        }
+      }
+    }
+  }
+}

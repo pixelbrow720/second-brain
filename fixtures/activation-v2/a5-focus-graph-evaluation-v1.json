@@ -1,0 +1,23 @@
+{
+  "fixture_version": 1,
+  "data_class": "PUBLIC_SYNTHETIC",
+  "snapshot_fixture": "fixtures/canonical/activation-v2-graph-snapshot-v1.json",
+  "canonical_view_fixture": "fixtures/canonical/activation-v2-focus-graph-view-v1.json",
+  "request": {
+    "request_id": "focus-graph-request:10000000-0000-4000-8000-000000000501",
+    "project_id": "v2-fixture",
+    "focus_node_id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000008",
+    "max_hops": 2,
+    "max_nodes": 8,
+    "max_edges": 8
+  },
+  "expected_node_ids": [
+    "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000008",
+    "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001",
+    "kb:global:concept:10000000-0000-4000-8000-000000000009"
+  ],
+  "expected_edge_ids": [
+    "edge:10000000-0000-4000-8000-000000000010",
+    "edge:10000000-0000-4000-8000-000000000012"
+  ]
+}
