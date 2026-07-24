@@ -1,0 +1,11 @@
+{
+  "capture_default": "ASSISTED",
+  "fixture_only": true,
+  "graph_ui": "GENERATED_SNAPSHOT",
+  "policy_digest": "d74c1b3481773b5fccfb52811708fa2a159bf5b90ae4c2cea6c2abff840e6203",
+  "policy_version": 1,
+  "promotion_review_mode": "PER_ITEM",
+  "retention_days": 30,
+  "router_entry_point": "CLI_SHADOW",
+  "storage_protection": "ENCRYPTED_DISK"
+}

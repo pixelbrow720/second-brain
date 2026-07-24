@@ -1,9 +1,10 @@
 # Activation V2: Automatic Memory, Typed Graph, and Front-Door Routing
 
-Status: design and implementation contract only. This document does not approve
-or apply a global Codex change, create a durable store, ingest a transcript, or
-change a model-provider setting. Each later global mutation needs its own
-current exact approval packet, backup, canary, and explicit user approval.
+Status: design and implementation contract with A0/A1 synthetic-local evidence.
+This document does not approve or apply a global Codex change, create a durable
+user store, ingest a transcript, or change a model-provider setting. Each later
+global mutation needs its own current exact approval packet, backup, canary,
+and explicit user approval.
 
 ## 1. Purpose
 
@@ -488,6 +489,10 @@ The project-local A0 schema, synthetic fixture, threat-model, and fail-closed
 test evidence is recorded in [the A0 fixture and threat-model checkpoint](25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md). It does not initialize a
 runtime or authorize A1, hooks, automatic capture, routing, or a global change.
 
+A1 adds only the separately documented [disposable synthetic runtime](26-ACTIVATION-V2-A1-DISPOSABLE-RUNTIME.md). Its root is restricted to ignored
+test artifacts and it cannot initialize the future private `runtime/` path or
+any user/global target.
+
 ## 13. Evaluation and acceptance criteria
 
 ### 13.1 Memory
@@ -615,3 +620,10 @@ true:
 
 Until then, Practical V1 remains the safe daily bridge: explicit targeted reads,
 proposal-only promotion, direct-path memory avoidance, and no provider claim.
+
+## 18. Local implementation checkpoints
+
+| Phase | Local evidence | Still forbidden |
+| --- | --- | --- |
+| A0 | Five fixture schemas, public synthetic threat corpus, and fail-closed contract tests. | Runtime initialization, hooks, capture, routing, and global change. |
+| A1 | Fixture-only policy/manifest schemas and a private disposable runtime with path, symlink, backup, restore, content-boundary, and Git-ignore tests. | `runtime/` initialization, persistent user memory, policy defaults, hooks, launcher/session creation, provider calls, and global mutation. |

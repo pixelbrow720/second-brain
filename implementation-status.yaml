@@ -302,8 +302,8 @@ milestones:
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
 activation_v2:
-  status: A0_COMPLETE_LOCAL_ONLY
-  current_phase: A1_not_started
+  status: A1_COMPLETE_SYNTHETIC_LOCAL_ONLY
+  current_phase: A2_not_started
   strict_m8_m9_status: unchanged_blocked
   A0:
     status: complete_local_only
@@ -338,12 +338,41 @@ activation_v2:
       old_obsidian_vault_access: false
       ai_memory_access: false
   A1:
-    status: not_started_pending_explicit_request_and_user_decisions
-    blockers:
+    status: complete_synthetic_local_only
+    verified_at: 2026-07-24T07:11:52Z
+    scope: fixture_only_disposable_runtime_below_ignored_artifacts_test_runs
+    requirements:
+      A1-AC-01: fixture_only_policy_and_runtime_manifest_schema_digest_binding_verified
+      A1-AC-02: external_symlink_nonempty_and_nonprivate_runtime_paths_fail_closed
+      A1-AC-03: bounded_safe_json_backup_restore_and_tamper_preflight_verified
+      A1-AC-04: git_ignore_and_no_persistent_runtime_or_global_target_verified
+    evidence:
+      - docs/26-ACTIVATION-V2-A1-DISPOSABLE-RUNTIME.md
+      - schemas/activation-v2-policy-inputs-v1.json
+      - schemas/activation-v2-runtime-manifest-v1.json
+      - fixtures/canonical/activation-v2-policy-inputs-v1.json
+      - fixtures/canonical/activation-v2-runtime-manifest-v1.json
+      - src/second_brain/activation_v2_runtime.py
+      - tests/test_activation_v2_a1.py
+    validation:
+      focused_tests_and_contracts: passed_21_tests_and_contract_checks
+    boundaries:
+      persistent_runtime_initialized: false
+      synthetic_test_runtime_only: true
+      lifecycle_hook_installed: false
+      automatic_capture_enabled: false
+      session_router_enabled: false
+      durable_user_memory_written: false
+      global_mutation: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+    unresolved_policy_inputs:
       - retention_for_receipts_outbox_backups_and_graph_snapshots
       - capture_default
       - storage_protection_and_key_rotation_posture
-      - reviewed_project_local_runtime_path_symlink_backup_restore_and_no_git_leak_plan
+      - graph_ui_choice
+      - router_entry_point
+      - promotion_review_mode
 
 practical_v1:
   status: PRACTICAL_V1_APPLIED_AND_CANARY_PASS

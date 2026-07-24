@@ -740,13 +740,39 @@ checkpoint, not an M8/M9 milestone transition or a global activation.
 - Rollback: remove only the A0-local schemas, fixtures, validator, tests, and
   documentation; no external or authority state exists to restore.
 
+### Historical Next Gate
+
+The separate A1 request was received after A0. Its synthetic-local evidence is
+recorded immediately below; it does not resolve a real retention, capture,
+storage/key-rotation, or global-target policy.
+
+## 12B. Activation V2 Extension - A1 Disposable Synthetic Runtime
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not an
+M8/M9 transition, a persistent private runtime, or a global activation.
+
+- Scope: explicit policy-input and runtime-manifest schemas; a runtime
+  initializer confined to ignored `artifacts/test-runs`; bounded safe-JSON
+  writes; and metadata-only backup/restore support.
+- Evidence: `tests/test_activation_v2_a1.py`,
+  `docs/26-ACTIVATION-V2-A1-DISPOSABLE-RUNTIME.md`, and the focused A0/A1
+  contract suite. External paths, symlink paths, nonempty roots, raw-input
+  fields, backup tampering, and unsafe backup files fail closed.
+- Authority: only empty synthetic directories and public synthetic fixture data
+  are created under disposable test roots. No `runtime/`, authority store,
+  persistent capture, hook, router, provider call, Obsidian/`ai-memory` access,
+  or global configuration target exists.
+- Rollback: test roots are ignored and removed after each test; no external or
+  authority state is created.
+
 ### Next Gate
 
-A1 is not started. It needs a separate explicit request plus user decisions on
-retention, capture default, storage protection/key rotation, and whether to
-create a disposable project-local runtime after its path/symlink, backup,
-restore, and no-Git-leak plan is reviewed. Any global target remains subject to
-its own current exact approval packet and explicit approval.
+A2 is not started. It may use the disposable runtime only for observe-only
+synthetic lifecycle receipts. Real retention, capture-default,
+storage/key-management, graph UI, router-entry, and promotion-review policy
+inputs remain unresolved; no global target is authorized.
 
 ## 13. Requirement Traceability
 

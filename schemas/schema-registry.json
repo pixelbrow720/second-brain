@@ -72,6 +72,18 @@
       "file": "activation-v2-graph-snapshot-v1.json",
       "name": "activation-v2-graph-snapshot-v1",
       "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md sections 6 and 9"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/activation-v2-policy-inputs-v1.json",
+      "file": "activation-v2-policy-inputs-v1.json",
+      "name": "activation-v2-policy-inputs-v1",
+      "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md section 15"
+    },
+    {
+      "canonical_fixture": "fixtures/canonical/activation-v2-runtime-manifest-v1.json",
+      "file": "activation-v2-runtime-manifest-v1.json",
+      "name": "activation-v2-runtime-manifest-v1",
+      "source": "docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md sections 5 and 12"
     }
   ]
 }

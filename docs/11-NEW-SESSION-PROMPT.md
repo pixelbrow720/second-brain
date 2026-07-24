@@ -11,10 +11,13 @@ implementation-design contract, not approval to create stores, install hooks,
 capture memory automatically, change a root model, or mutate global Codex
 configuration.
 
-Activation V2 A0 is complete locally: its five schema contracts, public
-synthetic fixtures, threat model, and fail-closed tests are in
-`docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. It does not authorize
-A1 private-runtime initialization or any later activation phase.
+Activation V2 A0 and A1 are complete as local synthetic evidence. A0's five
+schema contracts, public synthetic fixtures, threat model, and fail-closed tests
+are in `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. A1's
+fixture-only disposable runtime, path/symlink, safe-content, backup/restore,
+and Git-ignore evidence is in `docs/26-ACTIVATION-V2-A1-DISPOSABLE-RUNTIME.md`.
+Neither checkpoint initializes `runtime/`, creates user memory, installs a hook,
+changes routing, or authorizes a global mutation.
 
 ```text
 Lanjutkan proyek Second Brain dan custom Codex workflow di:
@@ -38,12 +41,13 @@ tanpa evidence.
 Activation V2 A0 selesai secara lokal dengan schema/fixture TaskClosure,
 capture receipt, promotion outbox, route intent, dan graph snapshot, serta
 threat model untuk secret, transcript, prompt injection, cross-project leak,
-cycle, dan route mismatch. Evidence ada di
-`docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. Jangan mulai A1 tanpa
-request eksplisit baru dan keputusan user tentang retention, capture default,
-storage protection, serta rencana path/symlink, backup, restore, dan no-Git-leak.
-Tidak ada runtime, hook, auto-capture, route/session launcher, atau mutasi global
-yang dibuat oleh A0.
+cycle, dan route mismatch. A1 juga selesai sebagai evidence sintetis lokal:
+runtime test disposable hanya di `artifacts/test-runs`, manifest policy
+fixture-only, safe JSON barrier, serta backup/restore dan no-Git-leak. Evidence
+ada di `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md` dan
+`docs/26-ACTIVATION-V2-A1-DISPOSABLE-RUNTIME.md`. Jangan perlakukan default
+fixture sebagai kebijakan user atau membuat `runtime/`, hook, auto-capture,
+route/session launcher, atau mutasi global.
 
 Practical V1 sekarang sudah terpasang global dengan state
 `PRACTICAL_V1_APPLIED_AND_CANARY_PASS`. Bridge di

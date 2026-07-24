@@ -105,6 +105,18 @@ def validate_activation_v2_document(name: str, document: dict[str, Any]) -> None
         _validate_graph_snapshot(document)
 
 
+def validate_activation_v2_safe_content(value: Any) -> None:
+    """Reject unsafe content before a later V2 phase serializes it locally.
+
+    A0 validates only the five named contracts. Later synthetic-only phase
+    artifacts need the same redaction barrier before reaching a disposable
+    runtime or backup. This helper performs no write and returns no matched
+    content.
+    """
+
+    _reject_unsafe_content(value)
+
+
 def validate_activation_v2_fixture_bundle(documents: Mapping[str, dict[str, Any]]) -> None:
     """Validate the five canonical A0 fixtures as one non-authorizing bundle."""
 
@@ -303,6 +315,7 @@ def _validate_edge_boundary(
 
 def _reject_unsafe_content(value: Any) -> None:
     reasons: set[str] = set()
+    _collect_forbidden_field_names(value, reasons)
     for text in _walk_strings(value):
         if "\x00" in text or "\r" in text or "\n" in text:
             reasons.add("CONTROL_OR_MULTILINE_TEXT")
@@ -316,6 +329,34 @@ def _reject_unsafe_content(value: Any) -> None:
             reasons.add("ABSOLUTE_PATH_DETECTED")
     if reasons:
         raise ContentPolicyError(tuple(sorted(reasons)))
+
+
+def _collect_forbidden_field_names(value: Any, reasons: set[str]) -> None:
+    """Reject raw-input field names even when their values look harmless."""
+
+    forbidden = frozenset(
+        {
+            "assistant_output",
+            "chain_of_thought",
+            "cookie",
+            "credential",
+            "environment_dump",
+            "header",
+            "private_key",
+            "prompt",
+            "prompt_body",
+            "raw_transcript",
+            "tool_output",
+        }
+    )
+    if isinstance(value, Mapping):
+        if any(key in forbidden for key in value):
+            reasons.add("FORBIDDEN_RAW_FIELD")
+        for child in value.values():
+            _collect_forbidden_field_names(child, reasons)
+    elif isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        for child in value:
+            _collect_forbidden_field_names(child, reasons)
 
 
 def _walk_strings(value: Any) -> Sequence[str]:

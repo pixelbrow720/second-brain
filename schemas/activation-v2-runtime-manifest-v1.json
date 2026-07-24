@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-runtime-manifest-v1.json",
+  "title": "ActivationV2RuntimeManifestV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "runtime_id",
+    "mode",
+    "created_at",
+    "policy",
+    "directories",
+    "runtime_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "runtime_id": {
+      "type": "string",
+      "pattern": "^runtime:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 44
+    },
+    "mode": {"const": "disposable_synthetic"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "policy": {"$ref": "#/$defs/policy"},
+    "directories": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"enum": ["registry", "global", "projects", "outbox", "receipts", "backups"]}
+    },
+    "runtime_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+  },
+  "$defs": {
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_version",
+        "fixture_only",
+        "retention_days",
+        "capture_default",
+        "storage_protection",
+        "graph_ui",
+        "router_entry_point",
+        "promotion_review_mode",
+        "policy_digest"
+      ],
+      "properties": {
+        "policy_version": {"const": 1},
+        "fixture_only": {"const": true},
+        "retention_days": {"type": "integer", "minimum": 1, "maximum": 3660},
+        "capture_default": {"enum": ["OFF", "ASSISTED", "PROJECT_AUTO"]},
+        "storage_protection": {"enum": ["ENCRYPTED_DISK", "APP_LEVEL_ENCRYPTION"]},
+        "graph_ui": {"enum": ["GENERATED_SNAPSHOT", "LOCAL_WEB"]},
+        "router_entry_point": {"enum": ["CLI_SHADOW", "DESKTOP_INTEGRATION"]},
+        "promotion_review_mode": {"enum": ["PER_ITEM", "DAILY_BATCH", "MANUAL_ONLY"]},
+        "policy_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+      }
+    }
+  }
+}
