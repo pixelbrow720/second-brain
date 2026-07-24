@@ -302,8 +302,8 @@ milestones:
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
 activation_v2:
-  status: A3_COMPLETE_SYNTHETIC_LOCAL_ONLY
-  current_phase: A4_not_started
+  status: A4_COMPLETE_SYNTHETIC_LOCAL_ONLY
+  current_phase: A5_not_started
   strict_m8_m9_status: unchanged_blocked
   A0:
     status: complete_local_only
@@ -424,6 +424,35 @@ activation_v2:
     boundaries:
       real_authority_store_opened: false
       real_task_or_user_memory_captured: false
+      lifecycle_hook_installed: false
+      provider_network_call: false
+      session_router_enabled: false
+      global_mutation: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+  A4:
+    status: complete_synthetic_local_only
+    verified_at: 2026-07-24T08:01:32Z
+    scope: fixture_only_project_auto_cas_dedupe_and_rollback_state_machine_in_disposable_runtime
+    requirements:
+      A4-AC-01: fixture_only_project_auto_requires_exact_cas_and_content_free_closure_status
+      A4-AC-02: duplicate_reuse_unsafe_and_no_durable_closures_fail_closed
+      A4-AC-03: synthetic_rollback_is_latest_only_monotonic_and_non_authoritative
+      A4-AC-04: rehashed_cross_project_synthetic_state_fails_readback
+    evidence:
+      - docs/29-ACTIVATION-V2-A4-SYNTHETIC-PROJECT-AUTO.md
+      - schemas/activation-v2-project-auto-state-v1.json
+      - schemas/activation-v2-project-auto-receipt-v1.json
+      - src/second_brain/activation_v2_project_auto.py
+      - tests/test_activation_v2_a4.py
+    validation:
+      focused_a0_to_a4_tests_contracts_and_docs: passed_39_tests
+      make_check: passed
+      clean_room: passed
+    boundaries:
+      real_project_authority_transaction: false
+      automatic_capture_enabled: false
+      global_promotion_accepted: false
       lifecycle_hook_installed: false
       provider_network_call: false
       session_router_enabled: false

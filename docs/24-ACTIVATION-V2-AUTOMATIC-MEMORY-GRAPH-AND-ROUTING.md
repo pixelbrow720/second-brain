@@ -1,6 +1,6 @@
 # Activation V2: Automatic Memory, Typed Graph, and Front-Door Routing
 
-Status: design and implementation contract with A0-A3 synthetic-local evidence.
+Status: design and implementation contract with A0-A4 synthetic-local evidence.
 This document does not approve or apply a global Codex change, create a durable
 user store, ingest a transcript, or change a model-provider setting. Each later
 global mutation needs its own current exact approval packet, backup, canary,
@@ -498,6 +498,10 @@ A2 records only synthetic observe-only metadata receipts, and A3 adds only
 Neither phase installs a hook, opens an authority store, commits a project or
 global object, or changes a session route.
 
+A4 adds a [fixture-only PROJECT_AUTO state machine](29-ACTIVATION-V2-A4-SYNTHETIC-PROJECT-AUTO.md)
+with CAS, dedupe, synthetic rollback, and content-free closure status. It does
+not enable automatic capture or an authority transaction for any real project.
+
 ## 13. Evaluation and acceptance criteria
 
 ### 13.1 Memory
@@ -634,3 +638,4 @@ proposal-only promotion, direct-path memory avoidance, and no provider claim.
 | A1 | Fixture-only policy/manifest schemas and a private disposable runtime with path, symlink, backup, restore, content-boundary, and Git-ignore tests. | `runtime/` initialization, persistent user memory, policy defaults, hooks, launcher/session creation, provider calls, and global mutation. |
 | A2 | Exact synthetic observe-only event fixtures and metadata-only, digest-bound lifecycle receipts. | Hook installation, prompt/transcript/tool-output capture, authority writes, session routing, and global mutation. |
 | A3 | Explicit synthetic assisted-recovery corpus, proposal-only closure flow, omission/freshness evidence, and latency/cross-project fail-closed tests. | Authority-store writes, real task capture, global promotion acceptance, hook installation, provider calls, and global mutation. |
+| A4 | Fixture-only PROJECT_AUTO state machine with CAS, dedupe, synthetic rollback, and content-free closure status. | Real project transactions, automatic capture, global-promotion acceptance, hooks, provider calls, and global mutation. |

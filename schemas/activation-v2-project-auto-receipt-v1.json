@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-project-auto-receipt-v1.json",
+  "title": "ActivationV2ProjectAutoReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "receipt_id", "operation", "transaction_id", "rollback_of_transaction_id",
+    "project_id", "closure_id", "closure_digest", "task_outcome", "candidate_counts",
+    "expected_revision", "previous_revision", "state_revision", "project_write_state",
+    "global_outbox_state", "fixture_only", "authority_write", "global_write", "state_digest",
+    "created_at", "receipt_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {"type": "string", "pattern": "^project-auto-receipt:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 58},
+    "operation": {"enum": ["commit", "rollback"]},
+    "transaction_id": {"type": "string", "pattern": "^project-auto:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 50},
+    "rollback_of_transaction_id": {"type": ["string", "null"], "pattern": "^project-auto:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 50},
+    "project_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$", "maxLength": 64},
+    "closure_id": {"type": "string", "pattern": "^closure:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "maxLength": 44},
+    "closure_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "task_outcome": {"enum": ["completed", "partial", "blocked"]},
+    "candidate_counts": {"$ref": "#/$defs/counts"},
+    "expected_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+    "previous_revision": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+    "state_revision": {"type": "integer", "minimum": 1, "maximum": 2147483647},
+    "project_write_state": {"enum": ["committed_synthetic", "rolled_back_synthetic"]},
+    "global_outbox_state": {"const": "pending_review"},
+    "fixture_only": {"const": true},
+    "authority_write": {"const": false},
+    "global_write": {"const": false},
+    "state_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "created_at": {"type": "string", "format": "date-time"},
+    "receipt_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+  },
+  "$defs": {
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decisions", "evidence", "open_tasks", "questions", "global_candidates"],
+      "properties": {
+        "decisions": {"type": "integer", "minimum": 0, "maximum": 32},
+        "evidence": {"type": "integer", "minimum": 0, "maximum": 32},
+        "open_tasks": {"type": "integer", "minimum": 0, "maximum": 32},
+        "questions": {"type": "integer", "minimum": 0, "maximum": 32},
+        "global_candidates": {"type": "integer", "minimum": 0, "maximum": 32}
+      }
+    }
+  }
+}

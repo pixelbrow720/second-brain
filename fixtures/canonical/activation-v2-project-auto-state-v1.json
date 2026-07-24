@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "candidate_counts": {
+        "decisions": 1,
+        "evidence": 1,
+        "global_candidates": 1,
+        "open_tasks": 1,
+        "questions": 1
+      },
+      "closure_digest": "61d1d257e1a5ae61c52f43b820f5ca69561b9303da2c669a6930a6535daad3b7",
+      "closure_id": "closure:10000000-0000-4000-8000-000000000001",
+      "committed_revision": 1,
+      "rollback_revision": null,
+      "state": "active",
+      "task_outcome": "completed",
+      "transaction_id": "project-auto:10000000-0000-4000-8000-000000000401"
+    }
+  ],
+  "project_id": "v2-fixture",
+  "revision": 1,
+  "schema_version": 1,
+  "state_digest": "b85616614f211d3bdb3bfc935a33debec7a635b80d2f8ab07a3a2c3f0f6d5b8e"
+}

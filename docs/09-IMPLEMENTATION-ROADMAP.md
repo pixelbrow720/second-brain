@@ -825,10 +825,34 @@ activation.
 
 ### Next Gate
 
-A4 may implement only synthetic/disposable `PROJECT_AUTO` transaction
-machinery. A real opt-in remains blocked on explicit retention, capture default,
-storage/key-management, graph UI, router-entry, and promotion-review policy
-decisions, plus later phase evidence and any required exact approval packet.
+A4 implemented only synthetic/disposable `PROJECT_AUTO` transaction machinery.
+Real opt-in remains blocked on explicit policy choices and later phase evidence.
+
+## 12E. Activation V2 Extension - A4 Synthetic PROJECT_AUTO Transaction
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This is not a real
+project-memory transaction, an enabled capture mode, or a global activation.
+
+- Scope: fixture-only `PROJECT_AUTO` CAS state, duplicate-closure handling,
+  bounded content-free closure status, synthetic rollback, and canonical state
+  and receipt contracts.
+- Evidence: `tests/test_activation_v2_a4.py` and
+  `docs/29-ACTIVATION-V2-A4-SYNTHETIC-PROJECT-AUTO.md`. Stale CAS, unsafe or
+  non-durable closure inputs, non-project-auto policy, non-latest rollback, and
+  rehashed cross-project synthetic state fail closed.
+- Authority: only ignored disposable test data is written. All receipts bind
+  `fixture_only: true`, `authority_write: false`, and `global_write: false`;
+  no real project/global object or promotion outbox item is created.
+- Rollback: synthetic rollback is covered by deterministic tests and cannot
+  overwrite a newer synthetic transaction. No external state exists to restore.
+
+### Next Gate
+
+A5 may create derived graph and view artifacts from public synthetic inputs
+only. A real graph UI or opt-in still needs explicit user policy decisions and
+later local acceptance evidence.
 
 ## 13. Requirement Traceability
 
