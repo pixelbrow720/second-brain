@@ -769,10 +769,36 @@ M8/M9 transition, a persistent private runtime, or a global activation.
 
 ### Next Gate
 
-A2 is not started. It may use the disposable runtime only for observe-only
-synthetic lifecycle receipts. Real retention, capture-default,
-storage/key-management, graph UI, router-entry, and promotion-review policy
-inputs remain unresolved; no global target is authorized.
+A2 used the disposable runtime only for observe-only synthetic lifecycle
+receipts. Real retention, capture-default, storage/key-management, graph UI,
+router-entry, and promotion-review policy inputs remain unresolved; no global
+target is authorized.
+
+## 12C. Activation V2 Extension - A2 Observe-Only Lifecycle Receipts
+
+### Completion Record
+
+Status: complete as local synthetic evidence on 2026-07-24. This adapter has
+no installer and creates metadata-only receipts in disposable test roots.
+
+- Scope: exact metadata allowlists for the five named lifecycle signals, a
+  digest-bound receipt contract, and synthetic-only receipt persistence.
+- Evidence: `tests/test_activation_v2_a2.py`,
+  `fixtures/activation-v2/a2-lifecycle-events-v1.json`, and
+  `docs/27-ACTIVATION-V2-A2-OBSERVE-ONLY-LIFECYCLE.md`. Prompt/transcript/tool
+  body fields, injection, unsafe artifact IDs, duplicate receipts, and
+  tampered hook flags fail closed.
+- Authority: receipt fields are metadata-only and require no content
+  persistence, authority write, hook installation, session action, provider
+  call, or global target.
+- Rollback: disposable test receipts are removed with their ignored runtime;
+  no installed hook or external state exists.
+
+### Next Gate
+
+A3 may add only synthetic assisted recovery and closure proposals. Project and
+global authority writes remain prohibited pending the later phase contracts and
+unresolved policy inputs.
 
 ## 13. Requirement Traceability
 

@@ -627,3 +627,4 @@ proposal-only promotion, direct-path memory avoidance, and no provider claim.
 | --- | --- | --- |
 | A0 | Five fixture schemas, public synthetic threat corpus, and fail-closed contract tests. | Runtime initialization, hooks, capture, routing, and global change. |
 | A1 | Fixture-only policy/manifest schemas and a private disposable runtime with path, symlink, backup, restore, content-boundary, and Git-ignore tests. | `runtime/` initialization, persistent user memory, policy defaults, hooks, launcher/session creation, provider calls, and global mutation. |
+| A2 | Exact synthetic observe-only event fixtures and metadata-only, digest-bound lifecycle receipts. | Hook installation, prompt/transcript/tool-output capture, authority writes, session routing, and global mutation. |

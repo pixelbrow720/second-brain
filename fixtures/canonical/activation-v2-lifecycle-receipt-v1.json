@@ -1,0 +1,16 @@
+{
+  "adapter_version": "activation-v2-observe-only/1",
+  "authority_write": false,
+  "content_persisted": false,
+  "event_id": "lifecycle-event:10000000-0000-4000-8000-000000000201",
+  "event_type": "PostToolUse",
+  "hook_installed": false,
+  "occurred_at": "2026-07-24T02:00:00Z",
+  "payload_digest": "17f27b097f7b55bd6a9e0e5e8fd0d648e72af062e141eff4fd38fa4fb789c189",
+  "payload_fields": ["artifact_ids"],
+  "project_id": "v2-fixture",
+  "receipt_digest": "84181dd223d16c1efa7f42fd2d8e7f6157bad570c5d461f1a98af187a7614b4c",
+  "receipt_id": "lifecycle-receipt:10000000-0000-4000-8000-000000000202",
+  "recording_mode": "observe_only",
+  "schema_version": 1
+}

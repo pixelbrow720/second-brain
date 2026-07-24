@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-lifecycle-receipt-v1.json",
+  "title": "ActivationV2LifecycleReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "event_id",
+    "project_id",
+    "event_type",
+    "occurred_at",
+    "adapter_version",
+    "recording_mode",
+    "payload_fields",
+    "payload_digest",
+    "content_persisted",
+    "authority_write",
+    "hook_installed",
+    "receipt_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^lifecycle-receipt:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 54
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^lifecycle-event:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 52
+    },
+    "project_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$", "maxLength": 64},
+    "event_type": {"enum": ["SessionStart", "UserPromptSubmit", "PreCompact", "PostToolUse", "Stop"]},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "adapter_version": {"const": "activation-v2-observe-only/1"},
+    "recording_mode": {"const": "observe_only"},
+    "payload_fields": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "uniqueItems": true,
+      "items": {"enum": ["project_binding_digest", "memory_mode", "closure_request", "artifact_ids", "closure_state"]}
+    },
+    "payload_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "content_persisted": {"const": false},
+    "authority_write": {"const": false},
+    "hook_installed": {"const": false},
+    "receipt_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+  }
+}

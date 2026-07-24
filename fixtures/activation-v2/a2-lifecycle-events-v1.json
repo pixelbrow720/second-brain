@@ -1,0 +1,41 @@
+{
+  "fixture_version": 1,
+  "data_class": "PUBLIC_SYNTHETIC",
+  "events": [
+    {
+      "event_id": "lifecycle-event:10000000-0000-4000-8000-000000000211",
+      "event_type": "SessionStart",
+      "project_id": "v2-fixture",
+      "occurred_at": "2026-07-24T02:01:00Z",
+      "metadata": {"project_binding_digest": "1111111111111111111111111111111111111111111111111111111111111111"}
+    },
+    {
+      "event_id": "lifecycle-event:10000000-0000-4000-8000-000000000212",
+      "event_type": "UserPromptSubmit",
+      "project_id": "v2-fixture",
+      "occurred_at": "2026-07-24T02:01:01Z",
+      "metadata": {"memory_mode": "ASSISTED"}
+    },
+    {
+      "event_id": "lifecycle-event:10000000-0000-4000-8000-000000000213",
+      "event_type": "PreCompact",
+      "project_id": "v2-fixture",
+      "occurred_at": "2026-07-24T02:01:02Z",
+      "metadata": {"closure_request": true}
+    },
+    {
+      "event_id": "lifecycle-event:10000000-0000-4000-8000-000000000214",
+      "event_type": "PostToolUse",
+      "project_id": "v2-fixture",
+      "occurred_at": "2026-07-24T02:01:03Z",
+      "metadata": {"artifact_ids": ["artifact:v2-contract-check"]}
+    },
+    {
+      "event_id": "lifecycle-event:10000000-0000-4000-8000-000000000215",
+      "event_type": "Stop",
+      "project_id": "v2-fixture",
+      "occurred_at": "2026-07-24T02:01:04Z",
+      "metadata": {"closure_state": "candidate_requested"}
+    }
+  ]
+}
