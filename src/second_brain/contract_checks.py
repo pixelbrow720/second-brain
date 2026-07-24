@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
+from typing import Any
 
+from .activation_v2 import A0_SCHEMA_NAMES, validate_activation_v2_fixture_bundle
 from .contracts import (
     canonical_fixture_path,
     load_schema,
@@ -21,6 +22,7 @@ def run_contract_checks() -> list[str]:
     """Return deterministic check labels after validating all canonical fixtures."""
 
     checks: list[str] = []
+    activation_v2_documents: dict[str, dict[str, Any]] = {}
     registry = load_schema_registry()
     for entry in registry["schemas"]:
         name = entry["name"]
@@ -29,9 +31,16 @@ def run_contract_checks() -> list[str]:
             raise ValueError(f"{name} does not declare a JSON Schema dialect")
         fixture = load_strict_json(canonical_fixture_path(entry["canonical_fixture"]))
         validate_named_document(name, fixture)
+        if name in A0_SCHEMA_NAMES:
+            if type(fixture) is not dict:
+                raise ValueError(f"{name} canonical fixture is not an object")
+            activation_v2_documents[name] = fixture
         if name == "work-graph-v1":
             validate_work_graph_manifest(fixture)
         checks.append(f"schema:{name}")
+
+    validate_activation_v2_fixture_bundle(activation_v2_documents)
+    checks.append("activation-v2-a0:fixture-bundle")
 
     load_profile_registry()
     checks.append("profiles:seven-approved-routing-mappings")

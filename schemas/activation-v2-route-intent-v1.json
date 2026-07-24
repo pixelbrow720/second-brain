@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-route-intent-v1.json",
+  "title": "ActivationV2RouteIntentV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "intent_id",
+    "route_id",
+    "correlation_id",
+    "created_at",
+    "classifier_version",
+    "classification",
+    "profile_alias",
+    "effort_intent",
+    "selection_reason",
+    "registry_version",
+    "registry_digest",
+    "adapter_version",
+    "prompt_persistence",
+    "session_action",
+    "evidence_scope",
+    "intent_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "intent_id": {
+      "type": "string",
+      "pattern": "^route-intent:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 49
+    },
+    "route_id": {
+      "type": "string",
+      "pattern": "^route:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 42
+    },
+    "correlation_id": {
+      "type": "string",
+      "pattern": "^corr:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 41
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "classifier_version": {
+      "const": "activation-v2-a0/1"
+    },
+    "classification": {
+      "enum": ["direct_stable", "bounded_implementation", "ambiguous_or_high_risk", "utility_candidate"]
+    },
+    "profile_alias": {
+      "enum": ["tera-max", "tera-xhigh", "tera-high", "sol-max", "sol-xhigh", "luna-xhigh", "gpt55-xhigh"]
+    },
+    "effort_intent": {"enum": ["high", "max", "xhigh"]},
+    "selection_reason": {"enum": ["explicit_user_safe", "rule_match", "fallback_uncertainty"]},
+    "registry_version": {"const": 2},
+    "registry_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "adapter_version": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._/-]{0,95}$",
+      "maxLength": 96
+    },
+    "prompt_persistence": {"const": "forbidden"},
+    "session_action": {"const": "none"},
+    "evidence_scope": {"const": "design-fixture"},
+    "intent_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
+  }
+}

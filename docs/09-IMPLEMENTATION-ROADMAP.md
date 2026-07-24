@@ -16,6 +16,11 @@
   bridge, operator-trusted router-log contract, source-bound skill/wrapper, and
   rollback helper were installed from an exact approved packet, read back, and
   passed a no-network disposable canary. This does not complete M8 or strict M9.
+- Activation V2 A0 checkpoint: local design fixtures, threat model, and
+  fail-closed contract tests are complete. See
+  `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. This adds no runtime,
+  hook, automatic capture, route, store, or global target and does not alter
+  M8/M9 status or promotion gates.
 
 ## 1. Delivery Strategy
 
@@ -708,6 +713,40 @@ The next Practical V1 action is ordinary opt-in use in a new task; do not expand
 scope, claim provider attestation, promote M8/M9, or roll back without a new
 exact packet and approval.
 The next strict milestone remains M8 until its original acceptance gates pass.
+
+## 12A. Activation V2 Extension - A0 Design Fixtures and Threat Model
+
+### Completion Record
+
+Status: complete locally on 2026-07-24. This is an Activation V2 extension
+checkpoint, not an M8/M9 milestone transition or a global activation.
+
+- Scope: five checked-in schemas and public synthetic canonical fixtures for
+  TaskClosure, capture receipt, promotion outbox, route intent, and graph
+  snapshot; a pure fail-closed validator; threat-model fixture; and contract
+  tests for privacy, project isolation, cycles, route mismatch, and digest
+  tampering.
+- Evidence: `tests/test_activation_v2_a0.py`,
+  `fixtures/activation-v2/a0-threat-cases-v1.json`, and
+  `docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`; repository contract,
+  documentation, lint, test, and clean-room checks pass.
+- Authority: every canonical artifact is explicitly fixture-only or derived-only.
+  No runtime directory, durable capture, lifecycle hook, session creation,
+  provider call, global configuration change, Obsidian access, or `ai-memory`
+  access is part of A0.
+- Requirement status: A0 acceptance from Activation V2 sections 12 and 13 is
+  implemented and locally verified. Existing FR/NFR/AC ownership and M8/M9
+  blockers remain unchanged.
+- Rollback: remove only the A0-local schemas, fixtures, validator, tests, and
+  documentation; no external or authority state exists to restore.
+
+### Next Gate
+
+A1 is not started. It needs a separate explicit request plus user decisions on
+retention, capture default, storage protection/key rotation, and whether to
+create a disposable project-local runtime after its path/symlink, backup,
+restore, and no-Git-leak plan is reviewed. Any global target remains subject to
+its own current exact approval packet and explicit approval.
 
 ## 13. Requirement Traceability
 

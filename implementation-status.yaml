@@ -301,6 +301,50 @@ milestones:
       - controlled_canary_and_soak_evidence
       - verified_global_rollback_execution
       - new_exact_approval_before_opt_in_or_expansion
+activation_v2:
+  status: A0_COMPLETE_LOCAL_ONLY
+  current_phase: A1_not_started
+  strict_m8_m9_status: unchanged_blocked
+  A0:
+    status: complete_local_only
+    verified_at: 2026-07-24T06:38:52Z
+    scope: design_fixtures_and_threat_model_no_runtime_or_global_activation
+    requirements:
+      A0-AC-01: task_closure_capture_receipt_promotion_outbox_route_intent_graph_snapshot_schemas_verified
+      A0-AC-02: public_synthetic_canonical_and_threat_fixtures_verified
+      A0-AC-03: secret_transcript_injection_cross_project_cycle_route_mismatch_fail_closed
+      A0-AC-04: no_runtime_hook_auto_capture_router_or_global_target
+    evidence:
+      - docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md
+      - docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md
+      - schemas/activation-v2-task-closure-v1.json
+      - schemas/activation-v2-capture-receipt-v1.json
+      - schemas/activation-v2-promotion-outbox-v1.json
+      - schemas/activation-v2-route-intent-v1.json
+      - schemas/activation-v2-graph-snapshot-v1.json
+      - fixtures/activation-v2/a0-threat-cases-v1.json
+      - tests/test_activation_v2_a0.py
+    validation:
+      focused_tests: passed_12_tests
+      make_check: passed
+      clean_room: passed
+    boundaries:
+      runtime_initialized: false
+      lifecycle_hook_installed: false
+      automatic_capture_enabled: false
+      session_router_enabled: false
+      durable_memory_written: false
+      global_mutation: false
+      old_obsidian_vault_access: false
+      ai_memory_access: false
+  A1:
+    status: not_started_pending_explicit_request_and_user_decisions
+    blockers:
+      - retention_for_receipts_outbox_backups_and_graph_snapshots
+      - capture_default
+      - storage_protection_and_key_rotation_posture
+      - reviewed_project_local_runtime_path_symlink_backup_restore_and_no_git_leak_plan
+
 practical_v1:
   status: PRACTICAL_V1_APPLIED_AND_CANARY_PASS
   verified_at: 2026-07-23T14:25:18Z
@@ -352,8 +396,8 @@ practical_v1:
     - project_id_to_exact_git_root_mapping_remains_an_operator_trust_decision
     - upstream_provider_retention_unverifiable
     - strict_m8_m9_external_gates_remain_blocked
-last_verified_at: 2026-07-23T14:25:18Z
-last_test_receipt: practical-v1-approved-apply-seven-target-readback-and-canary
+last_verified_at: 2026-07-24T06:38:52Z
+last_test_receipt: activation-v2-a0-local-contracts-and-threat-fixtures
 last_local_validation:
   clean_room: passed_249_tests
   full_suite: passed_249_tests
@@ -366,6 +410,9 @@ last_local_validation:
   external_evidence_boundary: passed_27_targeted_tests
   m8_m9_readiness: verified_blocked_fail_closed
   m9_applied_readback: applied_state_pass_13_targets
+  activation_v2_a0_focused: passed_12_tests
+  activation_v2_a0_make_check: passed
+  activation_v2_a0_clean_room: passed
 global_activation: m9_shadow_only_unattested_plus_practical_v1_installed_local_canary_pass
 boundaries:
   old_obsidian_vault: untouched

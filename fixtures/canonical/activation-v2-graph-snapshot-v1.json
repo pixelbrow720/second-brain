@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "graph-snapshot:10000000-0000-4000-8000-000000000007",
+  "scope": "project_focus",
+  "project_id": "v2-fixture",
+  "generated_at": "2026-07-24T00:00:04Z",
+  "derived_only": true,
+  "source_snapshots": [
+    {
+      "store_id": "project:v2-fixture",
+      "mutation_epoch": 1,
+      "corpus_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+      "store_id": "knowledge:global",
+      "mutation_epoch": 1,
+      "corpus_digest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000008",
+      "revision": 1,
+      "store_id": "project:v2-fixture",
+      "kind": "decision",
+      "lifecycle": "active",
+      "freshness": "fresh",
+      "label": "Keep A0 fixture-only"
+    },
+    {
+      "id": "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001",
+      "revision": 1,
+      "store_id": "project:v2-fixture",
+      "kind": "evidence",
+      "lifecycle": "active",
+      "freshness": "fresh",
+      "label": "A0 local contract evidence"
+    },
+    {
+      "id": "kb:global:concept:10000000-0000-4000-8000-000000000009",
+      "revision": 1,
+      "store_id": "knowledge:global",
+      "kind": "concept",
+      "lifecycle": "active",
+      "freshness": "not_applicable",
+      "label": "Review-gated global promotion"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge:10000000-0000-4000-8000-000000000010",
+      "relation": "verifies",
+      "source_id": "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001",
+      "target_id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000008",
+      "source_revision": 1,
+      "target_revision": 1,
+      "cross_store": false,
+      "provenance_ids": ["prov:10000000-0000-4000-8000-000000000011"],
+      "cross_store_provenance": null
+    },
+    {
+      "edge_id": "edge:10000000-0000-4000-8000-000000000012",
+      "relation": "about",
+      "source_id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000008",
+      "target_id": "kb:global:concept:10000000-0000-4000-8000-000000000009",
+      "source_revision": 1,
+      "target_revision": 1,
+      "cross_store": true,
+      "provenance_ids": ["prov:10000000-0000-4000-8000-000000000013"],
+      "cross_store_provenance": {
+        "direction": "project_to_global",
+        "project_object_id": "mem:v2-fixture:decision:10000000-0000-4000-8000-000000000008",
+        "project_object_revision": 1,
+        "repository_snapshot_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    }
+  ],
+  "snapshot_digest": "55268ea01f13b959b879cce96d3544b225ae74bba6dd996d2782cba1d4539e5c"
+}

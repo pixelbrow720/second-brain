@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 from typing import Any
 
+from .activation_v2 import A0_SCHEMA_NAMES, validate_activation_v2_document
 from .errors import SemanticValidationError, WorkspacePathError
 from .jsonio import canonical_json_bytes, load_strict_json
 from .schema_validation import parse_rfc3339_utc, validate_json_schema
@@ -86,6 +87,8 @@ def validate_named_document(name: str, document: Any) -> None:
     validate_json_schema(document, load_schema(name))
     if name == "memory-object-v2":
         validate_memory_object_semantics(document)
+    elif name in A0_SCHEMA_NAMES:
+        validate_activation_v2_document(name, document)
 
 
 def validate_memory_object_semantics(document: dict[str, Any]) -> None:

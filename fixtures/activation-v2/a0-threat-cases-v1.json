@@ -1,0 +1,42 @@
+{
+  "fixture_version": 1,
+  "data_class": "PUBLIC_SYNTHETIC",
+  "cases": [
+    {
+      "case_id": "secret-leakage",
+      "contract": "activation-v2-task-closure-v1",
+      "marker": "V2_SECRET_SENTINEL",
+      "expected_reason": "SECRET_DETECTED"
+    },
+    {
+      "case_id": "raw-transcript",
+      "contract": "activation-v2-task-closure-v1",
+      "marker": "V2_RAW_TRANSCRIPT_SENTINEL",
+      "expected_reason": "RAW_TRANSCRIPT_DETECTED"
+    },
+    {
+      "case_id": "prompt-injection",
+      "contract": "activation-v2-task-closure-v1",
+      "marker": "V2_PROMPT_INJECTION_SENTINEL",
+      "expected_reason": "PROMPT_INJECTION_DETECTED"
+    },
+    {
+      "case_id": "cross-project-leakage",
+      "contract": "activation-v2-promotion-outbox-v1",
+      "marker": "foreign-project-id",
+      "expected_reason": "PROJECT_BOUNDARY_REJECTED"
+    },
+    {
+      "case_id": "edge-cycle",
+      "contract": "activation-v2-graph-snapshot-v1",
+      "marker": "part_of-or-supersedes-cycle",
+      "expected_reason": "RELATION_CYCLE_REJECTED"
+    },
+    {
+      "case_id": "route-mismatch",
+      "contract": "activation-v2-route-intent-v1",
+      "marker": "profile-effort-drift",
+      "expected_reason": "ROUTE_MISMATCH_REJECTED"
+    }
+  ]
+}

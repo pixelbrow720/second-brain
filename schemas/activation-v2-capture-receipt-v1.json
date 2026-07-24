@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pixel.local/schemas/activation-v2-capture-receipt-v1.json",
+  "title": "ActivationV2CaptureReceiptV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "closure_id",
+    "closure_digest",
+    "project_id",
+    "generated_at",
+    "execution_mode",
+    "status",
+    "redaction_status",
+    "candidate_counts",
+    "reason_codes",
+    "write_authority",
+    "global_write_committed"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^capture-receipt:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 52
+    },
+    "closure_id": {
+      "type": "string",
+      "pattern": "^closure:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "maxLength": 44
+    },
+    "closure_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64},
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$",
+      "maxLength": 64
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "execution_mode": {"const": "fixture_only"},
+    "status": {"enum": ["validated", "rejected"]},
+    "redaction_status": {"const": "pass"},
+    "candidate_counts": {"$ref": "#/$defs/candidate_counts"},
+    "reason_codes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["SCHEMA_VALID", "PRIVACY_VALID", "NO_WRITE_AUTHORITY", "THREAT_REJECTED"]
+      }
+    },
+    "write_authority": {"const": "none"},
+    "global_write_committed": {"const": false}
+  },
+  "$defs": {
+    "count": {"type": "integer", "minimum": 0, "maximum": 32},
+    "candidate_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decisions", "evidence", "open_tasks", "questions", "global_candidates"],
+      "properties": {
+        "decisions": {"$ref": "#/$defs/count"},
+        "evidence": {"$ref": "#/$defs/count"},
+        "open_tasks": {"$ref": "#/$defs/count"},
+        "questions": {"$ref": "#/$defs/count"},
+        "global_candidates": {"$ref": "#/$defs/count"}
+      }
+    }
+  }
+}

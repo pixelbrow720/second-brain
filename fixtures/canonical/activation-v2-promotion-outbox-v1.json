@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "outbox_id": "promotion:10000000-0000-4000-8000-000000000003",
+  "origin_closure_id": "closure:10000000-0000-4000-8000-000000000001",
+  "origin_closure_digest": "61d1d257e1a5ae61c52f43b820f5ca69561b9303da2c669a6930a6535daad3b7",
+  "project_id": "v2-fixture",
+  "source_store": "project:v2-fixture",
+  "target_store": "knowledge:global",
+  "created_at": "2026-07-24T00:00:02Z",
+  "idempotency_key": "promotion:v2-fixture:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "operation": "create_claim",
+  "source_objects": [
+    {
+      "id": "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001",
+      "revision": 1,
+      "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "review_state": "pending_review",
+  "reviewed_at": null,
+  "global_write_committed": false,
+  "proposal_digest": "84f4c1d7b94508225e4fc00de19feb3691cc1b16d750e21512543ed030631fef"
+}

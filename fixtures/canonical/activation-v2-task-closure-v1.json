@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "closure_id": "closure:10000000-0000-4000-8000-000000000001",
+  "project_id": "v2-fixture",
+  "task_outcome": "completed",
+  "closed_at": "2026-07-24T00:00:00Z",
+  "redaction_status": "pass",
+  "decisions": [
+    {
+      "summary": "Keep Activation V2 A0 project-local and fixture-only.",
+      "confirmation_id": "confirm:v2-a0-local",
+      "evidence_ids": [
+        "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001",
+      "kind": "test",
+      "reference_id": "ref:v2-a0-contract-tests",
+      "result": "pass"
+    }
+  ],
+  "open_tasks": [
+    {
+      "summary": "Choose A1 retention and capture defaults.",
+      "state": "open"
+    }
+  ],
+  "questions": [
+    {
+      "summary": "Which retention and storage protection policy should A1 use?"
+    }
+  ],
+  "global_candidates": [
+    {
+      "summary": "Require review before any global promotion.",
+      "source_object_ids": [
+        "mem:v2-fixture:evidence:10000000-0000-4000-8000-000000000001"
+      ]
+    }
+  ]
+}

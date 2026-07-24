@@ -5,6 +5,17 @@ Practical V1 bridge while strict M8/M9 remains blocked. It does not authorize
 scope expansion, provider-route promotion, soak, or rollback without the
 applicable new exact packet and explicit user approval.
 
+Activation V2 is additionally specified in
+`docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md`. It is an
+implementation-design contract, not approval to create stores, install hooks,
+capture memory automatically, change a root model, or mutate global Codex
+configuration.
+
+Activation V2 A0 is complete locally: its five schema contracts, public
+synthetic fixtures, threat model, and fail-closed tests are in
+`docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. It does not authorize
+A1 private-runtime initialization or any later activation phase.
+
 ```text
 Lanjutkan proyek Second Brain dan custom Codex workflow di:
 /home/pixel/Data/PROJECT/second-brain
@@ -23,6 +34,16 @@ dan `MISSING_TELEMETRY`; jangan menganggapnya sebagai route evidence atau
 promosi. Mulai dari gate M8/M9 ini. Jangan kembali mengerjakan M0-M7 kecuali
 evidence-nya gagal; jangan melompati dependency atau menandai milestone selesai
 tanpa evidence.
+
+Activation V2 A0 selesai secara lokal dengan schema/fixture TaskClosure,
+capture receipt, promotion outbox, route intent, dan graph snapshot, serta
+threat model untuk secret, transcript, prompt injection, cross-project leak,
+cycle, dan route mismatch. Evidence ada di
+`docs/25-ACTIVATION-V2-A0-FIXTURES-AND-THREAT-MODEL.md`. Jangan mulai A1 tanpa
+request eksplisit baru dan keputusan user tentang retention, capture default,
+storage protection, serta rencana path/symlink, backup, restore, dan no-Git-leak.
+Tidak ada runtime, hook, auto-capture, route/session launcher, atau mutasi global
+yang dibuat oleh A0.
 
 Practical V1 sekarang sudah terpasang global dengan state
 `PRACTICAL_V1_APPLIED_AND_CANARY_PASS`. Bridge di
@@ -129,6 +150,9 @@ Read order awal:
 18. docs/adr/ADR-007-practical-v1-operator-trusted-bridge.md,
     docs/23-PRACTICAL-V1-BRIDGE-AND-ROUTER-EVIDENCE.md, dan
     artifacts/practical-v1-approval-packet.json
+19. docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md bila sesi
+    secara eksplisit mengerjakan automatic memory, graph, hook, atau
+    front-door routing
 
 Setelah orientasi itu, baca hanya bagian kontrak yang diperlukan M8/M9. Jangan
 memasukkan seluruh blueprint ke setiap worker/context packet.
@@ -150,6 +174,10 @@ Hard boundaries:
   apply, mengubah skill/wrapper terpasang, atau menjalankan rollback helper.
   Bila perubahan atau rollback diperlukan, buat dahulu packet exact baru dari
   state saat itu dan tunggu approval user baru.
+- Activation V2 bukan approval global. Jangan membuat runtime memory,
+  memasang hook, mengaktifkan automatic capture, atau menambah launcher/router
+  ke konfigurasi global sampai scope, packet exact, backup, canary, rollback,
+  dan approval baru tersedia.
 - Jangan menyimpan secret, raw transcript, chain-of-thought, credential, cookie,
   private key, atau environment dump. Redaksi telemetry dan receipt adalah
   allowlist, bukan recursive dump.

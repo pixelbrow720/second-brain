@@ -32,6 +32,11 @@ writes while keeping `DIRECT` zero-memory by default. Its operator-trusted
 provider internals. Strict M8/M9 signed upstream attestation remains open. See
 [the Practical V1 document](docs/23-PRACTICAL-V1-BRIDGE-AND-ROUTER-EVIDENCE.md).
 
+[Activation V2](docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md)
+is the detailed design for a later opt-in automatic-memory, typed graph, and
+front-door routing expansion. It is a design contract only; it does not enable
+stores, hooks, automatic writes, root-model switching, or any new global target.
+
 This repository defines an implementation-ready design for a personal second
 brain and an efficient global Codex workflow. The target behavior is simple:
 routine questions stay fast, difficult work receives proportional depth, and
@@ -177,6 +182,7 @@ version, evaluation evidence, and rollback must all be reviewed.
 | [M9 global approval and rollout](docs/21-M9-EXACT-GLOBAL-APPROVAL-AND-ROLLOUT.md) | Exact global packet, additive staged skill/guidance, anti-drift preflight, backup, and rollback boundary |
 | [M8/M9 external-evidence runbook](docs/22-M8-M9-EXTERNAL-EVIDENCE-RUNBOOK.md) | Redacted trust-anchor, route-attestation, and blinded-review preparation for future approved evidence stages |
 | [Practical V1 bridge and router evidence](docs/23-PRACTICAL-V1-BRIDGE-AND-ROUTER-EVIDENCE.md) | Operator-trusted outbound evidence, installed bounded runtime bridge, canary, and rollback boundary |
+| [Activation V2 blueprint](docs/24-ACTIVATION-V2-AUTOMATIC-MEMORY-GRAPH-AND-ROUTING.md) | Opt-in automatic memory, typed project/global graph, visualization, lifecycle integration, front-door routing, and rollout contract |
 | [ADRs](docs/adr/) | Accepted architectural decisions that changes must preserve |
 
 Repository implementation guidance is in [AGENTS.md](AGENTS.md).
